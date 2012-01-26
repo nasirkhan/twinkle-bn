@@ -62,7 +62,7 @@ Twinkle.tag.callback = function friendlytagCallback( uid ) {
 			form.append({
 				type: 'select',
 				name: 'sortorder',
-				label: 'View this list:',
+				label: 'এই তালিকাটি দেখুন:',
 				tooltip: 'You can change the default view order in your Twinkle preferences (WP:TWPREFS).',
 				event: Twinkle.tag.updateSortOrder,
 				list: [
