@@ -39,16 +39,16 @@ Twinkle.warn.callback = function twinklewarnCallback() {
 	}
 	
 	var Window = new Morebits.simpleWindow( 600, 440 );
-	Window.setTitle( "ব্যবহারকারিকে সতর্কীবার্তা/বিজ্ঞাপ্তি" );
-	Window.setScriptName( "টুইংকল" );
-	Window.addFooterLink( "সতর্কীকরণ স্তর পছন্দ করুন", "WP:UWUL#Levels" );
-	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#warn" );
+	Window.setTitle( "Warn/notify user" );
+	Window.setScriptName( "Twinkle" );
+	Window.addFooterLink( "Choosing a warning level", "WP:UWUL#Levels" );
+	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#warn" );
 
 	var form = new Morebits.quickForm( Twinkle.warn.callback.evaluate );
 	var main_select = form.append( {
 			type:'field',
-			label:' দাখিল করার জন্য সতর্কীকরণ/বিজ্ঞাপ্তি প্রকার পছন্দ করুন',
-			tooltip:'প্রথমে প্রধান সতর্কীকরণ বিভাগ পছন্দ করুন তারপর নির্দিষ্ট সতর্কবার্তা//First choose a main warning group, then the specific warning to issue.'
+			label:'Choose type of warning/notice to issue',
+			tooltip:'First choose a main warning group, then the specific warning to issue.'
 		} );
 
 	var main_group = main_select.append( {

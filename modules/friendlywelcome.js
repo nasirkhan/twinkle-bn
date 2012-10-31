@@ -9,7 +9,7 @@
 
 Twinkle.welcome = function friendlywelcome() {
 	if( Morebits.queryString.exists( 'friendlywelcome' ) ) {
-		if( Morebits.wiki.queryString.get( 'friendlywelcome' ) === 'auto' ) {
+		if( Morebits.queryString.get( 'friendlywelcome' ) === 'auto' ) {
 			Twinkle.welcome.auto();
 		} else {
 			Twinkle.welcome.semiauto();
@@ -20,7 +20,7 @@ Twinkle.welcome = function friendlywelcome() {
 };
 
 Twinkle.welcome.auto = function() {
-	if( Morebits.wiki.queryString.get( 'action' ) !== 'edit' ) {
+	if( Morebits.queryString.get( 'action' ) !== 'edit' ) {
 		// userpage not empty, aborting auto-welcome
 		return;
 	}
@@ -33,10 +33,10 @@ Twinkle.welcome.semiauto = function() {
 };
 
 Twinkle.welcome.normal = function() {
-	if( Morebits.wiki.queryString.exists( 'diff' ) ) {
+	if( Morebits.queryString.exists( 'diff' ) ) {
 		// check whether the contributors' talk pages exist yet
-		var $oList = $("div#mw-diff-otitle2 span.mw-usertoollinks a.new:contains(talk)").first();
-		var $nList = $("div#mw-diff-ntitle2 span.mw-usertoollinks a.new:contains(talk)").first();
+		var $oList = $("#mw-diff-otitle2").find("span.mw-usertoollinks a.new:contains(talk)").first();
+		var $nList = $("#mw-diff-ntitle2").find("span.mw-usertoollinks a.new:contains(talk)").first();
 
 		if( $oList.length > 0 || $nList.length > 0 ) {
 			var spanTag = function( color, content ) {
@@ -57,7 +57,7 @@ Twinkle.welcome.normal = function() {
 				var oHref = $oList.attr("href");
 
 				var oWelcomeNode = welcomeNode.cloneNode( true );
-				oWelcomeNode.firstChild.setAttribute( 'href', oHref + '&' + QueryString.create( { 'friendlywelcome': Twinkle.getFriendlyPref('quickWelcomeMode')==='auto'?'auto':'norm' } ) + '&' + QueryString.create( { 'vanarticle': mw.config.get( 'wgPageName' ).replace(/_/g, ' ') } ) );
+				oWelcomeNode.firstChild.setAttribute( 'href', oHref + '&' + Morebits.queryString.create( { 'friendlywelcome': Twinkle.getFriendlyPref('quickWelcomeMode')==='auto'?'auto':'norm' } ) + '&' + Morebits.queryString.create( { 'vanarticle': mw.config.get( 'wgPageName' ).replace(/_/g, ' ') } ) );
 				$oList[0].parentNode.parentNode.appendChild( document.createTextNode( ' ' ) );
 				$oList[0].parentNode.parentNode.appendChild( oWelcomeNode );
 			}
@@ -66,7 +66,7 @@ Twinkle.welcome.normal = function() {
 				var nHref = $nList.attr("href");
 
 				var nWelcomeNode = welcomeNode.cloneNode( true );
-				nWelcomeNode.firstChild.setAttribute( 'href', nHref + '&' + QueryString.create( { 'friendlywelcome': Twinkle.getFriendlyPref('quickWelcomeMode')==='auto'?'auto':'norm' } ) + '&' + QueryString.create( { 'vanarticle': mw.config.get( 'wgPageName' ).replace(/_/g, ' ') } ) );
+				nWelcomeNode.firstChild.setAttribute( 'href', nHref + '&' + Morebits.queryString.create( { 'friendlywelcome': Twinkle.getFriendlyPref('quickWelcomeMode')==='auto'?'auto':'norm' } ) + '&' + Morebits.queryString.create( { 'vanarticle': mw.config.get( 'wgPageName' ).replace(/_/g, ' ') } ) );
 				$nList[0].parentNode.parentNode.appendChild( document.createTextNode( ' ' ) );
 				$nList[0].parentNode.parentNode.appendChild( nWelcomeNode );
 			}
@@ -74,7 +74,7 @@ Twinkle.welcome.normal = function() {
 	}
 	if( mw.config.get( 'wgNamespaceNumber' ) === 3 ) {
 		var username = mw.config.get( 'wgTitle' ).split( '/' )[0].replace( /\"/, "\\\""); // only first part before any slashes
-		$(twAddPortletLink("#", "Wel", "friendly-welcome", "Welcome user", "")).click(function() { Twinkle.welcome.callback(username); });
+		twAddPortletLink( function(){ Twinkle.welcome.callback(username); }, "Wel", "friendly-welcome", "Welcome user" );
 	}
 };
 
@@ -83,12 +83,12 @@ Twinkle.welcome.welcomeUser = function welcomeUser() {
 
 	var params = {
 		value: Twinkle.getFriendlyPref('quickWelcomeTemplate'),
-		article: Morebits.queryString.exists( 'vanarticle' ) ? QueryString.get( 'vanarticle' ) : '',
+		article: Morebits.queryString.exists( 'vanarticle' ) ? Morebits.queryString.get( 'vanarticle' ) : '',
 		mode: 'auto'
 	};
 
 	Morebits.wiki.actionCompleted.redirect = mw.config.get('wgPageName');
-	Morebits.wiki.actionCompleted.notice = "স্বাগত সম্পূর্ণ, কয়েক সেকেন্ডের মধ্যে আলাপ পাতা রিলোড করা হচ্ছে";
+	Morebits.wiki.actionCompleted.notice = "Welcoming complete, reloading talk page in a few seconds";
 
 	var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "User talk page modification");
 	wikipedia_page.setFollowRedirect(true);
@@ -97,15 +97,15 @@ Twinkle.welcome.welcomeUser = function welcomeUser() {
 };
 
 Twinkle.welcome.callback = function friendlywelcomeCallback( uid ) {
-	if( uid === mw.config.get('wgUserName') && !confirm( 'আপনি কি সত্যিই নিশ্চিত যে আপনি নিজেকে স্বাগত করতে চান?....' ) ){
+	if( uid === mw.config.get('wgUserName') && !confirm( 'Are you really sure you want to welcome yourself?...' ) ){
 		return;
 	}
-	
-	var Window = new Morebits.simpleWindow( 600, 400 );
-	Window.setTitle( "ব্যবহারকারী স্বাগতম" );
-	Window.setScriptName( "টুইংকল" );
-	Window.addFooterLink( "কমিটির স্বাগত", "WP:WC" );
-	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#welcome" );
+
+	var Window = new Morebits.simpleWindow( 600, 420 );
+	Window.setTitle( "Welcome user" );
+	Window.setScriptName( "Twinkle" );
+	Window.addFooterLink( "Welcoming Committee", "WP:WC" );
+	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#welcome" );
 
 	var form = new Morebits.quickForm( Twinkle.welcome.callback.evaluate );
 
