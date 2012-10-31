@@ -9,128 +9,128 @@
  *                         all redirects
  * Config directives in:   FriendlyConfig
  */
-
+ 
 Twinkle.tag = function friendlytag() {
 	// redirect tagging
 	if( Wikipedia.isPageRedirect() ) {
 		Twinkle.tag.mode = 'redirect';
-		$(twAddPortletLink("#", "Tag", "friendly-tag", "Tag redirect", "")).click(Twinkle.tag.callback);
+		$(twAddPortletLink("#", "ট্যাগ", "friendly-tag", "ট্যাগ পুনর্নির্দেশনা", "")).click(Twinkle.tag.callback);
 	}
 	// file tagging
 	else if( mw.config.get('wgNamespaceNumber') === 6 && !document.getElementById("mw-sharedupload") && document.getElementById("mw-imagepage-section-filehistory") ) {
 		Twinkle.tag.mode = 'file';
-		$(twAddPortletLink("#", "Tag", "friendly-tag", "Add maintenance tags to file", "")).click(Twinkle.tag.callback);
+		$(twAddPortletLink("#", "ট্যাগ", "friendly-tag", "ফাইলে রক্ষণাবেক্ষণ ট্যাগ যুক্ত করুন", "")).click(Twinkle.tag.callback);
 	}
 	// article tagging
 	else if( mw.config.get('wgNamespaceNumber') === 0 && mw.config.get('wgCurRevisionId') ) {
 		Twinkle.tag.mode = 'article';
-		$(twAddPortletLink("#", "Tag", "friendly-tag", "Add maintenance tags to article", "")).click(Twinkle.tag.callback);
+		$(twAddPortletLink("#", "ট্যাগ", "friendly-tag", "নিবন্ধে রক্ষণাবেক্ষণ ট্যাগ যুক্ত করুন", "")).click(Twinkle.tag.callback);
 	}
 	// tagging of draft articles
 	else if( ((mw.config.get('wgNamespaceNumber') === 2 && mw.config.get('wgPageName').indexOf("/") !== -1) || /^Wikipedia\:Articles[ _]for[ _]creation\//.exec(mw.config.get('wgPageName')) ) && mw.config.get('wgCurRevisionId') ) {
 		Twinkle.tag.mode = 'draft';
-		$(twAddPortletLink("#", "Tag", "friendly-tag", "Add review tags to draft article", "")).click(Twinkle.tag.callback);
+		$(twAddPortletLink("#", "ট্যাগ", "friendly-tag", "পর্যাচোলনা ট্যাগ খসড়া নিবন্ধে  যুক্ত করুন", "")).click(Twinkle.tag.callback);
 	}
 };
-
+ 
 Twinkle.tag.callback = function friendlytagCallback( uid ) {
 	var Window = new SimpleWindow( 630, (Twinkle.tag.mode === "article") ? 450 : 400 );
-	Window.setScriptName( "Twinkle" );
+	Window.setScriptName( "টুইংকল" );
 	// anyone got a good policy/guideline/info page/instructional page link??
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#tag" );
-
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#tag" );
+ 
 	var form = new QuickForm( Twinkle.tag.callback.evaluate );
-
+ 
 	switch( Twinkle.tag.mode ) {
 		case 'article':
-			Window.setTitle( "Article maintenance tagging" );
-
+			Window.setTitle( "নিবন্ধ রক্ষণাবেক্ষণ ট্যাগিং" );
+ 
 			form.append( {
 					type: 'checkbox',
 					list: [
 						{
-							label: 'Group into {{multiple issues}} if possible',
+							label: 'যদি সম্ভব হয় {{বিবিধ সমস্যা}} দলে যুক্ত করুন',
 							value: 'group',
 							name: 'group',
-							tooltip: 'If applying three or more templates supported by {{multiple issues}} and this box is checked, all supported templates will be grouped into a single {{multiple issues}} template.',
+							tooltip: 'যদি তিনটি বা তার বেশি ট্যাগ যুক্ত করতে চান তবে  {{বিবিধ সমস্যা}} দলে যুক্ত করুন ফাইল সকল ট্যাগ একই দলে যুক্ত হবে।',
 							checked: Twinkle.getFriendlyPref('groupByDefault')
 						}
 					]
 				}
 			);
-
+ 
 			form.append({
 				type: 'select',
 				name: 'sortorder',
 				label: 'এই তালিকাটি দেখুন:',
-				tooltip: 'You can change the default view order in your Twinkle preferences (WP:TWPREFS).',
+				tooltip: 'আপনি যদি আপনার ডিফল্ট ট্যাগ ক্রম পরিবর্তন করতে চান, তা  আপনার টুইংকল পছন্দে (WP:TWPREFS) গিয়ে ঠিক করতে পারেন।',
 				event: Twinkle.tag.updateSortOrder,
 				list: [
-					{ type: 'option', value: 'cat', label: 'By categories', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'cat' },
-					{ type: 'option', value: 'alpha', label: 'In alphabetical order', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'alpha' }
+					{ type: 'option', value: 'cat', label: 'বিষয়শ্রেণী বিন্যাস অনুসারে', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'cat' },
+					{ type: 'option', value: 'alpha', label: ' বর্নানুক্রমিক  বিন্যাস', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'alpha' }
 				]
 			});
-
+ 
 			form.append( { type: 'div', id: 'tagWorkArea' } );
-
+ 
 			if( Twinkle.getFriendlyPref('customTagList').length ) {
-				form.append( { type: 'header', label: 'Custom tags' } );
+				form.append( { type: 'header', label: 'পছন্দের ট্যাগ' } );
 				form.append( { type: 'checkbox', name: 'articleTags', list: Twinkle.getFriendlyPref('customTagList') } );
 			}
 			break;
-
+ 
 		case 'file':
-			Window.setTitle( "File maintenance tagging" );
-
+			Window.setTitle( "ফাইল রক্ষণাবেক্ষণ ট্যাগিং" );
+ 
 			// TODO: perhaps add custom tags TO list of checkboxes
-
-			form.append({ type: 'header', label: 'License and sourcing problem tags' });
+ 
+			form.append({ type: 'header', label: 'লাইসেন্স ও উৎসের সমস্যার ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.licenseList } );
-
-			form.append({ type: 'header', label: 'Cleanup tags' } );
+ 
+			form.append({ type: 'header', label: 'পরিস্করণ ট্যাগ' } );
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.cleanupList } );
-
-			form.append({ type: 'header', label: 'Image quality tags' } );
+ 
+			form.append({ type: 'header', label: 'চিত্রের গুনাগুন বিচারের ট্যাগ' } );
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.qualityList } );
-
-			form.append({ type: 'header', label: 'Wikimedia Commons-related tags' });
+ 
+			form.append({ type: 'header', label: 'উইকিমিডিয়া-কমন্স সম্পর্কিত ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.commonsList } );
-
-			form.append({ type: 'header', label: 'Replacement tags' });
+ 
+			form.append({ type: 'header', label: 'প্রতিস্থাপন ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.replacementList } );
 			break;
-
+ 
 		case 'redirect':
 			Window.setTitle( "Redirect tagging" );
-
-			form.append({ type: 'header', label:'Spelling, misspelling, tense and capitalization templates' });
+ 
+			form.append({ type: 'header', label:'বানানা ভুল বা ব্যকরণ সমস্যা সম্পর্কিত টেমপ্লেট' });
 			form.append({ type: 'checkbox', name: 'redirectTags', list: Twinkle.tag.spellingList });
-
-			form.append({ type: 'header', label:'Alternative name templates' });
+ 
+			form.append({ type: 'header', label:'পর্যাক্রমিক নামের টেমপ্লেট' });
 			form.append({ type: 'checkbox', name: 'redirectTags', list: Twinkle.tag.alternativeList });
-
-			form.append({ type: 'header', label:'Miscellaneous and administrative redirect templates' });
+ 
+			form.append({ type: 'header', label:'বিভিন্ন ও প্রশাসনিক পুর্ননির্দেশ টেমপ্লেট' });
 			form.append({ type: 'checkbox', name: 'redirectTags', list: Twinkle.tag.administrativeList });
 			break;
-
+ 
 		case 'draft':
-			Window.setTitle( "Article draft tagging" );
-
-			form.append({ type: 'header', label:'Draft article tags' });
+			Window.setTitle( "খসড়া নিবন্ধ  ট্যাগ" );
+ 
+			form.append({ type: 'header', label:'খসড়া নিবন্ধ  ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'draftTags', list: Twinkle.tag.draftList });
 			break;
-
+ 
 		default:
 			alert("Twinkle.tag: unknown mode " + Twinkle.tag.mode);
 			break;
 	}
-
+ 
 	form.append( { type:'submit' } );
-
+ 
 	var result = form.render();
 	Window.setContent( result );
 	Window.display();
-
+ 
 	if (Twinkle.tag.mode === "article") {
 		// fake a change event on the sort dropdown, to initialize the tag list
 		var evt = document.createEvent("Event");
@@ -138,18 +138,18 @@ Twinkle.tag.callback = function friendlytagCallback( uid ) {
 		result.sortorder.dispatchEvent(evt);
 	}
 };
-
+ 
 Twinkle.tag.checkedTags = [];
-
+ 
 Twinkle.tag.updateSortOrder = function(e) {
 	var sortorder = e.target.value;
 	var $workarea = $(e.target.form).find("div#tagWorkArea");
-
+ 
 	Twinkle.tag.checkedTags = e.target.form.getChecked("articleTags");
 	if (!Twinkle.tag.checkedTags) {
 		Twinkle.tag.checkedTags = [];
 	}
-
+ 
 	// function to generate a checkbox, with appropriate subgroup if needed
 	var makeCheckbox = function(tag, description) {
 		var checkbox = { value: tag, label: "{{" + tag + "}}: " + description };
@@ -161,28 +161,13 @@ Twinkle.tag.updateSortOrder = function(e) {
 				name: 'globalize',
 				type: 'select',
 				list: [
-					{ label: "{{globalize}}: article may not represent a worldwide view of the subject", value: "globalize" },
+					{ label: "{{বিশ্বব্যাপি}}: নিবন্ধটি বিষয়বস্তু ও উদাহরণ বিশ্বব্যাপি  ধারণকে উপস্থাপিত করেনি", value: "globalize" },
 					{
-						label: "Region-specific {{globalize}} subtemplates",
+						label: "{{বিশ্বব্যাপি}} টেমপ্লেটের  নির্দিষ্ট আঞ্চলিক  উপ-টেমপ্লেট ",
 						list: [
-							{ label: "{{globalize/Australia}}: article deals primarily with the Australian viewpoint", value: "globalize/Australia" },
-							{ label: "{{globalize/Canada}}: article deals primarily with the Canadian viewpoint", value: "globalize/Canada" },
-							{ label: "{{globalize/China}}: article deals primarily with the Chinese viewpoint", value: "globalize/China" },
-							{ label: "{{globalize/Common law}}: article deals primarily with the viewpoint of common law countries", value: "globalize/Common law" },
-							{ label: "{{globalize/Eng}}: article deals primarily with the English-speaking viewpoint", value: "globalize/Eng" },
-							{ label: "{{globalize/Europe}}: article deals primarily with the European viewpoint", value: "globalize/Europe" },
-							{ label: "{{globalize/France}}: article deals primarily with the French viewpoint", value: "globalize/France" },
-							{ label: "{{globalize/Germany}}: article deals primarily with the German viewpoint", value: "globalize/Germany" },
-							{ label: "{{globalize/India}}: article deals primarily with the Indian viewpoint", value: "globalize/India" },
-							{ label: "{{globalize/Middle East}}: article deals primarily with the Middle Eastern viewpoint", value: "globalize/Middle East" },
-							{ label: "{{globalize/North America}}: article deals primarily with the North American viewpoint", value: "globalize/North America" },
-							{ label: "{{globalize/Northern}}: article deals primarily with the northern hemisphere viewpoint", value: "globalize/Northern" },
-							{ label: "{{globalize/Southern}}: article deals primarily with the southern hemisphere viewpoint", value: "globalize/Southern" },
-							{ label: "{{globalize/South Africa}}: article deals primarily with the South African viewpoint", value: "globalize/South Africa" },
-							{ label: "{{globalize/UK}}: article deals primarily with the British viewpoint", value: "globalize/UK" },
-							{ label: "{{globalize/UK and Canada}}: article deals primarily with the British and Canadian viewpoints", value: "globalize/UK and Canada" },
-							{ label: "{{globalize/US}}: article deals primarily with the USA viewpoint", value: "globalize/US" },
-							{ label: "{{globalize/West}}: article deals primarily with the viewpoint of Western countries", value: "globalize/West" }
+					        { label: "{{বিশ্বব্যাপি/বাংলাদেশ}}: নিবন্ধে কেবলমাত্র  প্রাথমিকভাবে বাংলাদেশের দৃষ্টিভঙ্গি বা প্রক্ষাপট উপস্থাপিত হয়েছে", value: "globalize/Bangladesh" },
+							{ label: "{{বিশ্বব্যাপি/ভারত}}: নিবন্ধে কেবলমাত্র  প্রাথমিকভাবে ভারতের  দৃষ্টিভঙ্গি বা প্রক্ষাপট উপস্থাপিত হয়েছে", value: "globalize/India" },
+							{ label: "{{বিশ্বব্যাপি/পাশ্চাত্য}}: নিবন্ধে কেবলমাত্র  প্রাথমিকভাবে পাশ্চাত্যর  দৃষ্টিভঙ্গি বা প্রক্ষাপট উপস্থাপিত হয়েছে", value: "globalize/West" }
 						]
 					}
 				]
@@ -192,32 +177,32 @@ Twinkle.tag.updateSortOrder = function(e) {
 				name: 'notability',
 				type: 'select',
 				list: [
-					{ label: "{{notability}}: article\'s subject may not meet the general notability guideline", value: "none" },
-					{ label: "{{notability|Academics}}: notability guideline for academics", value: "Academics" },
-					{ label: "{{notability|Biographies}}: notability guideline for biographies", value: "Biographies" },
-					{ label: "{{notability|Books}}: notability guideline for books", value: "Books" },
-					{ label: "{{notability|Companies}}: notability guidelines for companies and organizations", value: "Companies" },
-					{ label: "{{notability|Events}}: notability guideline for events", value: "Events" },
-					{ label: "{{notability|Films}}: notability guideline for films", value: "Films" },
-					{ label: "{{notability|Music}}: notability guideline for music", value: "Music" },
-					{ label: "{{notability|Neologisms}}: notability guideline for neologisms", value: "Neologisms" },
-					{ label: "{{notability|Numbers}}: notability guideline for numbers", value: "Numbers" },
-					{ label: "{{notability|Products}}: notability guideline for products and services", value: "Products" },
-					{ label: "{{notability|Sport}}: notability guideline for sports and athletics", value: "Sport" },
-					{ label: "{{notability|Web}}: notability guideline for web content", value: "Web" }
+					{ label: "{{উল্লেখযোগ্যতা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই ", value: "none" },
+					{ label: "{{উল্লেখযোগ্যতা|আকাডেমিক}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Academics" },
+					{ label: "{{উল্লেখযোগ্যতা|জীবনী}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Biographies" },
+					{ label: "{{উল্লেখযোগ্যতা|বই}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Books" },
+					{ label: "{{উল্লেখযোগ্যতা|কোম্পানি}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Companies" },
+					{ label: "{{উল্লেখযোগ্যতা|ঘটনা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Events" },
+					{ label: "{{উল্লেখযোগ্যতা|চলচ্চিত্র}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Films" },
+					{ label: "{{উল্লেখযোগ্যতা|সঙ্গীত}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Music" },
+					{ label: "{{উল্লেখযোগ্যতা|নবশব্দ}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Neologisms" },
+					{ label: "{{উল্লেখযোগ্যতা|সংখ্যা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Numbers" },
+					{ label: "{{উল্লেখযোগ্যতা|পন্য}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Products" },
+					{ label: "{{উল্লেখযোগ্যতা|খেলা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Sport" },
+					{ label: "{{উল্লেখযোগ্যতা|ওয়েব}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Web" }
 				]
 			};
 		}
 		return checkbox;
 	};
-
+ 
 	// categorical sort order
 	if (sortorder === "cat") {
 		var div = new QuickForm.element({
 			type: "div",
 			id: "tagWorkArea"
 		});
-
+ 
 		// function to iterate through the tags and create a checkbox for each one
 		var doCategoryCheckboxes = function(subdiv, array) {
 			var checkboxes = [];
@@ -231,7 +216,7 @@ Twinkle.tag.updateSortOrder = function(e) {
 				list: checkboxes
 			});
 		};
-
+ 
 		var i = 0;
 		// go through each category and sub-category and append lists of checkboxes
 		$.each(Twinkle.tag.article.tagCategories, function(title, content) {
@@ -246,7 +231,7 @@ Twinkle.tag.updateSortOrder = function(e) {
 				});
 			}
 		});
-
+ 
 		var rendered = div.render();
 		$workarea.replaceWith(rendered);
 		var $rendered = $(rendered);
@@ -267,50 +252,47 @@ Twinkle.tag.updateSortOrder = function(e) {
 		$workarea.empty().append(tags.render());
 	}
 };
-
-
+ 
+ 
 // Tags for ARTICLES start here
-
+ 
 Twinkle.tag.article = {};
-
+ 
 // A list of all article tags, in alphabetical order
 // To ensure tags appear in the default "categorized" view, add them to the tagCategories hash below.
-
+ 
 Twinkle.tag.article.tags = {
-	"advert": "article is written like an advertisement",
-	"allplot": "article is almost entirely a plot summary",
-	"autobiography": "article is an autobiography and may not be written neutrally",
-	"BLP sources": "BLP article needs additional sources for verification",
-	"BLP unsourced": "BLP article has no sources at all (use BLP PROD instead for new articles)",
-	"capitalization": "article does not follow Wikipedia's guidelines on the use of capital letters",
-	"cat improve": "article may require additional categories",
-	"citation style": "article has unclear or inconsistent inline citations",
-	"cleanup": "article may require cleanup",
-	"cleanup-reorganize": "article may be in need of reorganization to comply with Wikipedia's layout guidelines",
-	"close paraphrasing": "article contains close paraphrasing of a non-free copyrighted source",
-	"COI": "article creator or major contributor may have a conflict of interest",
-	"condense": "article may have too many section headers dividing up its content",
-	"confusing": "article may be confusing or unclear",
-	"context": "article provides insufficient context",
-	"copy edit": "article needs copy editing for grammar, style, cohesion, tone, and/or spelling",
-	"copypaste": "article appears to have been copied and pasted from a source",
-	"dead end": "article has few or no links to other articles",
-	"disputed": "article has questionable factual accuracy",
-	"essay-like": "article is written like an essay and needs cleanup",
-	"expert-subject": "article needs attention from an expert on the subject",
-	"external links": "article's external links may not follow content policies or guidelines",
-	"fansite": "article resembles a fansite",
-	"fiction": "article fails to distinguish between fact and fiction",
-	"globalize": "article may not represent a worldwide view of the subject",
-	"GOCEinuse": "article is currently undergoing a major copy edit by the Guild of Copy Editors",
-	"hoax": "article may be a complete hoax",
-	"in-universe": "article subject is fictional and needs rewriting from a non-fictional perspective",
-	"incoherent": "article is incoherent or very hard to understand",
-	"in use": "article is undergoing a major edit for a short while",
-	"lead missing": "article has no lead section and one should be written",
-	"lead rewrite": "article lead section needs to be rewritten to comply with guidelines",
-	"lead too long": "article lead section is too long and should be shortened",
-	"lead too short": "article lead section is too short and should be expanded",
+	"advert": "নিবন্ধটি বিজ্ঞাপনের মতো করে লেখা",
+	"allplot": "নিবন্ধটি প্রায় পুরোটাই একটা দৃশ্যপট",
+	"autobiography":"নিবন্ধটি একটি আত্মজীবনীমূলক এবং সম্ভবত নিরপেক্ষভাবে লিখিত নয়",
+	"BLP sources":"জীবিত ব্যক্তির জীবনী যেখানে যাচাই করার জন্য অতিরিক্ত তথ্যসুত্র প্রয়োজন",
+	"BLP unsourced": "জীবিত ব্যক্তির জীবনী যেখানে  কোনো তথ্যসূত্র উল্লেখিত হয়নি ",
+	"cat improve": "নিবন্ধে অতিরিক্ত বিষয়শ্রেণী যোগ  করা প্রয়োজন",
+	"citation style":"নিবন্ধে তথ্যসূত্র উদ্ধৃতিদান শৈলী ঠিক নেই", 
+	"cleanup": "নিবন্ধটিকে পরিষ্কার করা প্রয়োজন।",
+	"cleanup-reorganize":"নিবন্ধটিকে পরিষ্কার করে  উইকিপিডিয়ার রচনাশৈলী অনুযায়ী পুনঃবিন্যাস করা প্রয়োজন ",
+	"close paraphrasing":"নিবন্ধটিতে অনেক কপিরাইট যুক্ত উক্তি দ্বারা লেখা হয়েছে।",
+	"COI": "নিবন্ধটির সৃষ্টিকারি বা প্রধান অবদানকারির ব্যক্তিগত  স্বার্থের সহিত নিবন্ধের বিষয়বস্তু জড়িত।",
+	"condense":"নিবন্ধটিতে  অনেক ছোট ছোট অনুচ্ছেদসহ সংক্ষিপ্ত  আকারে লেখা।",
+	"confusing": "নিবন্ধটিতে  কিছু  বিভ্রান্তি আছে বা বিষয় পরিষ্কার নয়।",
+	"context": "নিবন্ধটিতে  প্রসঙ্গ যাচাই করার জন্য  যথেষ্ট পরিমান তথ্য নেই।",
+	"copy edit":"নিবন্ধটিতে প্রতিলিপি সম্পাদনা  কয়ার প্রয়োজন ।",
+	"copypaste": "নিবন্ধটির উপাদান বা উপাত্ত  কোনো উৎস থেকে প্রতিলিপি  করে এখানে আনা হয়েছে।", 
+	"dead end": "নিবন্ধটিতে অন্য নিবন্ধের সাথে কোনো লিঙ্ক নেই বা খুব কম আছে।",
+	"disputed": "নিবন্ধটিতে তথ্য  বিতর্কিত বিষয়বস্তু আছে।",
+	"essay-like": "নিবন্ধটি অনেকটা প্রবন্ধের মত করে লেখা হয়েছে।",
+	"expert-subject": "নিবন্ধটিতে  এই বিষয় সম্পর্কে একজন বিশেষজ্ঞ  ব্যক্তির মনোনিবেশ প্রয়োজন।",
+	"external links": "নিবন্ধটিতে অনেক বহিঃসংযোগ আছে যা উইকিপিডিয়ার রচনাশৈলী অনুযায়ী নয়।",
+	"fansite": "নিবন্ধটি অনুরাগীসাইটের সঙ্গে মিলে যাচ্ছে।",
+	"fiction": "নিবন্ধটি তথ্যপুর্ণ  না হয়ে একটি উপন্যাসের মত লেখা হছে।",
+	"globalize": "নিবন্ধটি বিষয়বস্তু ও উদাহরণ বিশ্বব্যাপি  ধারণকে উপস্থাপিত করেনি",
+	"hoax":"নিবন্ধটি  সম্পুর্ণ  ধোঁকাবাজি হতে পারে।",
+	"incoherent": "অসংলগ্নarticle is incoherent or very hard to understand",
+	"in use": "যবহার চলছেarticle is undergoing a major edit for a short while",
+	"lead missing": "ভুমিকাহীনarticle has no lead section and one should be written",
+	"lead rewrite": "ভুমিকা পুনর্লিখনarticle lead section needs to be rewritten to comply with guidelines",
+	"lead too long": "নিবন্ধটিতে ভূমিকা অনুচ্ছেদটি অনেক বড় যা সংক্ষিপ্ত করা প্রয়োজন।",
+	"lead too short": "নিবন্ধটিতে ভূমিকা অনুচ্ছেদটি খুব ছোট যা সম্প্রসারণ  করা প্রয়োজন।",
 	"linkrot": "article uses bare URLs for references, which are prone to link rot",
 	"merge": "article should be merged with another given article",
 	"merge from": "another given article should be merged into this one",
@@ -320,7 +302,6 @@ Twinkle.tag.article.tags = {
 	"new unreviewed article": "mark article for later review",
 	"no footnotes": "article has references, but no in-text citations",
 	"non-free": "article may contain excessive or improper use of copyrighted materials",
-	"NOT": "article contains unencyclopedic material which contravenes WP:NOT",
 	"notability": "article's subject may not meet the notability guideline",
 	"not English": "article is written in a language other than English and needs translation",
 	"one source": "article relies largely or entirely upon a single source",
@@ -338,11 +319,10 @@ Twinkle.tag.article.tags = {
 	"puffery": "article may contain wording that promotes the subject through exaggeration",
 	"recentism": "article is slanted towards recent events",
 	"ref improve": "article needs additional references or sources for verification",
-	"rough translation": "article is poorly translated and needs cleanup",
-	"sections": "article needs to be broken into sections",
+	"rough translation": "নিবন্ধটি একটি খসড়া অনুবাদ যাকে পরিষ্কার করা প্রয়োজন।",
+	"sections": "নিবন্ধটিকে অনুচ্ছেদে ভাগ করা উচিত।",
 	"self-published": "article may contain improper references to self-published sources",
 	"technical": "article may be too technical for the uninitiated reader",
-	"tense": "article is written in an incorrect tense",
 	"tone": "tone of article is not appropriate",
 	"too few opinions": "article may not include all significant viewpoints",
 	"uncategorized": "article is uncategorized",
@@ -350,15 +330,15 @@ Twinkle.tag.article.tags = {
 	"unreferenced": "article has no references at all",
 	"unreliable sources": "article's references may not be reliable sources",
 	"update": "article needs additional up-to-date information added",
-	"very long": "article is too long",
-	"weasel": "article neutrality is compromised by the use of weasel words",
-	"wikify": "article needs to be wikified"
+	"very long": "নিবন্ধটি আকারে অনেক বড়।",
+	"weasel": "নিবন্ধটিতে কিছু অগ্রহনযোগ্য শব্দ আছে যা উইকিপিডিয়ার রচনাশৈলী মতে ঠিক নয়।",
+	"wikify": "নিবন্ধটিকে উইকিপিডিয়ার রচনাশৈলী অনুযায়ী পুনঃবিন্যাস করা প্রয়োজন ",
 };
-
+ 
 // A list of tags in order of category
 // Tags should be in alphabetical order within the categories
 // Add new categories with discretion - the list is long enough as is!
-
+ 
 Twinkle.tag.article.tagCategories = {
 	"Cleanup and maintenance tags": {
 		"General cleanup": [
@@ -477,9 +457,9 @@ Twinkle.tag.article.tagCategories = {
 		"under construction"
 	]
 };
-
+ 
 // Tags for REDIRECTS start here
-
+ 
 Twinkle.tag.spellingList = [
 	{
 		label: '{{R from abbreviation}}: redirect from a title with an abbreviation',
@@ -522,7 +502,7 @@ Twinkle.tag.spellingList = [
 		value: 'R from other capitalisation'
 	}
 ];
-
+ 
 Twinkle.tag.alternativeList = [
 	{
 		label: '{{R from alternative name}}: redirect from a title that is another name, a pseudonym, a nickname, or a synonym',
@@ -565,7 +545,7 @@ Twinkle.tag.alternativeList = [
 		value: 'R from title without diacritics'
 	}
 ];
-
+ 
 Twinkle.tag.administrativeList = [
 	{
 		label: '{{R from merge}}: redirect from a merged page in order to preserve its edit history',
@@ -600,17 +580,17 @@ Twinkle.tag.administrativeList = [
 		value: 'R from school'
 	}
 ];
-
+ 
 // maintenance tags for FILES start here
-
+ 
 Twinkle.tag.file = {};
-
+ 
 Twinkle.tag.file.licenseList = [
 	{ label: '{{Bsr}}: source info consists of bare image URL/generic base URL only', value: 'Bsr' },
 	{ label: '{{Non-free reduce}}: non-low-resolution fair use image (or too-long audio clip, etc)', value: 'Non-free reduce' },
 	{ label: '{{Non-free reduced}}: fair use media which has been reduced (old versions need to be deleted)', value: 'Non-free reduced' }
 ];
-
+ 
 Twinkle.tag.file.cleanupList = [
 	{ label: '{{Artifacts}}: PNG contains residual compression artifacts', value: 'Artifacts' },
 	{ label: '{{Bad font}}: SVG uses fonts not available on the thumbnail server', value: 'Bad font' },
@@ -655,7 +635,7 @@ Twinkle.tag.file.cleanupList = [
 	{ label: '{{Should be text}}: image should be represented as text, tables, or math markup', value: 'Should be text' },
 	{ label: '{{Split media}}: there are two different images in the upload log which need to be split', value: 'Split media' }
 ];
-
+ 
 Twinkle.tag.file.qualityList = [
 	{ label: '{{Image-blownout}}', value: 'Image-blownout' },
 	{ label: '{{Image-out-of-focus}}', value: 'Image-out-of-focus' },
@@ -663,7 +643,7 @@ Twinkle.tag.file.qualityList = [
 	{ label: '{{Image-underexposure}}', value: 'Image-underexposure' },
 	{ label: '{{Low quality chem}}: disputed chemical structures', value: 'Low quality chem' }
 ];
-
+ 
 Twinkle.tag.file.commonsList = [
 	{ label: '{{Copy to Commons}}: free media that should be copied to Commons', value: 'Copy to Commons' },
 	{ label: '{{Do not move to Commons}} (PD issue): file is PD in the US but not in country of origin', value: 'Do not move to Commons' },
@@ -671,22 +651,22 @@ Twinkle.tag.file.commonsList = [
 	{ label: '{{Keep local}}: request to keep local copy of a Commons file', value: 'Keep local' },
 	{ label: '{{Now Commons}}: file has been copied to Commons', value: 'subst:ncd' }
 ];
-
+ 
 Twinkle.tag.file.replacementList = [
 	{ label: '{{Duplicate}}: exact duplicate of another file, but not yet orphaned', value: 'Duplicate' },
 	{ label: '{{Obsolete}}: improved version available', value: 'Obsolete' },
 	{ label: '{{PNG version available}}', value: 'PNG version available' },
 	{ label: '{{SVG version available}}', value: 'SVG version available' }
 ];
-
-
+ 
+ 
 // Tags for DRAFT ARTICLES start here
-
+ 
 Twinkle.tag.draftList = [
 	{ label: '{{New unreviewed article}}: mark article for later review', value: 'new unreviewed article' }
 ];
-
-
+ 
+ 
 // Contains those article tags that can be grouped into {{multiple issues}}.
 // This list includes synonyms.
 Twinkle.tag.groupHash = [
@@ -815,16 +795,16 @@ Twinkle.tag.groupHash = [
 	'weasel',
 	'wikify'
 ];
-
+ 
 Twinkle.tag.callbacks = {
 	main: function( pageobj ) {
 		var params = pageobj.getCallbackParameters();
 		var tagRe, tagText = '', summaryText = 'Added';
 		var tags = [], groupableTags = [];
-
+ 
 		// Remove tags that become superfluous with this action
 		var pageText = pageobj.getPageText().replace(/\{\{\s*(New unreviewed article|Userspace draft)\s*(\|(?:\{\{[^{}]*\}\}|[^{}])*)?\}\}\s*/ig, "");
-
+ 
 		var i;
 		if( Twinkle.tag.mode !== 'redirect' ) {
 			// Check for preexisting tags and separate tags into groupable and non-groupable arrays
@@ -844,17 +824,17 @@ Twinkle.tag.callbacks = {
 						'}} on the article already...excluding' );
 				}
 			}
-
+ 
 			if( params.group && groupableTags.length >= 3 ) {
 				Status.info( 'Info', 'Grouping supported tags into {{multiple issues}}' );
-
+ 
 				groupableTags.sort();
 				tagText += '{{multiple issues';
 				summaryText += ' {{[[Template:multiple issues|multiple issues]]}} with parameters';
 				for( i = 0; i < groupableTags.length; i++ ) {
 					tagText += '|' + groupableTags[i] +
 						'={{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}';
-
+ 
 					if( i === (groupableTags.length - 1) ) {
 						summaryText += ' and';
 					} else if ( i < (groupableTags.length - 1) && i > 0 ) {
@@ -878,7 +858,7 @@ Twinkle.tag.callbacks = {
 				}
 			}
 		}
-
+ 
 		tags.sort();
 		for( i = 0; i < tags.length; i++ ) {
 			var currentTag = "";
@@ -891,11 +871,11 @@ Twinkle.tag.callbacks = {
 				} else {
 					currentTag += ( Twinkle.tag.mode === 'redirect' ? '\n' : '' ) + '{{' + tags[i];
 				}
-
+ 
 				if( tags[i] === 'notability' && params.notabilitySubcategory !== 'none' ) {
 					currentTag += '|' + params.notabilitySubcategory;
 				}
-
+ 
 				// prompt for other parameters, based on the tag
 				switch( tags[i] ) {
 					case 'cleanup':
@@ -967,11 +947,11 @@ Twinkle.tag.callbacks = {
 					default:
 						break;
 				}
-
+ 
 				currentTag += Twinkle.tag.mode === 'redirect' ? '}}' : '|date={{subst:CURRENTMONTHNAME}} {{subst:CURRENTYEAR}}}}\n';
 				tagText += currentTag;
 			}
-
+ 
 			if ( i > 0 || groupableTags.length > 3 ) {
 				if( i === (tags.length - 1) ) {
 					summaryText += ' and';
@@ -979,7 +959,7 @@ Twinkle.tag.callbacks = {
 					summaryText += ',';
 				}
 			}
-
+ 
 			summaryText += ' {{[[';
 			if( tags[i] === 'globalize' ) {
 				summaryText += "Template:" + params.globalizeSubcategory + '|' + params.globalizeSubcategory;
@@ -988,7 +968,7 @@ Twinkle.tag.callbacks = {
 			}
 			summaryText += ']]}}';
 		}
-
+ 
 		if( Twinkle.tag.mode === 'redirect' ) {
 			pageText += tagText;
 		} else {
@@ -1000,27 +980,27 @@ Twinkle.tag.callbacks = {
 		}
 		summaryText += ' tag' + ( ( tags.length + ( groupableTags.length > 3 ? 1 : 0 ) ) > 1 ? 's' : '' ) +
 			' to ' + Twinkle.tag.mode + Twinkle.getPref('summaryAd');
-
+ 
 		pageobj.setPageText(pageText);
 		pageobj.setEditSummary(summaryText);
 		pageobj.setWatchlist(Twinkle.getFriendlyPref('watchTaggedPages'));
 		pageobj.setMinorEdit(Twinkle.getFriendlyPref('markTaggedPagesAsMinor'));
 		pageobj.setCreateOption('nocreate');
 		pageobj.save();
-
+ 
 		if( Twinkle.getFriendlyPref('markTaggedPagesAsPatrolled') ) {
 			pageobj.patrol();
 		}
 	},
-
+ 
 	file: function friendlytagCallbacksFile(pageobj) {
 		var text = pageobj.getPageText();
 		var params = pageobj.getCallbackParameters();
 		var summary = "Adding ";
-
+ 
 		// Add maintenance tags
 		if (params.tags.length) {
-
+ 
 			var tagtext = "", currentTag;
 			$.each(params.tags, function(k, tag) {
 				// when other commons-related tags are placed, remove "move to Commons" tag
@@ -1028,9 +1008,9 @@ Twinkle.tag.callbacks = {
 					"Now Commons"].indexOf(tag) !== -1) {
 					text = text.replace(/\{\{(mtc|(copy |move )?to ?commons|move to wikimedia commons|copy to wikimedia commons)[^}]*}}/gi, "");
 				}
-
+ 
 				currentTag = "{{" + (tag === "Do not move to Commons_reason" ? "Do not move to Commons" : tag);
-
+ 
 				var input;
 				switch (tag) {
 					case "subst:ncd":
@@ -1107,51 +1087,49 @@ Twinkle.tag.callbacks = {
 						}
 						break;
 					case "Non-free reduced":
-						//remove {{non-free reduce}} and redirects
-						text = text.replace(/\{\{\s*(Template\s*:\s*)?(Non-free reduce|FairUseReduce|Fairusereduce|Fair Use Reduce|Fair use reduce|Reduce size|Reduce|Fair-use reduce|Image-toobig|Comic-ovrsize-img|Non-free-reduce|Nfr|Smaller image|Nonfree reduce)\s*(\|(?:\{\{[^{}]*\}\}|[^{}])*)?\}\}\s*/ig, "");
 						currentTag += "|date={{subst:date}}";
 						break;
 					default:
 						break;  // don't care
 				}
-
+ 
 				if (tag === "Should be SVG") {
 					currentTag += "|" + params.svgSubcategory;
 				}
-
+ 
 				currentTag += "}}\n";
-
+ 
 				tagtext += currentTag;
 				summary += "{{" + tag + "}}, ";
-
+ 
 				return true;  // continue
 			});
-
+ 
 			if (!tagtext) {
 				pageobj.getStatusElement().warn("User canceled operation; nothing to do");
 				return;
 			}
-
+ 
 			text = tagtext + text;
 		}
-
+ 
 		pageobj.setPageText(text);
 		pageobj.setEditSummary(summary.substring(0, summary.length - 2) + Twinkle.getPref('summaryAd'));
 		pageobj.setWatchlist(Twinkle.getFriendlyPref('watchTaggedPages'));
 		pageobj.setMinorEdit(Twinkle.getFriendlyPref('markTaggedPagesAsMinor'));
 		pageobj.setCreateOption('nocreate');
 		pageobj.save();
-
+ 
 		if( Twinkle.getFriendlyPref('markTaggedPagesAsPatrolled') ) {
 			pageobj.patrol();
 		}
 	}
 };
-
+ 
 Twinkle.tag.callback.evaluate = function friendlytagCallbackEvaluate(e) {
 	var form = e.target;
 	var params = {};
-
+ 
 	switch (Twinkle.tag.mode) {
 		case 'article':
 			params.tags = form.getChecked( 'articleTags' );
@@ -1174,21 +1152,21 @@ Twinkle.tag.callback.evaluate = function friendlytagCallbackEvaluate(e) {
 			alert("Twinkle.tag: unknown mode " + Twinkle.tag.mode);
 			break;
 	}
-
+ 
 	if( !params.tags.length ) {
 		alert( 'You must select at least one tag!' );
 		return;
 	}
-
+ 
 	SimpleWindow.setButtonsEnabled( false );
 	Status.init( form );
-
+ 
 	Wikipedia.actionCompleted.redirect = mw.config.get('wgPageName');
 	Wikipedia.actionCompleted.notice = "Tagging complete, reloading article in a few seconds";
 	if (Twinkle.tag.mode === 'redirect') {
 		Wikipedia.actionCompleted.followRedirect = false;
 	}
-
+ 
 	var wikipedia_page = new Wikipedia.page(mw.config.get('wgPageName'), "Tagging " + Twinkle.tag.mode);
 	wikipedia_page.setCallbackParameters(params);
 	switch (Twinkle.tag.mode) {
