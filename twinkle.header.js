@@ -14,18 +14,18 @@
  * This is AzaToth's Twinkle, the popular script sidekick for newbies, admins, and
  * every Wikipedian in between. Visit [[WP:TW]] for more information.
  */
-
+ 
 //<nowiki>
-
+ 
 var Twinkle = {};
 window.Twinkle = Twinkle;  // allow global access
-
+ 
 // for use by custom modules (normally empty)
 Twinkle.initCallbacks = [];
 Twinkle.addInitCallback = function twinkleAddInitCallback(func) {
 	Twinkle.initCallbacks.push(func);
 };
-
+ 
 Twinkle.defaultConfig = {};
 /**
  * Twinkle.defaultConfig.twinkle and Twinkle.defaultConfig.friendly
@@ -100,12 +100,12 @@ Twinkle.defaultConfig.twinkle = {
 	deliMax: 5000,
 	proddeleteChunks: 50
 };
-
+ 
 // now some skin dependent config.
 if (mw.config.get("skin") === 'vector') {
 	Twinkle.defaultConfig.twinkle.portletArea = 'right-navigation';
 	Twinkle.defaultConfig.twinkle.portletId   = 'p-twinkle';
-	Twinkle.defaultConfig.twinkle.portletName = 'TW';
+	Twinkle.defaultConfig.twinkle.portletName = 'টুইংকল';
 	Twinkle.defaultConfig.twinkle.portletType = 'menu';
 	Twinkle.defaultConfig.twinkle.portletNext = 'p-search';
 } else {
@@ -115,7 +115,7 @@ if (mw.config.get("skin") === 'vector') {
 	Twinkle.defaultConfig.twinkle.portletType = null;
 	Twinkle.defaultConfig.twinkle.portletNext = null;
 }
-
+ 
 Twinkle.defaultConfig.friendly = {
 	 // Tag
 	groupByDefault: true,
@@ -127,7 +127,7 @@ Twinkle.defaultConfig.friendly = {
 	 // Welcome
 	topWelcomes: false,
 	watchWelcomes: true,
-	welcomeHeading: "Welcome",
+	welcomeHeading: "স্বাগতম",
 	insertHeadings: true,
 	insertUsername: true,
 	insertSignature: true,  // sign welcome templates, where appropriate
@@ -139,11 +139,12 @@ Twinkle.defaultConfig.friendly = {
 	 // Talkback
 	markTalkbackAsMinor: true,
 	insertTalkbackSignature: true,  // always sign talkback templates
-	talkbackHeading: "Talkback",
+	talkbackHeading: "ফিরতি বার্তা",
+	adminNoticeHeading: "নোটিশ",
 	 // Shared
 	markSharedIPAsMinor: true
 };
-
+ 
 Twinkle.getPref = function twinkleGetPref(name) {
 	var result;
 	if (typeof(Twinkle.prefs) === "object" && typeof(Twinkle.prefs.twinkle) === "object") {
@@ -153,13 +154,13 @@ Twinkle.getPref = function twinkleGetPref(name) {
 		// look in TwinkleConfig
 		result = window.TwinkleConfig[name];
 	}
-
+ 
 	if (typeof(result) === "undefined") {
 		return Twinkle.defaultConfig.twinkle[name];
 	}
 	return result;
 };
-
+ 
 Twinkle.getFriendlyPref = function twinkleGetFriendlyPref(name) {
 	var result;
 	if (typeof(Twinkle.prefs) === "object" && typeof(Twinkle.prefs.friendly) === "object") {
@@ -169,15 +170,15 @@ Twinkle.getFriendlyPref = function twinkleGetFriendlyPref(name) {
 		// look in FriendlyConfig
 		result = window.FriendlyConfig[name];
 	}
-
+ 
 	if (typeof(result) === "undefined") {
 		return Twinkle.defaultConfig.friendly[name];
 	}
 	return result;
 };
-
-
-
+ 
+ 
+ 
 /**
  * **************** twAddPortlet() ****************
  *
@@ -213,7 +214,7 @@ function twAddPortlet( navigation, id, text, type, nextnodeid )
 	if ( !root ) {
 		return null;
 	}
-
+ 
 	var item = document.getElementById( id );
 	if (item) {
 		if (item.parentNode && item.parentNode === root) {
@@ -221,12 +222,12 @@ function twAddPortlet( navigation, id, text, type, nextnodeid )
 		}
 		return null;
 	}
-
+ 
 	var nextnode;
 	if (nextnodeid) {
 		nextnode = document.getElementById(nextnodeid);
 	}
-
+ 
 	//verify/normalize input
 	type = (skin === "vector" && type === "menu" && (navigation === "left-navigation" || navigation === "right-navigation")) ? "menu" : "";
 	var outerDivClass;
@@ -253,7 +254,7 @@ function twAddPortlet( navigation, id, text, type, nextnodeid )
 			innerDivClass = "pBody";
 			break;
 	}
-
+ 
 	//Build the DOM elements.
 	var outerDiv = document.createElement( 'div' );
 	outerDiv.className = outerDivClass+" emptyPortlet";
@@ -268,13 +269,13 @@ function twAddPortlet( navigation, id, text, type, nextnodeid )
 	} else {
 		root.appendChild( outerDiv );
 	}
-
+ 
 	var h5 = document.createElement( 'h5' );
 	if (type === 'menu') {
 		var span = document.createElement( 'span' );
 		span.appendChild( document.createTextNode( text ) );
 		h5.appendChild( span );
-
+ 
 		var a = document.createElement( 'a' );
 		a.href = "#";
 		span = document.createElement( 'span' );
@@ -285,18 +286,18 @@ function twAddPortlet( navigation, id, text, type, nextnodeid )
 		h5.appendChild( document.createTextNode( text ) );
 	}
 	outerDiv.appendChild( h5 );
-
+ 
 	var innerDiv = document.createElement( 'div' ); //not strictly necessary with type vectorTabs, or other skins.
 	innerDiv.className = innerDivClass;
 	outerDiv.appendChild(innerDiv);
-
+ 
 	var ul = document.createElement( 'ul' );
 	innerDiv.appendChild( ul );
-
+ 
 	return outerDiv;
 }
-
-
+ 
+ 
 /**
  * **************** twAddPortletLink() ****************
  * Builds a portlet menu if it doesn't exist yet, and add the portlet link.
@@ -308,6 +309,7 @@ function twAddPortletLink( href, text, id, tooltip, accesskey, nextnode )
 	}
 	return mw.util.addPortletLink( Twinkle.getPref("portletId"), href, text, id, tooltip, accesskey, nextnode );
 }
-
+ 
 // check if account is experienced enough for more advanced functions
 var twinkleUserAuthorized = userIsInGroup( 'autoconfirmed' ) || userIsInGroup( 'confirmed' );
+ 
