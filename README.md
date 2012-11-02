@@ -70,7 +70,7 @@ The [jQuery Core Style Guideline][jq_style] is what we will hereafter use as our
 
 [Wikipedia:Twinkle]: http://bn.wikipedia.org/wiki/Wikipedia:Twinkle
 [WP:Twinkle]: http://en.wikipedia.org/wiki/Wikipedia:Twinkle
-[AzaToth]: http://bn.wikipedia.org/wiki/User:AzaToth
+[AzaToth]: http://en.wikipedia.org/wiki/User:AzaToth
 [MediaWiki:Gadget-Twinkle.js]: http://bn.wikipedia.org/wiki/MediaWiki:Gadget-Twinkle.js
 [User:AzaToth/twinkle.js]: http://bn.wikipedia.org/wiki/User:AzaToth/twinkle.js
 [MediaWiki:Gadget-morebits.js]: http://bn.wikipedia.org/wiki/MediaWiki:Gadget-morebits.js
