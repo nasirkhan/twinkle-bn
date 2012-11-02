@@ -111,7 +111,7 @@ Twinkle.defaultConfig.twinkle = {
 if ( mw.config.get( "skin" ) === "vector" ) {
 	Twinkle.defaultConfig.twinkle.portletArea = "right-navigation";
 	Twinkle.defaultConfig.twinkle.portletId   = "p-twinkle";
-	Twinkle.defaultConfig.twinkle.portletName = "TW";
+	Twinkle.defaultConfig.twinkle.portletName = "টুইংকল";
 	Twinkle.defaultConfig.twinkle.portletType = "menu";
 	Twinkle.defaultConfig.twinkle.portletNext = "p-search";
 } else {
@@ -133,7 +133,7 @@ Twinkle.defaultConfig.friendly = {
 	 // Welcome
 	topWelcomes: false,
 	watchWelcomes: true,
-	welcomeHeading: "Welcome",
+	welcomeHeading: "স্বাগতম",
 	insertHeadings: true,
 	insertUsername: true,
 	insertSignature: true,  // sign welcome templates, where appropriate
@@ -143,9 +143,9 @@ Twinkle.defaultConfig.friendly = {
 	 // Talkback
 	markTalkbackAsMinor: true,
 	insertTalkbackSignature: true,  // always sign talkback templates
-	talkbackHeading: "Talkback",
-	adminNoticeHeading: "Notice",
-	mailHeading: "You've got mail!",
+	talkbackHeading: "ফিরতি বার্তা",
+	adminNoticeHeading: "নোটিশ",
+	mailHeading: "আপনার ইমেইল এসেছে!",
 	 // Shared
 	markSharedIPAsMinor: true
 };
