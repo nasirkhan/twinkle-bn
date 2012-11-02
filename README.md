@@ -5,7 +5,7 @@ Twinkle is a JavaScript library and application that gives Wikipedians a quick w
 
 It is based upon the `morebits.js` library, which forms the basis for many Wikipedia scripts and editing tools.
 
-See [Wikipedia:Twinkle][] on the English Wikipedia for more information.
+See [Wikipedia:Twinkle][] on the Bengali Wikipedia for more information. For checking the English version follow [WP:Twinkle][] on English Wikipedia.
 
 [AzaToth][] is the original author and maintainer of the tool, as well as the `morebits.js` library.
 
@@ -69,6 +69,7 @@ While old legacy code has many different and incoherent styles, it has been deci
 The [jQuery Core Style Guideline][jq_style] is what we will hereafter use as our style guideline.
 
 [Wikipedia:Twinkle]: http://bn.wikipedia.org/wiki/Wikipedia:Twinkle
+[WP:Twinkle]: http://en.wikipedia.org/wiki/Wikipedia:Twinkle
 [AzaToth]: http://bn.wikipedia.org/wiki/User:AzaToth
 [MediaWiki:Gadget-Twinkle.js]: http://bn.wikipedia.org/wiki/MediaWiki:Gadget-Twinkle.js
 [User:AzaToth/twinkle.js]: http://bn.wikipedia.org/wiki/User:AzaToth/twinkle.js
