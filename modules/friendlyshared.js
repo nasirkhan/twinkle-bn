@@ -17,13 +17,13 @@ Twinkle.shared = function friendlyshared() {
 Twinkle.shared.callback = function friendlysharedCallback( uid ) {
 	var Window = new Morebits.simpleWindow( 600, 400 );
 	Window.setTitle( "Shared IP address tagging" );
-	Window.setScriptName( "টুইংকল" );
-	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#shared" );
+	Window.setScriptName( "Twinkle" );
+	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#shared" );
 
 	var form = new Morebits.quickForm( Twinkle.shared.callback.evaluate );
 
 	var div = form.append( { type: 'div', id: 'sharedip-templatelist' } );
-	div.append( { type: 'header', label: 'শেয়ার্ড আইপি ঠিকানা টমপ্লেট' } );
+	div.append( { type: 'header', label: 'Shared IP address templates' } );
 	div.append( { type: 'radio', name: 'shared', list: Twinkle.shared.standardList,
 		event: function( e ) {
 			Twinkle.shared.callback.change_shared( e );
@@ -43,7 +43,7 @@ Twinkle.shared.callback = function friendlysharedCallback( uid ) {
 	org.append( {
 			type: 'input',
 			name: 'host',
-			label: 'হোস্টের নাম (ঐচ্ছিক)',
+			label: 'Host name (optional)',
 			disabled: true,
 			tooltip: 'The host name (for example, proxy.example.com) can be optionally entered here and will be linked by the template.'
 		}
@@ -51,7 +51,7 @@ Twinkle.shared.callback = function friendlysharedCallback( uid ) {
 	org.append( {
 			type: 'input',
 			name: 'contact',
-			label: 'যোগাযোগের তথ্য (কেবলমাত্র যদি অনুরোধ করা হয়ে থাকে)',
+			label: 'Contact information (only if requested)',
 			disabled: true,
 			tooltip: 'You can optionally enter some contact details for the organization.  Use this parameter only if the organization has specifically requested that it be added.  You can use wikimarkup if necessary.'
 		}
