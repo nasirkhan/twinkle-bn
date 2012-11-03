@@ -14,7 +14,7 @@
 			return;
 		}
 	
-		twAddPortletLink( callback, "TB", "friendly-talkback", "Easy talkback" );
+		twAddPortletLink( callback, "ফিরতি বার্তা", "friendly-talkback", "সহজ ফিরতি বার্তা" );
 	};
 	
 	var callback = function( ) {
@@ -23,30 +23,30 @@
 		}
 	
 		var Window = new Morebits.simpleWindow( 600, 350 );
-		Window.setTitle("Talkback");
+		Window.setTitle("ফিরতি বার্তা");
 		Window.setScriptName("Twinkle");
-		Window.addFooterLink( "About {{talkback}}", "Template:Talkback" );
-		Window.addFooterLink( "Twinkle help", "WP:TW/DOC#talkback" );
+		Window.addFooterLink( "{{ফিরতি বার্তা}} সম্পর্কে জানুন", "টেমপ্লেট:ফিরতি বার্তা" );
+		Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#talkback" );
 	
 		var form = new Morebits.quickForm( callback_evaluate );
 	
 		form.append({ type: "radio", name: "tbtarget",
 					list: [
 						{
-							label: "Talkback: my talk page",
+							label: "ফিরতি বার্তা: আমার আলাপ পাতা",
 							value: "mytalk",
 							checked: "true" 
 						},
 						{
-							label: "Talkback: other user talk page",
+							label: "ফিরতি বার্তা: অন্যের ব্যবহারকারি পাতা",
 							value: "usertalk"
 						},
 						{
-							label: "Talkback: other page",
+							label: "ফিরতি বার্তা: অন্য পাতা",
 							value: "other"
 						},
 						{
-							label: "Noticeboard notification",
+							label: "প্রশাসকদের আলোচনা সভা",
 							value: "notice"
 						},
 						{
@@ -59,7 +59,7 @@
 	
 		form.append({
 				type: "field",
-				label: "Work area",
+				label: "ফিরতি বার্তার তথ্য",
 				name: "work_area"
 			});
 	
@@ -107,8 +107,8 @@
 				work_area.append({
 						type:"input",
 						name:"section",
-						label:"Linked section (optional)",
-						tooltip:"The section heading on your talk page where you left a message. Leave empty for no section to be linked.",
+						label:"অনুচ্ছেদের লিঙ্ক  (ঐচ্ছিক)",
+						tooltip:"এখানে আপনি আপনার আলাপ পাতার  অনুচ্ছেদের লিঙ্ক  প্রদান করুন যেখানে বার্তা প্রদান করেছেন। আপনি এই ফিল্ড  এড়িয়ে যেতে পারেন।",
 						value: prev_section
 					});
 				break;
@@ -116,16 +116,16 @@
 				work_area.append({
 						type:"input",
 						name:"page",
-						label:"User",
-						tooltip:"The username of the user on whose talk page you left a message.",
+						label:"ব্যবহারকারি",
+						tooltip:"যে ব্যবহারকারির আলাপ পাতায়  বার্তা প্রদান করেছেন।",
 						value: prev_page
 					});
 				
 				work_area.append({
 						type:"input",
 						name:"section",
-						label:"Linked section (optional)",
-						tooltip:"The section heading on the page where you left a message. Leave empty for no section to be linked.",
+						label:"অনুচ্ছেদের লিঙ্ক  (ঐচ্ছিক ))",
+						tooltip:"এখানে আপনি পাতার  অনুচ্ছেদের লিঙ্ক  প্রদান করুন যেখানে বার্তা প্রদান করেছেন। আপনি এই ফিল্ড  এড়িয়ে যেতে পারেন।",
 						value: prev_section
 					});
 				break;
@@ -133,22 +133,22 @@
 				var noticeboard = work_area.append({
 						type: "select",
 						name: "noticeboard",
-						label: "Noticeboard:"
+						label: "প্রশাসকদের আলোচনাসভা:"
 					});
 				noticeboard.append({
 						type: "option",
-						label: "WP:AN (Administrators' noticeboard)",
+						label: "WP:AN (প্রশাসকদের আলোচনাসভা)",
 						value: "an"
 					});
 				noticeboard.append({
 						type: "option",
-						label: "WP:AN3 (Administrators' noticeboard/Edit warring)",
+						label: "WP:AN3 (প্রশাসকদের আলোচনাসভা/Edit warring)",
 						selected: true,
 						value: "an3"
 					});
 				noticeboard.append({
 						type: "option",
-						label: "WP:ANI (Administrators' noticeboard/Incidents)",
+						label: "WP:ANI (প্রশাসকদের আলোচনাসভা/Incidents)",
 						selected: true,
 						value: "ani"
 					});
@@ -179,16 +179,16 @@
 				work_area.append({
 						type:"input",
 						name:"page",
-						label:"Full page name",
-						tooltip:"The full page name where you left the message. For example: 'Wikipedia talk:Twinkle'.",
+						label:"সম্পূর্ণ পাতার নাম",
+						tooltip:"যে পাতায় আপনি বার্তা প্রদান করেছেন তার সম্পূর্ণ  নাম। উদাহরণ রুপে 'উইকিপিডিয়া আলোচনা:টুইংকল'",
 						value: prev_page
 					});
 				
 				work_area.append({
 						type:"input",
 						name:"section",
-						label:"Linked section (optional)",
-						tooltip:"The section heading on the page where you left a message. Leave empty for no section to be linked.",
+						label:"অনুচ্ছেদের লিঙ্ক  (ঐচ্ছিক )",
+						tooltip:"এখানে আপনি পাতার  অনুচ্ছেদের লিঙ্ক  প্রদান করুন যেখানে বার্তা প্রদান করেছেন। আপনি এই ফিল্ড  এড়িয়ে যেতে পারেন",
 						value: prev_section
 					});
 				break;
@@ -225,12 +225,12 @@
 			
 			if( tbtarget === "usertalk" ) {
 				if( !page ) {
-					alert("You must specify the username of the user whose talk page you left a message on.");
+					alert("আপনাকে অবশ্যই যে ব্যবহারকারির আলাপ পাতায় বার্তা দিচ্ছেন তার নাম প্রদান করতে হবে।");
 					return;
 				}
 			} else {
 				if( !page ) {
-					alert("You must specify the full page name when your message is not on a user talk page.");
+					alert("আপনাকে অবশ্যই যে  পাতায় বার্তা দিচ্ছেন তার  সম্পূর্ণ নাম প্রদান করতে হবে।");
 					return;
 				}
 			}
@@ -247,9 +247,9 @@
 		Morebits.status.init( e.target );
 	
 		Morebits.wiki.actionCompleted.redirect = fullUserTalkPageName;
-		Morebits.wiki.actionCompleted.notice = "Talkback complete; reloading talk page in a few seconds";
+		Morebits.wiki.actionCompleted.notice = "ফিরতি বার্তা প্রদান সম্পূর্ণ হয়েছে;কয়েক সেকেন্ডের মধ্যে আলাপ পাতা ফিরিয়ে আনা হচ্ছে।";
 	
-		var talkpage = new Morebits.wiki.page(fullUserTalkPageName, "Adding talkback");
+		var talkpage = new Morebits.wiki.page(fullUserTalkPageName, "ফিরতি বার্তা যোগ");
 		var tbPageName = (tbtarget === "mytalk") ? mw.config.get("wgUserName") : page;
 	
 		var text;

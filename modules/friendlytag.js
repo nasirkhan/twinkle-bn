@@ -14,40 +14,40 @@ Twinkle.tag = function friendlytag() {
 	// redirect tagging
 	if( Morebits.wiki.isPageRedirect() ) {
 		Twinkle.tag.mode = 'redirect';
-		twAddPortletLink( Twinkle.tag.callback, "Tag", "friendly-tag", "Tag redirect" );
+		twAddPortletLink( Twinkle.tag.callback, "ট্যাগ", "friendly-tag", "ট্যাগ পুনর্নির্দেশনা" );
 	}
 	// file tagging
 	else if( mw.config.get('wgNamespaceNumber') === 6 && !document.getElementById("mw-sharedupload") && document.getElementById("mw-imagepage-section-filehistory") ) {
 		Twinkle.tag.mode = 'file';
-		twAddPortletLink( Twinkle.tag.callback, "Tag", "friendly-tag", "Add maintenance tags to file" );
+		twAddPortletLink( Twinkle.tag.callback, "ট্যাগ", "friendly-tag", "ফাইলে রক্ষণাবেক্ষণ ট্যাগ যুক্ত করুন" );
 	}
 	// article/draft article tagging
 	else if( ( mw.config.get('wgNamespaceNumber') === 0 || /^Wikipedia([ _]talk)?\:Articles[ _]for[ _]creation\//.exec(mw.config.get('wgPageName')) ) && mw.config.get('wgCurRevisionId') ) {
 		Twinkle.tag.mode = 'article';
-		twAddPortletLink( Twinkle.tag.callback, "Tag", "friendly-tag", "Add maintenance tags to article" );
+		twAddPortletLink( Twinkle.tag.callback, "ট্যাগ", "friendly-tag", "নিবন্ধে রক্ষণাবেক্ষণ ট্যাগ যুক্ত করুন" );
 	}
 };
  
 Twinkle.tag.callback = function friendlytagCallback( uid ) {
 	var Window = new Morebits.simpleWindow( 630, (Twinkle.tag.mode === "article") ? 450 : 400 );
-	Window.setScriptName( "Twinkle" );
+	Window.setScriptName( "টুইংকল" );
 	// anyone got a good policy/guideline/info page/instructional page link??
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#tag" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#tag" );
 
 	var form = new Morebits.quickForm( Twinkle.tag.callback.evaluate );
 
 	switch( Twinkle.tag.mode ) {
 		case 'article':
-			Window.setTitle( "Article maintenance tagging" );
+			Window.setTitle( "নিবন্ধ রক্ষণাবেক্ষণ ট্যাগিং" );
 
 			form.append( {
 					type: 'checkbox',
 					list: [
 						{
-							label: 'Group inside {{multiple issues}} if possible',
+							label: 'যদি সম্ভব হয় {{বিবিধ সমস্যা}} দলে যুক্ত করুন',
 							value: 'group',
 							name: 'group',
-							tooltip: 'If applying three or more templates supported by {{multiple issues}} and this box is checked, all supported templates will be grouped inside a {{multiple issues}} template.',
+							tooltip: 'যদি তিনটি বা তার বেশি ট্যাগ যুক্ত করতে চান তবে  {{বিবিধ সমস্যা}} দলে যুক্ত করুন ফাইল সকল ট্যাগ একই দলে যুক্ত হবে',
 							checked: Twinkle.getFriendlyPref('groupByDefault')
 						}
 					]
@@ -57,19 +57,19 @@ Twinkle.tag.callback = function friendlytagCallback( uid ) {
 			form.append({
 				type: 'select',
 				name: 'sortorder',
-				label: 'View this list:',
-				tooltip: 'You can change the default view order in your Twinkle preferences (WP:TWPREFS).',
+				label: 'এই তালিকাটি দেখুন:',
+				tooltip: 'আপনি যদি আপনার ডিফল্ট ট্যাগ ক্রম পরিবর্তন করতে চান, তা  আপনার টুইংকল পছন্দে (WP:TWPREFS) গিয়ে ঠিক করতে পারেন',
 				event: Twinkle.tag.updateSortOrder,
 				list: [
-					{ type: 'option', value: 'cat', label: 'By categories', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'cat' },
-					{ type: 'option', value: 'alpha', label: 'In alphabetical order', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'alpha' }
+					{ type: 'option', value: 'cat', label: 'বিষয়শ্রেণী বিন্যাস অনুসারে', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'cat' },
+					{ type: 'option', value: 'alpha', label: 'বর্নানুক্রমিক  বিন্যাস', selected: Twinkle.getFriendlyPref('tagArticleSortOrder') === 'alpha' }
 				]
 			});
 
 			form.append( { type: 'div', id: 'tagWorkArea' } );
 
 			if( Twinkle.getFriendlyPref('customTagList').length ) {
-				form.append( { type: 'header', label: 'Custom tags' } );
+				form.append( { type: 'header', label: 'পছন্দের ট্যাগ' } );
 				form.append( { type: 'checkbox', name: 'articleTags', list: Twinkle.getFriendlyPref('customTagList') } );
 			}
 			break;
@@ -79,32 +79,32 @@ Twinkle.tag.callback = function friendlytagCallback( uid ) {
 
 			// TODO: perhaps add custom tags TO list of checkboxes
 
-			form.append({ type: 'header', label: 'License and sourcing problem tags' });
+			form.append({ type: 'header', label: 'লাইসেন্স ও উৎসের সমস্যার ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.licenseList } );
 
-			form.append({ type: 'header', label: 'Wikimedia Commons-related tags' });
+			form.append({ type: 'header', label: 'উইকিমিডিয়া-কমন্স সম্পর্কিত ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.commonsList } );
 
-			form.append({ type: 'header', label: 'Cleanup tags' } );
+			form.append({ type: 'header', label: 'পরিস্করণ ট্যাগ' } );
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.cleanupList } );
 
-			form.append({ type: 'header', label: 'Image quality tags' } );
+			form.append({ type: 'header', label: 'চিত্রের গুনাগুন বিচারের ট্যাগ' } );
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.qualityList } );
 
-			form.append({ type: 'header', label: 'Replacement tags' });
+			form.append({ type: 'header', label: 'প্রতিস্থাপন ট্যাগ' });
 			form.append({ type: 'checkbox', name: 'imageTags', list: Twinkle.tag.file.replacementList } );
 			break;
 
 		case 'redirect':
 			Window.setTitle( "Redirect tagging" );
 
-			form.append({ type: 'header', label:'Spelling, misspelling, tense and capitalization templates' });
+			form.append({ type: 'header', label:'বানানা ভুল বা ব্যকরণ সমস্যা সম্পর্কিত টেমপ্লেট' });
 			form.append({ type: 'checkbox', name: 'redirectTags', list: Twinkle.tag.spellingList });
 
 			form.append({ type: 'header', label:'Alternative name templates' });
 			form.append({ type: 'checkbox', name: 'redirectTags', list: Twinkle.tag.alternativeList });
 
-			form.append({ type: 'header', label:'Miscellaneous and administrative redirect templates' });
+			form.append({ type: 'header', label:'বিভিন্ন ও প্রশাসনিক পুর্ননির্দেশ টেমপ্লেট' });
 			form.append({ type: 'checkbox', name: 'redirectTags', list: Twinkle.tag.administrativeList });
 			break;
 
@@ -180,19 +180,19 @@ Twinkle.tag.updateSortOrder = function(e) {
 				name: 'notability',
 				type: 'select',
 				list: [
-					{ label: "{{notability}}: article\'s subject may not meet the general notability guideline", value: "none" },
-					{ label: "{{notability|Academics}}: notability guideline for academics", value: "Academics" },
-					{ label: "{{notability|Biographies}}: notability guideline for biographies", value: "Biographies" },
-					{ label: "{{notability|Books}}: notability guideline for books", value: "Books" },
-					{ label: "{{notability|Companies}}: notability guidelines for companies and organizations", value: "Companies" },
-					{ label: "{{notability|Events}}: notability guideline for events", value: "Events" },
-					{ label: "{{notability|Films}}: notability guideline for films", value: "Films" },
-					{ label: "{{notability|Music}}: notability guideline for music", value: "Music" },
-					{ label: "{{notability|Neologisms}}: notability guideline for neologisms", value: "Neologisms" },
-					{ label: "{{notability|Numbers}}: notability guideline for numbers", value: "Numbers" },
-					{ label: "{{notability|Products}}: notability guideline for products and services", value: "Products" },
-					{ label: "{{notability|Sport}}: notability guideline for sports and athletics", value: "Sport" },
-					{ label: "{{notability|Web}}: notability guideline for web content", value: "Web" }
+					{ label: "{{উল্লেখযোগ্যতা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই ", value: "none" },
+					{ label: "{{উল্লেখযোগ্যতা|আকাডেমিক}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Academics" },
+					{ label: "{{উল্লেখযোগ্যতা|জীবনী}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Biographies" },
+					{ label: "{{উল্লেখযোগ্যতা|বই}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Books" },
+					{ label: "{{উল্লেখযোগ্যতা|কোম্পানি}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Companies" },
+					{ label: "{{উল্লেখযোগ্যতা|ঘটনা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Events" },
+					{ label: "{{উল্লেখযোগ্যতা|চলচ্চিত্র}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Films" },
+					{ label: "{{উল্লেখযোগ্যতা|সঙ্গীত}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Music" },
+					{ label: "{{উল্লেখযোগ্যতা|নবশব্দ}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Neologisms" },
+					{ label: "{{উল্লেখযোগ্যতা|সংখ্যা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Numbers" },
+					{ label: "{{উল্লেখযোগ্যতা|পন্য}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Products" },
+					{ label: "{{উল্লেখযোগ্যতা|খেলা}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Sport" },
+					{ label: "{{উল্লেখযোগ্যতা|ওয়েব}}:নিবন্ধের বিষয়বস্তু উল্লেখযোগ্যতার সাধারণ নির্দেশাবলী অনুসরণ করে নাই", value: "Web" }
 				]
 			};
 		}
@@ -265,40 +265,40 @@ Twinkle.tag.article = {};
 // To ensure tags appear in the default "categorized" view, add them to the tagCategories hash below.
 
 Twinkle.tag.article.tags = {
-	"advert": "article is written like an advertisement",
-	"allplot": "article is almost entirely a plot summary",
-	"autobiography": "article is an autobiography and may not be written neutrally",
-	"BLP sources": "BLP article needs additional sources for verification",
-	"BLP unsourced": "BLP article has no sources at all (use BLP PROD instead for new articles)",
-	"cat improve": "article may require additional categories",
-	"citation style": "article has unclear or inconsistent inline citations",
-	"cleanup": "article may require cleanup",
-	"cleanup-reorganize": "article may be in need of reorganization to comply with Wikipedia's layout guidelines",
-	"close paraphrasing": "article contains close paraphrasing of a non-free copyrighted source",
-	"COI": "article creator or major contributor may have a conflict of interest",
-	"condense": "article may have too many section headers dividing up its content",
-	"confusing": "article may be confusing or unclear",
-	"context": "article provides insufficient context",
-	"copy edit": "article needs copy editing for grammar, style, cohesion, tone, and/or spelling",
-	"copypaste": "article appears to have been copied and pasted from a source",
-	"dead end": "article has no links to other articles",
-	"disputed": "article has questionable factual accuracy",
-	"essay-like": "article is written like an essay and needs cleanup",
+	"advert": "নিবন্ধটি বিজ্ঞাপনের মতো করে লেখা",
+	 "allplot": "নিবন্ধটি প্রায় পুরোটাই একটা দৃশ্যপট",
+	"autobiography":"নিবন্ধটি একটি আত্মজীবনীমূলক এবং সম্ভবত নিরপেক্ষভাবে লিখিত নয়",
+	"BLP sources":"জীবিত ব্যক্তির জীবনী যেখানে যাচাই করার জন্য অতিরিক্ত তথ্যসুত্র প্রয়োজন",
+	"BLP unsourced": "জীবিত ব্যক্তির জীবনী যেখানে  কোনো তথ্যসূত্র উল্লেখিত হয়নি ",
+	"cat improve": "নিবন্ধে অতিরিক্ত বিষয়শ্রেণী যোগ  করা প্রয়োজন",
+	"citation style":"নিবন্ধে তথ্যসূত্র উদ্ধৃতিদান শৈলী ঠিক নেই", 
+	"cleanup": "নিবন্ধটিকে পরিষ্কার করা প্রয়োজন।",
+	"cleanup-reorganize":"নিবন্ধটিকে পরিষ্কার করে  উইকিপিডিয়ার রচনাশৈলী অনুযায়ী পুনঃবিন্যাস করা প্রয়োজন ",
+	"close paraphrasing":"নিবন্ধটিতে অনেক কপিরাইট যুক্ত উক্তি দ্বারা লেখা হয়েছে।",
+	"COI": "নিবন্ধটির সৃষ্টিকারি বা প্রধান অবদানকারির ব্যক্তিগত  স্বার্থের সহিত নিবন্ধের বিষয়বস্তু জড়িত।",
+	"condense":"নিবন্ধটিতে  অনেক ছোট ছোট অনুচ্ছেদসহ সংক্ষিপ্ত  আকারে লেখা।",
+	"confusing": "নিবন্ধটিতে  কিছু  বিভ্রান্তি আছে বা বিষয় পরিষ্কার নয়।",
+	"context": "নিবন্ধটিতে  প্রসঙ্গ যাচাই করার জন্য  যথেষ্ট পরিমান তথ্য নেই।",
+	"copy edit":"নিবন্ধটিতে প্রতিলিপি সম্পাদনা  কয়ার প্রয়োজন ।",
+	"copypaste": "নিবন্ধটির উপাদান বা উপাত্ত  কোনো উৎস থেকে প্রতিলিপি  করে এখানে আনা হয়েছে।", 
+	"dead end": "নিবন্ধটিতে অন্য নিবন্ধের সাথে কোনো লিঙ্ক নেই বা খুব কম আছে।",
+	"disputed": "নিবন্ধটিতে তথ্য  বিতর্কিত বিষয়বস্তু আছে।",
+	"essay-like": "নিবন্ধটি অনেকটা প্রবন্ধের মত করে লেখা হয়েছে",
 	"expand language": "article can be expanded with material from a foreign-language Wikipedia",	
-	"expert-subject": "article needs attention from an expert on the subject",
-	"external links": "article's external links may not follow content policies or guidelines",
-	"fansite": "article resembles a fansite",
-	"fiction": "article fails to distinguish between fact and fiction",
-	"globalize": "article may not represent a worldwide view of the subject",
+	"expert-subject": "নিবন্ধটিতে  এই বিষয় সম্পর্কে একজন বিশেষজ্ঞ  ব্যক্তির মনোনিবেশ প্রয়োজন।",
+	"external links": "নিবন্ধটিতে অনেক বহিঃসংযোগ আছে যা উইকিপিডিয়ার রচনাশৈলী অনুযায়ী নয়।",
+	"fansite": "নিবন্ধটি অনুরাগীসাইটের সঙ্গে মিলে যাচ্ছে।",
+	"fiction": "নিবন্ধটি তথ্যপুর্ণ  না হয়ে একটি উপন্যাসের মত লেখা হছে",
+	"globalize": "নিবন্ধটি বিষয়বস্তু ও উদাহরণ বিশ্বব্যাপি  ধারণকে উপস্থাপিত করেনি",
 	"GOCEinuse": "article is currently undergoing a major copy edit by the Guild of Copy Editors",
-	"hoax": "article may be a complete hoax",
+	"hoax": "নিবন্ধটি  সম্পুর্ণ  ধোঁকাবাজি হতে পারে",
 	"in-universe": "article subject is fictional and needs rewriting from a non-fictional perspective",
 	"incoherent": "article is incoherent or very hard to understand",
 	"in use": "article is undergoing a major edit for a short while",
 	"lead missing": "article has no lead section and one should be written",
 	"lead rewrite": "article lead section needs to be rewritten to comply with guidelines",
-	"lead too long": "article lead section is too long and should be shortened",
-	"lead too short": "article lead section is too short and should be expanded",
+	"lead too long": "নিবন্ধটিতে ভূমিকা অনুচ্ছেদটি অনেক বড় যা সংক্ষিপ্ত করা প্রয়োজন",
+	"lead too short": "নিবন্ধটিতে ভূমিকা অনুচ্ছেদটি খুব ছোট যা সম্প্রসারণ  করা প্রয়োজন",
 	"linkrot": "article uses bare URLs for references, which are prone to link rot",
 	"merge": "article should be merged with another given article",
 	"merge from": "another given article should be merged into this one",
@@ -324,8 +324,8 @@ Twinkle.tag.article.tags = {
 	"prose": "article is in a list format that may be better presented using prose",
 	"recentism": "article is slanted towards recent events",
 	"ref improve": "article needs additional references or sources for verification",
-	"rough translation": "article is poorly translated and needs cleanup",
-	"sections": "article needs to be broken into sections",
+	"rough translation": "নিবন্ধটি একটি খসড়া অনুবাদ যাকে পরিষ্কার করা প্রয়োজন",
+	"sections": "নিবন্ধটিকে অনুচ্ছেদে ভাগ করা উচিত",
 	"self-published": "article may contain improper references to self-published sources",
 	"technical": "article may be too technical for the uninitiated reader",
 	"tense": "article is written in an incorrect tense",
@@ -338,8 +338,8 @@ Twinkle.tag.article.tags = {
 	"unreferenced": "article has no references at all",
 	"unreliable sources": "article's references may not be reliable sources",
 	"update": "article needs additional up-to-date information added",
-	"very long": "article is too long",
-	"weasel": "article neutrality is compromised by the use of weasel words"
+	"very long": "নিবন্ধটি আকারে অনেক বড়",
+	"weasel": "নিবন্ধটিতে কিছু অগ্রহনযোগ্য শব্দ আছে যা উইকিপিডিয়ার রচনাশৈলী মতে ঠিক নয়"
 };
 
 // A list of tags in order of category

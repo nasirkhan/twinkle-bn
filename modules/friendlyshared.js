@@ -6,24 +6,24 @@
  * Active on:              Existing IP user talk pages
  * Config directives in:   FriendlyConfig
  */
- 
+
 Twinkle.shared = function friendlyshared() {
 	if( mw.config.get('wgNamespaceNumber') === 3 && Morebits.isIPAddress(mw.config.get('wgTitle')) ) {
 		var username = mw.config.get('wgTitle').split( '/' )[0].replace( /\"/, "\\\""); // only first part before any slashes
 		twAddPortletLink( function(){ Twinkle.shared.callback(username); }, "Shared IP", "friendly-shared", "Shared IP tagging" );
 	}
 };
- 
+
 Twinkle.shared.callback = function friendlysharedCallback( uid ) {
 	var Window = new Morebits.simpleWindow( 600, 400 );
 	Window.setTitle( "Shared IP address tagging" );
-	Window.setScriptName( "Twinkle" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#shared" );
+	Window.setScriptName( "টুইংকল" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#shared" );
 
 	var form = new Morebits.quickForm( Twinkle.shared.callback.evaluate );
 
 	var div = form.append( { type: 'div', id: 'sharedip-templatelist' } );
-	div.append( { type: 'header', label: 'Shared IP address templates' } );
+	div.append( { type: 'header', label: 'শেয়ার্ড আইপি ঠিকানা টমপ্লেট' } );
 	div.append( { type: 'radio', name: 'shared', list: Twinkle.shared.standardList,
 		event: function( e ) {
 			Twinkle.shared.callback.change_shared( e );
@@ -43,7 +43,7 @@ Twinkle.shared.callback = function friendlysharedCallback( uid ) {
 	org.append( {
 			type: 'input',
 			name: 'host',
-			label: 'হোস�?টের নাম (�?চ�?ছিক)',
+			label: 'হোস্টের নাম (ঐচ্ছিক)',
 			disabled: true,
 			tooltip: 'The host name (for example, proxy.example.com) can be optionally entered here and will be linked by the template.'
 		}
@@ -51,21 +51,21 @@ Twinkle.shared.callback = function friendlysharedCallback( uid ) {
 	org.append( {
 			type: 'input',
 			name: 'contact',
-			label: 'যোগাযোগের তথ�?য ( কেবলমাত�?র যদি অন�?রোধ করা হয়ে থাকে)',
+			label: 'যোগাযোগের তথ্য (কেবলমাত্র যদি অনুরোধ করা হয়ে থাকে)',
 			disabled: true,
 			tooltip: 'You can optionally enter some contact details for the organization.  Use this parameter only if the organization has specifically requested that it be added.  You can use wikimarkup if necessary.'
 		}
 	);
- 
+	
 	form.append( { type:'submit' } );
- 
+
 	var result = form.render();
 	Window.setContent( result );
 	Window.display();
 
 	$(result).find('div#sharedip-templatelist').addClass('quickform-scrollbox');
 };
- 
+
 Twinkle.shared.standardList = [
 	{
 		label: '{{Shared IP}}: standard shared IP address template',
@@ -115,14 +115,14 @@ Twinkle.shared.callback.change_shared = function friendlysharedCallbackChangeSha
 	e.target.form.organization.disabled = false;
 	e.target.form.host.disabled = (e.target.value === 'Whois');  // host= not supported by {{Whois}}
 };
- 
+
 Twinkle.shared.callbacks = {
 	main: function( pageobj ) {
 		var params = pageobj.getCallbackParameters();
 		var pageText = pageobj.getPageText();
 		var found = false;
 		var text = '{{';
- 
+
 		for( var i=0; i < Twinkle.shared.standardList.length; i++ ) {
 			var tagRe = new RegExp( '(\\{\\{' + Twinkle.shared.standardList[i].value + '(\\||\\}\\}))', 'im' );
 			if( tagRe.exec( pageText ) ) {
@@ -130,7 +130,7 @@ Twinkle.shared.callbacks = {
 				found = true;
 			}
 		}
- 
+
 		if( found ) {
 			return;
 		}
@@ -144,7 +144,7 @@ Twinkle.shared.callbacks = {
 			text += '|host=' + params.host;
 		}
 		text += '}}\n\n';
- 
+
 		var summaryText = 'Added {{[[Template:' + params.value + '|' + params.value + ']]}} template.';
 		pageobj.setPageText(text + pageText);
 		pageobj.setEditSummary(summaryText + Twinkle.getPref('summaryAd'));
@@ -153,21 +153,21 @@ Twinkle.shared.callbacks = {
 		pageobj.save();
 	}
 };
- 
+
 Twinkle.shared.callback.evaluate = function friendlysharedCallbackEvaluate(e) {
 	var shared = e.target.getChecked( 'shared' );
 	if( !shared || shared.length <= 0 ) {
 		alert( 'You must select a shared IP address template to use!' );
 		return;
 	}
- 
+	
 	var value = shared[0];
- 
+	
 	if( e.target.organization.value === '') {
 		alert( 'You must input an organization for the {{' + value + '}} template!' );
 		return;
 	}
- 
+	
 	var params = {
 		value: value,
 		organization: e.target.organization.value,

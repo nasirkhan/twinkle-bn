@@ -88,7 +88,7 @@ Twinkle.welcome.welcomeUser = function welcomeUser() {
 	};
 
 	Morebits.wiki.actionCompleted.redirect = mw.config.get('wgPageName');
-	Morebits.wiki.actionCompleted.notice = "Welcoming complete, reloading talk page in a few seconds";
+	Morebits.wiki.actionCompleted.notice = "স্বাগত সম্পূর্ণ, কয়েক সেকেন্ডের মধ্যে আলাপ পাতা রিলোড করা হচ্ছে";
 
 	var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "User talk page modification");
 	wikipedia_page.setFollowRedirect(true);
@@ -97,15 +97,15 @@ Twinkle.welcome.welcomeUser = function welcomeUser() {
 };
 
 Twinkle.welcome.callback = function friendlywelcomeCallback( uid ) {
-	if( uid === mw.config.get('wgUserName') && !confirm( 'Are you really sure you want to welcome yourself?...' ) ){
+	if( uid === mw.config.get('wgUserName') && !confirm( 'আপনি কি সত্যিই নিশ্চিত যে আপনি নিজেকে স্বাগত করতে চান?....' ) ){
 		return;
 	}
 
 	var Window = new Morebits.simpleWindow( 600, 420 );
-	Window.setTitle( "Welcome user" );
-	Window.setScriptName( "Twinkle" );
-	Window.addFooterLink( "Welcoming Committee", "WP:WC" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#welcome" );
+	Window.setTitle( "ব্যবহারকারী স্বাগতম" );
+	Window.setScriptName( "টুইংকল" );
+	Window.addFooterLink( "অভ্যর্থনা কমিটি", "WP:WC" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#welcome" );
 
 	var form = new Morebits.quickForm( Twinkle.welcome.callback.evaluate );
 
