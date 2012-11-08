@@ -7,3 +7,4 @@ jsl.conf
 stash*.txt
 stash*.diff
 *.jsX
+*.js~
