@@ -5,16 +5,21 @@
  * |           Please discuss changes at [[WT:TW]] before editing.           |
  * +-------------------------------------------------------------------------+
  *
- * Imported from github [https://github.com/azatoth/twinkle].
+ * Imported from github [https://github.com/nasirkhan/twinkle-bn].
  * All changes should be made in the repository, otherwise they will be lost.
  *
  * To update this script from github, you must have a local repository set up. Then
- * follow the instructions at [https://github.com/azatoth/twinkle/blob/master/README.md].
+ * follow the instructions at [https://github.com/nasirkhan/twinkle-bn/blob/master/README.md].
+ *
+ * Issues realated to this script should be discussed in talk page of [[WT:TW]] or
+ * report an issue at the [https://github.com/nasirkhan/twinkle-bn/issues].
  *
  * ----------
  *
  * This is AzaToth's Twinkle, the popular script sidekick for newbies, admins, and
- * every Wikipedian in between. Visit [[WP:TW]] for more information.
+ * every Wikipedian in between. The main project is located [https://github.com/azatoth/twinkle] 
+ * this version is updated for the Bengali Wikipedia [http://bn.wikipedia.org].
+ * Visit [[WP:TW]] for more information.
  */
 
 //<nowiki>
