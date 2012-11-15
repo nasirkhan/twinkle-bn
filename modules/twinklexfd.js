@@ -16,7 +16,7 @@ Twinkle.xfd = function twinklexfd() {
 	if ( mw.config.get('wgNamespaceNumber') < 0 || !mw.config.get('wgArticleId') || (mw.config.get('wgNamespaceNumber') === 6 && (document.getElementById('mw-sharedupload') || (!document.getElementById('mw-imagepage-section-filehistory') && !Morebits.wiki.isPageRedirect()))) ) {
 		return;
 	}
-	twAddPortletLink( Twinkle.xfd.callback, "XFD", "tw-xfd", "Nominate for deletion" );
+	twAddPortletLink( Twinkle.xfd.callback, "এক্সএফডি", "tw-xfd", "(এক্সএফডি)অন্য সকল অপসারণের প্রস্তাবনা" );
 };
 
 Twinkle.xfd.num2order = function twinklexfdNum2order( num ) {
@@ -53,10 +53,10 @@ Twinkle.xfd.callback = function twinklexfdCallback() {
 	}
 
 	var Window = new Morebits.simpleWindow( 600, 350 );
-	Window.setTitle( "Nominate for deletion (XfD)" );
-	Window.setScriptName( "Twinkle" );
-	Window.addFooterLink( "About deletion discussions", "WP:XFD" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#xfd" );
+	Window.setTitle( "অপসারণের প্রস্তাবনা (এক্সএফডি))" );
+	Window.setScriptName( "টুইংকল" );
+	Window.addFooterLink( "অপসারণ আলোচনা সম্পর্কে", "WP:XFD" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#xfd" );
 
 	var form = new Morebits.quickForm( Twinkle.xfd.callback.evaluate );
 	var categories = form.append( {
@@ -68,7 +68,7 @@ Twinkle.xfd.callback = function twinklexfdCallback() {
 		} );
 	categories.append( {
 			type: 'option',
-			label: 'AfD (Articles for deletion)',
+			label: 'AfD (উইকিপিডিয়া:নিবন্ধ অপসারণের প্রস্তাবনা)',
 			selected: mw.config.get('wgNamespaceNumber') === 0,  // Main namespace
 			value: 'afd'
 		} );
@@ -450,13 +450,13 @@ Twinkle.xfd.callbacks = {
 					var title = titles[i].getAttribute('title');
 
 					// First, simple test, is there an instance with this exact name?
-					if( title === 'Wikipedia:Articles for deletion/' + mw.config.get('wgPageName') ) {
+					if( title === 'উইকিপিডিয়া:নিবন্ধ অপসারণের প্রস্তাবনা/' + mw.config.get('wgPageName') ) {
 						number = Math.max( number, 1 );
 						continue;
 					}
 
 					var order_re = new RegExp( '^' +
-						RegExp.escape( 'Wikipedia:Articles for deletion/' + mw.config.get('wgPageName'), true ) +
+						RegExp.escape( 'উইকিপিডিয়া:নিবন্ধ অপসারণের প্রস্তাবনা/' + mw.config.get('wgPageName'), true ) +
 						'\\s*\\(\\s*(\\d+)(?:(?:th|nd|rd|st) nom(?:ination)?)?\\s*\\)\\s*$');
 					var match = order_re.exec( title );
 
@@ -471,7 +471,7 @@ Twinkle.xfd.callbacks = {
 				apiobj.params.number = Twinkle.xfd.num2order( parseInt( number, 10 ) + 1);
 				apiobj.params.numbering = number > 0 ? ' (' + apiobj.params.number + ' nomination)' : '';
 			}
-			apiobj.params.discussionpage = 'Wikipedia:Articles for deletion/' + mw.config.get('wgPageName') + apiobj.params.numbering;
+			apiobj.params.discussionpage = 'উইকিপিডিয়া:নিবন্ধ অপসারণের প্রস্তাবনা/' + mw.config.get('wgPageName') + apiobj.params.numbering;
 
 			Morebits.status.info( "Next discussion page", "[[" + apiobj.params.discussionpage + "]]" );
 
