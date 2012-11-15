@@ -31,8 +31,8 @@ Twinkle.unlink.getChecked2 = function twinkleunlinkGetChecked2( nodelist ) {
 Twinkle.unlink.callback = function(presetReason) {
 	var Window = new Morebits.simpleWindow( 800, 400 );
 	Window.setTitle( "Unlink backlinks" );
-	Window.setScriptName( "Twinkle" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#unlink" );
+	Window.setScriptName( "টুইংকল" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#unlink" );
 
 	var form = new Morebits.quickForm( Twinkle.unlink.callback.evaluate );
 	form.append( {
