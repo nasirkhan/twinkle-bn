@@ -20,13 +20,13 @@ Twinkle.speedy = function twinklespeedy() {
 		return;
 	}
 
-	twAddPortletLink( Twinkle.speedy.callback, "CSD", "tw-csd", Morebits.userIsInGroup('sysop') ? "Delete page according to WP:CSD" : "Request speedy deletion according to WP:CSD" );
+	twAddPortletLink( Twinkle.speedy.callback, "দ্রুত অপসারণ", "tw-csd", Morebits.userIsInGroup('sysop') ? "WP:CSD মতে দ্রুত অপসারণ" : "WP:CSD মতে দ্রুত অপসারণের আবেদন" );
 };
 
 // This function is run when the CSD tab/header link is clicked
 Twinkle.speedy.callback = function twinklespeedyCallback() {
 	if ( !twinkleUserAuthorized ) {
-		alert("Your account is too new to use Twinkle.");
+		alert("নবাগত,আপনার অ্যাকাঊন্টটি  টুইংকল ব্যবহার করার জন্য নয়।");
 		return;
 	}
 
@@ -40,10 +40,10 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 	var dialog;
 	Twinkle.speedy.dialog = new Morebits.simpleWindow( Twinkle.getPref('speedyWindowWidth'), Twinkle.getPref('speedyWindowHeight') );
 	dialog = Twinkle.speedy.dialog;
-	dialog.setTitle( "Choose criteria for speedy deletion" );
-	dialog.setScriptName( "Twinkle" );
-	dialog.addFooterLink( "Speedy deletion policy", "WP:CSD" );
-	dialog.addFooterLink( "Twinkle help", "WP:TW/DOC#speedy" );
+	dialog.setTitle( "দ্রুত  অপসারণের  বিচারধারা নির্বাচন করুন" );
+	dialog.setScriptName( "দ্রুত অপসারণ" );
+	dialog.addFooterLink( "দ্রুত অপসারণের নীতিমালা", "WP:CSD" );
+	dialog.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#speedy" );
 
 	var form = new Morebits.quickForm( callbackfunc, (Twinkle.getPref('speedySelectionStyle') === 'radioClick' ? 'change' : null) );
 	if( Morebits.userIsInGroup( 'sysop' ) ) {
@@ -51,10 +51,10 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 				type: 'checkbox',
 				list: [
 					{
-						label: 'Tag page only, don\'t delete',
+						label: 'কেবলমাত্র ট্যাগ বসান, অপসারণ করবেন না',
 						value: 'tag_only',
 						name: 'tag_only',
-						tooltip: 'If you just want to tag the page, instead of deleting it now',
+						tooltip: 'যদি আপনি শুধুমাত্র ট্যাগ দিতে চান অপসারণ না করে',
 						checked : Twinkle.getPref('deleteSysopDefaultToTag'),
 						event: function( event ) {
 							var cForm = event.target.form;
@@ -88,10 +88,10 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 				type: 'checkbox',
 				list: [
 					{
-						label: 'Also delete talk page',
+						label: 'আলাপ পাতাও অপসারণ করুন',
 						value: 'talkpage',
 						name: 'talkpage',
-						tooltip: "This option deletes the page's talk page in addition. If you choose the F8 (moved to Commons) criterion, this option is ignored and the talk page is *not* deleted.",
+						tooltip: "আপনি যদি ইহা নির্বাচন করেন তাহলে  সংশ্লিষ্ট আলাপ পাতাও অপসারণ  হবে। If you choose the F8 (moved to Commons) criterion, this option is ignored and the talk page is *not* deleted.",
 						checked: Twinkle.getPref('deleteTalkPageOnDelete'),
 						disabled: Twinkle.getPref('deleteSysopDefaultToTag'),
 						event: function( event ) {
@@ -105,10 +105,10 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 				type: 'checkbox',
 				list: [
 					{
-						label: 'Also delete all redirects',
+						label: 'সেইসাথে সকল পুনর্নির্দেশনাগুলি অপসারণ কর',
 						value: 'redirects',
 						name: 'redirects',
-						tooltip: "This option deletes all incoming redirects in addition. Avoid this option for procedural (e.g. move/merge) deletions.",
+						tooltip: "এর মাধ্যমে আপনি সকল পুনর্নির্দেশনাগুলি অপসারণ করতে পারবেন। Avoid this option for procedural (e.g. move/merge) deletions.",
 						checked: Twinkle.getPref('deleteRedirectsOnDelete'),
 						disabled: Twinkle.getPref('deleteSysopDefaultToTag'),
 						event: function( event ) {
@@ -117,14 +117,14 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 					}
 				]
 			} );
-		form.append( { type: 'header', label: 'Tag-related options' } );
+		form.append( { type: 'header', label: 'ট্যাগ সম্পর্কিয় পছন্দ' } );
 	}
 
 	form.append( {
 			type: 'checkbox',
 			list: [
 				{
-					label: 'Notify page creator if possible',
+					label: 'যদি সম্ভব হয় প্রনেতাকে জানান',
 					value: 'notify',
 					name: 'notify',
 					tooltip: "A notification template will be placed on the talk page of the creator, IF you have a notification enabled in your Twinkle preferences " +
@@ -141,7 +141,7 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 			type: 'checkbox',
 			list: [
 				{
-					label: 'Tag with multiple criteria',
+					label: 'অধিক বিচার ধারা মতে ট্যাগ যুক্ত করা',
 					value: 'multiple',
 					name: 'multiple',
 					tooltip: "When selected, you can select several criteria that apply to the page. For example, G11 and A7 are a common combination for articles.",
@@ -199,45 +199,45 @@ Twinkle.speedy.callback.dbMultipleChanged = function twinklespeedyCallbackDbMult
 	var radioOrCheckbox = (value ? 'checkbox' : 'radio');
 
 	if (namespace % 2 === 1 && namespace !== 3) {  // talk pages, but not user talk pages
-		work_area.append( { type: 'header', label: 'Talk pages' } );
+		work_area.append( { type: 'header', label: 'আলাপ পাতা' } );
 		work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.talkList } );
 	}
 
 	switch (namespace) {
 		case 0:  // article
 		case 1:  // talk
-			work_area.append( { type: 'header', label: 'Articles' } );
+			work_area.append( { type: 'header', label: 'নিবন্ধ' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.getArticleList(value) } );
 			break;
 
 		case 2:  // user
 		case 3:  // user talk
-			work_area.append( { type: 'header', label: 'User pages' } );
+			work_area.append( { type: 'header', label: 'ব্যবহারকারি পাতা' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.userList } );
 			break;
 
 		case 6:  // file
 		case 7:  // file talk
-			work_area.append( { type: 'header', label: 'Files' } );
+			work_area.append( { type: 'header', label: 'ফাইল' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.getFileList(value) } );
 			work_area.append( { type: 'div', label: 'Tagging for CSD F4 (no license), F5 (orphaned fair use), F6 (no fair use rationale), and F11 (no permission) can be done using Twinkle\'s "DI" tab.' } );
 			break;
 
 		case 10:  // template
 		case 11:  // template talk
-			work_area.append( { type: 'header', label: 'Templates' } );
+			work_area.append( { type: 'header', label: 'টেমপ্লেট' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.getTemplateList(value) } );
 			break;
 
 		case 14:  // category
 		case 15:  // category talk
-			work_area.append( { type: 'header', label: 'Categories' } );
+			work_area.append( { type: 'header', label: 'বিষয়শ্রেণী' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.categoryList } );
 			break;
 
 		case 100:  // portal
 		case 101:  // portal talk
-			work_area.append( { type: 'header', label: 'Portals' } );
+			work_area.append( { type: 'header', label: 'প্রবেশদ্বার' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.getPortalList(value) } );
 			break;
 
@@ -245,10 +245,10 @@ Twinkle.speedy.callback.dbMultipleChanged = function twinklespeedyCallbackDbMult
 			break;
 	}
 
-	work_area.append( { type: 'header', label: 'General criteria' } );
+	work_area.append( { type: 'header', label: 'সাধারণ বিচারধারা' } );
 	work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.getGeneralList(value) });
 
-	work_area.append( { type: 'header', label: 'Redirects' } );
+	work_area.append( { type: 'header', label: 'পুনর্নির্দেশনা' } );
 	work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.redirectList } );
 
 	var old_area = Morebits.quickForm.getElements(form, "work_area")[0];
@@ -257,7 +257,7 @@ Twinkle.speedy.callback.dbMultipleChanged = function twinklespeedyCallbackDbMult
 
 Twinkle.speedy.talkList = [
 	{
-		label: 'G8: Talk pages with no corresponding subject page',
+		label: 'স৮:ইতিমধ্যেই অপসারিত বা অস্তিত্বহীন পাতার ওপর নির্ভরশীল পাতা বা আলাপ পাতা',
 		value: 'talk',
 		tooltip: 'This excludes any page that is useful to the project - in particular, user talk pages, talk page archives, and talk pages for files that exist on Wikimedia Commons.'
 	}
@@ -267,82 +267,82 @@ Twinkle.speedy.talkList = [
 Twinkle.speedy.getFileList = function twinklespeedyGetFileList(multiple) {
 	var result = [];
 	result.push({
-		label: 'F1: Redundant file',
+		label: 'ফ১:অনাবশ্যক ফাইল',
 		value: 'redundantimage',
 		tooltip: 'Any file that is a redundant copy, in the same file format and same or lower resolution, of something else on Wikipedia. Likewise, other media that is a redundant copy, in the same format and of the same or lower quality. This does not apply to files duplicated on Wikimedia Commons, because of licence issues; these should be tagged with {{subst:ncd|Image:newname.ext}} or {{subst:ncd}} instead'
 	});
 	result.push({
-		label: 'F2: Corrupt or blank file',
+		label: 'ফ২:বিকৃত বা  চিত্রহীন ফাইল',
 		value: 'noimage',
 		tooltip: 'Before deleting this type of file, verify that the MediaWiki engine cannot read it by previewing a resized thumbnail of it. This also includes empty (i.e., no content) file description pages for Commons files'
 	});
 	if (!multiple) {
 		result.push({
-			label: 'F2: Unneeded file description page for a file on Commons',
+			label: 'ফ২:কমন্সে থাকা ফাইলের অপ্রয়োজনিয় বর্ননামূলক ফাইল',
 			value: 'fpcfail',
-			tooltip: 'An image, hosted on Commons, but with tags or information on its English Wikipedia description page that are no longer needed. (For example, a failed featured picture candidate.)'
+			tooltip: 'কমন্সে থাকা ফাইলের অপ্রয়োজনিয় বর্ননামূলক ফাইল।'
 		});
 	}
 	result.push({
-		label: 'F3: Improper license',
+		label: 'ফ৩:লাইসেন্স তথ্য  সঠিক নয়',
 		value: 'noncom',
 		tooltip: 'Files licensed as "for non-commercial use only", "non-derivative use" or "used with permission" that were uploaded on or after 2005-05-19, except where they have been shown to comply with the limited standards for the use of non-free content. This includes files licensed under a "Non-commercial Creative Commons License". Such files uploaded before 2005-05-19 may also be speedily deleted if they are not used in any articles'
 	});
 	if (Morebits.userIsInGroup('sysop')) {
 		result.push({
-			label: 'F4: Lack of licensing information',
+			label: 'ফ৪:লাইসেন্স তথ্য নেই',
 			value: 'unksource',
 			tooltip: 'Files in category "Files with unknown source", "Files with unknown copyright status", or "Files with no copyright tag" that have been tagged with a template that places them in the category for more than seven days, regardless of when uploaded. Note, users sometimes specify their source in the upload summary, so be sure to check the circumstances of the file.'
 		});
 		result.push({
-			label: 'F5: Unused unfree copyrighted file',
+			label: 'ফ৫:অব্যবহৃত মুক্তনয় কপিরাইটেড ফাইল',
 			value: 'unfree',
 			tooltip: 'Files that are not under a free license or in the public domain that are not used in any article and that have been tagged with a template that places them in a dated subcategory of Category:Orphaned fairuse files for more than seven days. Reasonable exceptions may be made for file uploaded for an upcoming article. Use the "Orphaned fair use" option in Twinkle\'s DI module to tag files for forthcoming deletion.'
 		});
 		result.push({
-			label: 'F6: Missing fair-use rationale',
+			label: 'ফ৬:সৌজন্যমূলক ব্যবহারের যৌক্তিকতা নেই',
 			value: 'norat',
 			tooltip: 'Any file without a fair use rationale may be deleted seven days after it is uploaded.  Boilerplate fair use templates do not constitute a fair use rationale.  Files uploaded before 2006-05-04 should not be deleted immediately; instead, the uploader should be notified that a fair-use rationale is needed.  Files uploaded after 2006-05-04 can be tagged using the "No fair use rationale" option in Twinkle\'s DI module. Such files can be found in the dated subcategories of Category:Files with no fair use rationale.'
 		});
 	}
 	result.push({
-		label: 'F7: Clearly invalid fair-use tag',
+		label: 'ফ৭:পরিষ্কার ভাবে অবৈধ  সৌজন্যমূলক ব্যবহার ( ফেয়ার উইজ) ট্যাগ',
 		value: 'badfairuse',  // same as below
 		tooltip: 'This is only for files with a clearly invalid fair-use tag, such as a {{Non-free logo}} tag on a photograph of a mascot. For cases that require a waiting period (replaceable images or otherwise disputed rationales), use the options on Twinkle\'s DI tab.'
 	});
 	if (!multiple) {
 		result.push({
-			label: 'F7: Fair-use media from a commercial image agency which is not the subject of sourced commentary',
+			label: 'ফ৭:সৌজন্যমূলক ব্যবহার যার বানিজ্যিক ব্যবহার নেই',
 			value: 'badfairuse',  // same as above
 			tooltip: 'Non-free images or media from a commercial source (e.g., Associated Press, Getty), where the file itself is not the subject of sourced commentary, are considered an invalid claim of fair use and fail the strict requirements of WP:NFCC.'
 		});
 	}
 	if (!multiple) {
 		result.push({
-			label: 'F8: File available as an identical or higher-resolution copy on Wikimedia Commons',
+			label: 'ফ৮:এই ফাইলের একই ভালো অধিক স্পষ্ট  ছবি উইকিমিডিয়া কমন্সে আছে',
 			value: 'nowcommons',
 			tooltip: 'Provided the following conditions are met: 1: The file format of both images is the same. 2: The file\'s license and source status is beyond reasonable doubt, and the license is undoubtedly accepted at Commons. 3: All information on the file description page is present on the Commons file description page. That includes the complete upload history with links to the uploader\'s local user pages. 4: The file is not protected, and the file description page does not contain a request not to move it to Commons. 5: If the file is available on Commons under a different name than locally, all local references to the file must be updated to point to the title used at Commons. 6: For {{c-uploaded}} files: They may be speedily deleted as soon as they are off the Main Page'
 		});
 	}
 	result.push({
-		label: 'F9: Unambiguous copyright infringement',
+		label: 'ফ৯:দ্ব্যর্থহীন [[উইকিপিডিয়া:কপিরাইট|কপিরাইট লঙ্ঘন]]',
 		value: 'imgcopyvio',
 		tooltip: 'The file was copied from a website or other source that does not have a license compatible with Wikipedia, and the uploader neither claims fair use nor makes a credible assertion of permission of free use. Sources that do not have a license compatible with Wikipedia include stock photo libraries such as Getty Images or Corbis. Non-blatant copyright infringements should be discussed at Wikipedia:Files for deletion'
 	});
 	result.push({
-		label: 'F10: Useless media file',
+		label: 'ফ১০:অপ্রয়োজনিয় মিডিয়া ফাইল',
 		value: 'badfiletype',
 		tooltip: 'Files uploaded that are neither image, sound, nor video files (e.g. .doc, .pdf, or .xls files) which are not used in any article and have no foreseeable encyclopedic use'
 	});
 	if (Morebits.userIsInGroup('sysop')) {
 		result.push({
-			label: 'F11: No evidence of permission',
+			label: 'ফ১১: অনুমতির কোনো প্রমান নেই',
 			value: 'nopermission',
 			tooltip: 'If an uploader has specified a license and has named a third party as the source/copyright holder without providing evidence that this third party has in fact agreed, the item may be deleted seven days after notification of the uploader'
 		});
 	}
 	result.push({
-		label: 'G8: File description page with no corresponding file',
+		label: 'স৮:ইতিমধ্যেই অপসারিত বা অস্তিত্বহীন পাতার ওপর নির্ভরশীল পাতা',
 		value: 'imagepage',
 		tooltip: 'This is only for use when the file doesn\'t exist at all. Corrupt files, and local description pages for files on Commons, should use F2; implausible redirects should use R3; and broken Commons redirects should use G6.'
 	});
@@ -352,7 +352,7 @@ Twinkle.speedy.getFileList = function twinklespeedyGetFileList(multiple) {
 Twinkle.speedy.getArticleList = function twinklespeedyGetArticleList(multiple) {
 	var result = [];
 	result.push({
-		label: 'A1: No context. Articles lacking sufficient context to identify the subject of the article.',
+		label: 'নি১:নিবন্ধের বিষয়বস্তু যাচাই করার মতো যথেষ্ট পরিমাণ লেখা নেই',
 		value: 'nocontext',
 		tooltip: 'Example: "He is a funny man with a red car. He makes people laugh." This applies only to very short articles. Context is different from content, treated in A3, below.'
 	});
@@ -362,60 +362,60 @@ Twinkle.speedy.getArticleList = function twinklespeedyGetArticleList(multiple) {
 		tooltip: 'If the article in question does not exist on another project, the template {{notenglish}} should be used instead. All articles in a non-English language that do not meet this criteria (and do not meet any other criteria for speedy deletion) should be listed at Pages Needing Translation (PNT) for review and possible translation'
 	});
 	result.push({
-		label: 'A3: No content whatsoever',
+		label: 'নি৩:খালি নিবন্ধ বা কোনো তথ্য নেই',
 		value: 'nocontent',
 		tooltip: 'Any article consisting only of links elsewhere (including hyperlinks, category tags and "see also" sections), a rephrasing of the title, and/or attempts to correspond with the person or group named by its title. This does not include disambiguation pages'
 	});
 	result.push({
-		label: 'A5: Transwikied articles',
+		label: 'নি৫: নিবন্ধ যা অন্য কোনো প্রকল্পের জন্য প্রযোজ্য বা স্থানান্তরিত',
 		value: 'transwiki',
 		tooltip: 'Any article that has been discussed at Articles for Deletion (et al), where the outcome was to transwiki, and where the transwikification has been properly performed and the author information recorded. Alternately, any article that consists of only a dictionary definition, where the transwikification has been properly performed and the author information recorded'
 	});
 	if (multiple) {
 		result.push({
-			label: 'A7: Unremarkable people, groups, companies, web content, and individual animals',
+			label: 'নি৭: বিষয়বস্তুর গুরুত্ব বা উল্লেখযোগ্যতা সম্মন্ধে কোনো ব্যাখ্যা নেই (জীবিত ব্যক্তি,প্রতিষ্ঠান বা ওয়েব কন্টেন্টের ওপর নিবন্ধ)',
 			value: 'a7',
 			tooltip: 'An article about a real person, group of people, band, club, company, web content, or individual animal that does not assert the importance or significance of its subject. If controversial, or if there has been a previous AfD that resulted in the article being kept, the article should be nominated for AfD instead'
 		});
 	} else {
 		result.push({
-			label: 'A7: Unremarkable person',
+			label: 'নি৭: উল্লেখযোগ্য ব্যক্তি নন',
 			value: 'person',
 			tooltip: 'An article about a real person that does not assert the importance or significance of its subject. If controversial, or if there has been a previous AfD that resulted in the article being kept, the article should be nominated for AfD instead'
 		});
 		result.push({
-			label: 'A7: Unremarkable musician(s) or band',
+			label: 'নি৭: উল্লেখযোগ্য সঙ্গিত নয় বা  সঙ্গিতজ্ঞ নন',
 			value: 'band',
 			tooltip: 'Article about a band, singer, musician, or musical ensemble that does not assert the importance or significance of the subject'
 		});
 		result.push({
-			label: 'A7: Unremarkable club',
+			label: 'নি৭: উল্লেখযোগ্য ক্লাব নয়',
 			value: 'club',
 			tooltip: 'Article about a club that does not assert the importance or significance of the subject'
 		});
 		result.push({
-			label: 'A7: Unremarkable company or organization',
+			label: 'নি৭:উল্লেখযোগ্য কোম্পানি বা সংস্থা নয়',
 			value: 'corp',
 			tooltip: 'Article about a company or organization that does not assert the importance or significance of the subject'
 		});
 		result.push({
-			label: 'A7: Unremarkable website or web content',
+			label: 'নি৭: উল্লেখযোগ্য ওয়েব সাইট নয়',
 			value: 'web',
 			tooltip: 'Article about a web site, blog, online forum, webcomic, podcast, or similar web content that does not assert the importance or significance of its subject'
 		});
 		result.push({
-			label: 'A7: Unremarkable individual animal',
+			label: 'নি৭:উল্লেখযোগ্য প্রানী নয়',
 			value: 'animal',
 			tooltip: 'Article about an individual animal (e.g. pet) that does not assert the importance or significance of its subject'
 		});
 	}
 	result.push({
-		label: 'A9: Unremarkable musical recording where artist\'s article doesn\'t exist',
+		label: 'A9:উল্লেখযোগ্য  গান বা অ্যালবাম নয়',
 		value: 'a9',
 		tooltip: 'An article about a musical recording which does not indicate why its subject is important or significant, and where the artist\'s article has never existed or has been deleted'
 	});
 	result.push({
-		label: 'A10: Recently created article that duplicates an existing topic',
+		label: 'A10:সাম্প্রতিকালে প্রণীত নিবন্ধ যা বর্তমানে রয়েছে এমন বিষয়বস্তুর প্রতিলিপি',
 		value: 'a10',
 		tooltip: 'A recently created article with no relevant page history that does not aim to expand upon, detail or improve information within any existing article(s) on the subject, and where the title is not a plausible redirect. This does not include content forks, split pages or any article that aims at expanding or detailing an existing one.'
 	});
@@ -424,12 +424,12 @@ Twinkle.speedy.getArticleList = function twinklespeedyGetArticleList(multiple) {
 
 Twinkle.speedy.categoryList = [
 	{
-		label: 'C1: Empty categories',
+		label: 'C1:খালি বিষয়শ্রেণী',
 		value: 'catempty',
 		tooltip: 'Categories that have been unpopulated for at least four days. This does not apply to categories being discussed at WP:CFD, disambiguation categories, and certain other exceptions. If the category isn\'t relatively new, it possibly contained articles earlier, and deeper investigation is needed'
 	},
 	{
-		label: 'G8: Categories populated by a deleted or retargeted template',
+		label: 'G8:নাম পরিবর্তন বা প্রতিলিপি',
 		value: 'templatecat',
 		tooltip: 'This is for situations where a category is effectively empty, because the template(s) that formerly placed pages in that category are now deleted. This excludes categories that are still in use.'
 	}
@@ -437,17 +437,17 @@ Twinkle.speedy.categoryList = [
 
 Twinkle.speedy.userList = [
 	{
-		label: 'U1: User request',
+		label: 'U1:লেখকের অনুরোধ বা লেখক কর্তৃক খালিকৃত পাতা',
 		value: 'userreq',
 		tooltip: 'Personal subpages, upon request by their user. In some rare cases there may be administrative need to retain the page. Also, sometimes, main user pages may be deleted as well. See Wikipedia:User page for full instructions and guidelines'
 	},
 	{
-		label: 'U2: Nonexistent user',
+		label: 'U2:অস্তিত্বহীন ব্যবহারকারি',
 		value: 'nouser',
-		tooltip: 'User pages of users that do not exist (Check Special:Listusers)'
+		tooltip: 'অস্তিত্বহীন ব্যবহারকারী (পরীক্ষা করুন Special:Listusers)'
 	},
 	{
-		label: 'U3: Non-free galleries',
+		label: 'U3:মুক্ত নয় এমন গ্যালারি',
 		value: 'gallery',
 		tooltip: 'Galleries in the userspace which consist mostly of "fair use" or non-free files. Wikipedia\'s non-free content policy forbids users from displaying non-free files, even ones they have uploaded themselves, in userspace. It is acceptable to have free files, GFDL-files, Creative Commons and similar licenses along with public domain material, but not "fair use" files'
 	}
@@ -456,13 +456,13 @@ Twinkle.speedy.userList = [
 Twinkle.speedy.getTemplateList = function twinklespeedyGetTemplateList(multiple) {
 	var result = [];
 	result.push({
-		label: 'T2: Templates that are blatant misrepresentations of established policy',
+		label: 'T2:টেমপ্লেট টি প্রতিষ্ঠিত নীতির  বিরুদ্ধ ভাবে উপস্থাপনা করা হয়েছে',
 		value: 'policy',
 		tooltip: 'This includes "speedy deletion" templates for issues that are not speedy deletion criteria and disclaimer templates intended to be used in articles'
 	});
 	if (!multiple) {
 		result.push({
-			label: 'T3: Templates that are not employed in any useful fashion',
+			label: 'T3:অব্যবহৃত ও অপ্রয়োজনীয় টেমপ্লেট',
 			value: 't3',
 			tooltip: 'Templates that are either substantial duplications of another template or hardcoded instances of another template where the same functionality could be provided by that other template'
 		});
@@ -474,13 +474,13 @@ Twinkle.speedy.getPortalList = function twinklespeedyGetPortalList(multiple) {
 	var result = [];
 	if (!multiple) {
 		result.push({
-			label: 'P1: Portal that would be subject to speedy deletion if it were an article',
+			label: 'P1:প্রবেশদ্বার পাতা যা নিবন্ধ হিসেবে দ্রুত অপসারণের জন্য বিবেচ্য',
 			value: 'p1',
 			tooltip: 'You must specify the article criterion that applies in this case (A1, A3, A7, or A10).'
 		});
 	}
 	result.push({
-		label: 'P2: Underpopulated portal',
+		label: 'P2:পর্যাপ্ত নিবন্ধ বা বিষয়বস্তু নেই এমন বিষয়ের ওপর প্রণীত প্রবেশদ্বার পাতা',
 		value: 'emptyportal',
 		tooltip: 'Any Portal based on a topic for which there is not a non-stub header article, and at least three non-stub articles detailing subject matter that would be appropriate to discuss under the title of that Portal'
 	});
@@ -497,45 +497,45 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 		});
 	}
 	result.push({
-		label: 'G1: Patent nonsense. Pages consisting purely of incoherent text or gibberish with no meaningful content or history.',
+		label: 'স১:অসংলগ্ন,অর্থহীন,অ-উল্লেখযোগ্য  বা অবোধগম্য পাতা',
 		value: 'nonsense',
 		tooltip: 'This does not include poor writing, partisan screeds, obscene remarks, vandalism, fictional material, material not in English, poorly translated material, implausible theories, or hoaxes. In short, if you can understand it, G1 does not apply.'
 	});
 	result.push({
-		label: 'G2: Test page',
+		label: 'স২:পরীক্ষামূলক পাতা',
 		value: 'test',
 		tooltip: 'A page created to test editing or other Wikipedia functions. Pages in the User namespace are not included, nor are valid but unused or duplicate templates (although criterion T3 may apply).'
 	});
 	result.push({
-		label: 'G3: Pure vandalism',
+		label: 'স৩:[[উইকিপিডিয়া:ধ্বংসপ্রবণতা|ধ্বংসপ্রবণ]]',
 		value: 'vandalism',
 		tooltip: 'Plain pure vandalism (including redirects left behind from pagemove vandalism)'
 	});
 	if (!multiple) {
 		result.push({
-			label: 'G3: Blatant hoax',
+			label: 'স৩:চালাকি বা তামাসা',
 			value: 'hoax',
 			tooltip: 'Blatant and obvious hoax, to the point of vandalism'
 		});
 	}
 	result.push({
-		label: 'G4: Recreation of material deleted via a deletion discussion',
+		label: 'স৪:পূর্বে অপসারিত পাতা',
 		value: 'repost',
 		tooltip: 'A copy, by any title, of a page that was deleted via an XfD process or Deletion review, provided that the copy is substantially identical to the deleted version. This clause does not apply to content that has been "userfied", to content undeleted as a result of Deletion review, or if the prior deletions were proposed or speedy deletions, although in this last case, other speedy deletion criteria may still apply'
 	});
 	result.push({
-		label: 'G5: Banned user',
+		label: 'স৫:বাধাদানকৃত বা নিষিদ্ধ ব্যবহারকারী কর্তৃক সৃষ্ট পাতা',
 		value: 'banned',
 		tooltip: 'Pages created by banned users while they were banned'
 	});
 	if (!multiple) {
 		result.push({
-			label: 'G6: History merge',
+			label: 'স৬:ইতিহাস একিকরণ',
 			value: 'histmerge',
 			tooltip: 'Temporarily deleting a page in order to merge page histories'
 		});
 		result.push({
-			label: 'G6: Move',
+			label: 'স৬:স্থানান্তর',
 			value: 'move',
 			tooltip: 'Making way for a noncontroversial move like reversing a redirect'
 		});
@@ -693,8 +693,8 @@ Twinkle.speedy.reasonHash = {
 	'reason': '',
 // General
 	'nonsense': '[[WP:PN|Patent nonsense]], meaningless, or incomprehensible',
-	'test': 'Test page',
-	'vandalism': '[[WP:Vandalism|Vandalism]]',
+	'test': 'পরীক্ষামূলক পাতা,অনুগ্রহপূর্বক সকল পরীক্ষা [[উইকিপিডিয়া:খেলাঘর|খেলাঘরে]] করুন',
+	'vandalism': 'নিশ্চিত[[উইকিপিডিয়া:ধ্বংসপ্রবণতা|ধ্বংসপ্রবণতা]]',
 	'hoax': 'Blatant [[WP:Do not create hoaxes|hoax]]',
 	'repost': 'Recreation of a page that was [[WP:DEL|deleted]] per a [[WP:XFD|deletion discussion]]',
 	'banned': 'Creation by a [[WP:BLOCK|blocked]] or [[WP:BAN|banned]] user in violation of block or ban',
@@ -763,16 +763,16 @@ Twinkle.speedy.reasonHash = {
 Twinkle.speedy.callbacks = {
 	sysop: {
 		main: function( params ) {
-			var thispage = new Morebits.wiki.page( mw.config.get('wgPageName'), "Deleting page" );
+			var thispage = new Morebits.wiki.page( mw.config.get('wgPageName'), "পাতা অপসারণ করা হচ্ছে" );
 
 			// delete page
 			var reason;
 			if (params.normalized === 'db') {
-				reason = prompt("Enter the deletion summary to use, which will be entered into the deletion log:", "");
+				reason = prompt("অপসারণ সারাংশ প্রদান করুন,যা অপসারণ লগে প্রদান করা হবে:", "");
 			} else {
 				var presetReason = "[[WP:CSD#" + params.normalized.toUpperCase() + "|" + params.normalized.toUpperCase() + "]]: " + params.reason;
 				if (Twinkle.getPref("promptForSpeedyDeletionSummary").indexOf(params.normalized) !== -1) {
-					reason = prompt("Enter the deletion summary to use, or press OK to accept the automatically generated one.", presetReason);
+					reason = prompt("অপসারণ সারাংশ প্রদান করুন, অথবা  স্বয়ংক্রিয় ভাবে আগত সারাংশ গ্রহন করতে OK বোতাম চাপুন", presetReason);
 				} else {
 					reason = presetReason;
 				}
@@ -1218,7 +1218,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var deldisc = prompt( '[CSD G4] Please enter the name of the page where the deletion discussion took place.  \nNOTE: For regular AfD and MfD discussions, just click OK - a link will be automatically provided.', "" );
 			if (deldisc === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			if (deldisc !== "" && deldisc.substring(0, 9) !== "Wikipedia" && deldisc.substring(0, 3) !== "WP:")
@@ -1232,7 +1232,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var banneduser = prompt( '[CSD G5] Please enter the username of the banned user if available:', "" );
 			if (banneduser === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters["1"] = banneduser;
@@ -1243,7 +1243,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					var mergetitle = prompt( '[CSD G6: history merge] Please enter the title to be merged into this one:', "" );
 					if (mergetitle === null)
 					{
-						statelem.error( 'Aborted by user.' );
+						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
 					parameters["1"] = mergetitle;
@@ -1252,13 +1252,13 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					var title = prompt( '[CSD G6: move] Please enter the title of the page to be moved here:', "" );
 					if (title === null)
 					{
-						statelem.error( 'Aborted by user.' );
+						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
 					var reason = prompt( '[CSD G6: move] Please enter the reason for the page move:', "" );
 					if (reason === null)
 					{
-						statelem.error( 'Aborted by user.' );
+						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
 					parameters["1"] = title;
@@ -1268,7 +1268,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					var votepage = prompt( '[CSD G6: xfd] Please provide a full link, without [[ ]], to the page where the deletion was discussed:', "" );
 					if (votepage === null)
 					{
-						statelem.error( 'Aborted by user.' );
+						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
 					parameters.fullvotepage = votepage;
@@ -1277,7 +1277,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					var copytitle = prompt( '[CSD G6: copypaste] Please enter the title of the original page that was copy-pasted here:', "" );
 					if (copytitle === null)
 					{
-						statelem.error( 'Aborted by user.' );
+						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
 					parameters["1"] = copytitle;
@@ -1286,7 +1286,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					var g6rationale = prompt( '[CSD G6] Please provide an optional rationale (leave empty to skip):', "" );
 					if (g6rationale === null)
 					{
-						statelem.error( 'Aborted by user.' );
+						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
 					if (g6rationale !== '')
@@ -1304,7 +1304,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 				var g7rationale = prompt('[CSD G7] Please provide an optional rationale (perhaps linking to where the author requested this deletion - leave empty to skip):', "");
 				if (g7rationale === null)
 				{
-					statelem.error( 'Aborted by user.' );
+					statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 					return null;
 				}
 				if (g7rationale !== '')
@@ -1317,7 +1317,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var url = prompt( '[CSD G12] Please enter the URL if available, including the "http://":', "" );
 			if (url === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters.url = url;
@@ -1326,7 +1326,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var f9url = prompt( '[CSD F9] Please enter the URL of the copyvio, including the "http://".  \nIf you cannot provide a URL, please do not use CSD F9.  (Exception: for copyvios of non-Internet sources, leave the box blank.)', "" );
 			if (f9url === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters.url = f9url;
@@ -1335,7 +1335,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var source = prompt('[CSD A2] Enter an interwiki link to the article on the foreign-language wiki (for example, "fr:Bonjour"):', "");
 			if (source === null)
 			{
-				statelem.error('Aborted by user.');
+				statelem.error('ব্যবহারকারি বাতিল করেছেন।');
 				return null;
 			}
 			parameters.source = source;
@@ -1344,7 +1344,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var duptitle = prompt( '[CSD A10] Enter the article name that is duplicated:', "" );
 			if (duptitle === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters.article = duptitle;
@@ -1353,7 +1353,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var img = prompt( '[CSD F1] Enter the file this is redundant to, excluding the "Image:" or "File:" prefix:', "" );
 			if (img === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters.filename = img;
@@ -1362,7 +1362,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var template = prompt( '[CSD T3] Enter the template this is redundant to, excluding the "Template:" prefix:', "" );
 			if (template === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters["1"] = "~~~~~";
@@ -1376,7 +1376,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var criterion = prompt( '[CSD P1] Enter the code of the article CSD criterion which this portal falls under:   \n\n(A1 = no context, A3 = no content, A7 = non-notable, A10 = duplicate)', "" );
 			if (!criterion || !criterion.replace(/^\s*/, "").replace(/\s*$/, ""))
 			{
-				statelem.error( 'You must enter a criterion.  Aborted by user.' );
+				statelem.error( 'আপনাকে অবশ্যই বিচারধারা নির্বাচন করতে হবে। ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters["1"] = criterion;
