@@ -9,7 +9,7 @@
 
 Twinkle.warn = function twinklewarn() {
 	if( mw.config.get('wgNamespaceNumber') === 3 ) {
-			twAddPortletLink( Twinkle.warn.callback, "Warn", "tw-warn", "Warn/notify user" );
+			twAddPortletLink( Twinkle.warn.callback, "সতর্কীবার্তা", "tw-warn", "Warn/notify user" );
 	}
 
 	// modify URL of talk page on rollback success pages
