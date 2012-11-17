@@ -17,17 +17,17 @@ Twinkle.prod = function twinkleprod() {
 
 Twinkle.prod.callback = function twinkleprodCallback() {
 	if ( !twinkleUserAuthorized ) {
-		alert("Your account is too new to use Twinkle.");
+		alert("নবাগত,আপনার অ্যাকাঊন্টটি  টুইংকল ব্যবহার করার জন্য নয়।");
 		return;
 	}
 	Twinkle.prod.defaultReason = Twinkle.getPref('prodReasonDefault');
 
 	var Window = new Morebits.simpleWindow( 800, 410 );
 	Window.setTitle( "Proposed deletion (PROD)" );
-	Window.setScriptName( "Twinkle" );
+	Window.setScriptName( "টুইংকল" );
 	Window.addFooterLink( "Proposed deletion policy", "WP:PROD" );
 	Window.addFooterLink( "BLP PROD policy", "WP:BLPPROD" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#prod" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#prod" );
 
 	var form = new Morebits.quickForm( Twinkle.prod.callback.evaluate );
 	

@@ -43,14 +43,14 @@ Twinkle.fluff = {
 				var revNode = document.createElement('strong');
 				var revLink = document.createElement('a');
 				revLink.appendChild( spanTag( 'Black', '[' ) );
-				revLink.appendChild( spanTag( 'SteelBlue', 'rollback' ) );
+				revLink.appendChild( spanTag( 'SteelBlue', 'রোলব্যাক' ) );
 				revLink.appendChild( spanTag( 'Black', ']' ) );
 				revNode.appendChild(revLink);
 
 				var revVandNode = document.createElement('strong');
 				var revVandLink = document.createElement('a');
 				revVandLink.appendChild( spanTag( 'Black', '[' ) );
-				revVandLink.appendChild( spanTag( 'Red', 'vandalism' ) );
+				revVandLink.appendChild( spanTag( 'Red', 'ধ্বংসপ্রবণতা' ) );
 				revVandLink.appendChild( spanTag( 'Black', ']' ) );
 				revVandNode.appendChild(revVandLink);
 
@@ -112,7 +112,7 @@ Twinkle.fluff = {
 				Twinkle.fluff.revertToRevision(oldrev);
 			});
 			revertToRevisionLink.appendChild( spanTag( 'Black', '[' ) );
-			revertToRevisionLink.appendChild( spanTag( 'SaddleBrown', 'restore this version' ) );
+			revertToRevisionLink.appendChild( spanTag( 'SaddleBrown', 'এই সংস্করণটি ফিরিয়ে আনুন' ) );
 			revertToRevisionLink.appendChild( spanTag( 'Black', ']' ) );
 
 			otitle.insertBefore( revertToRevision, otitle.firstChild );
@@ -133,7 +133,7 @@ Twinkle.fluff = {
 					Twinkle.fluff.revertToRevision(newrev);
 				});
 				revertToRevisionLink.appendChild( spanTag( 'Black', '[' ) );
-				revertToRevisionLink.appendChild( spanTag( 'SaddleBrown', 'restore this version' ) );
+				revertToRevisionLink.appendChild( spanTag( 'SaddleBrown', 'এই সংস্করণটি ফিরিয়ে আনুন' ) );
 				revertToRevisionLink.appendChild( spanTag( 'Black', ']' ) );
 				ntitle.insertBefore( revertToRevision, ntitle.firstChild );
 
@@ -167,15 +167,15 @@ Twinkle.fluff = {
 				});
 
 				agfLink.appendChild( spanTag( 'Black', '[' ) );
-				agfLink.appendChild( spanTag( 'DarkOliveGreen', 'rollback (AGF)' ) );
+				agfLink.appendChild( spanTag( 'DarkOliveGreen', 'রোলব্যাক  (আস্থা রাখুন)' ) );
 				agfLink.appendChild( spanTag( 'Black', ']' ) );
 
 				vandLink.appendChild( spanTag( 'Black', '[' ) );
-				vandLink.appendChild( spanTag( 'Red', 'rollback (VANDAL)' ) );
+				vandLink.appendChild( spanTag( 'Red', 'রোলব্যাক (ধ্বংসপ্রবণতা)' ) );
 				vandLink.appendChild( spanTag( 'Black', ']' ) );
 
 				normLink.appendChild( spanTag( 'Black', '[' ) );
-				normLink.appendChild( spanTag( 'SteelBlue', 'rollback' ) );
+				normLink.appendChild( spanTag( 'SteelBlue', 'রোলব্যাক' ) );
 				normLink.appendChild( spanTag( 'Black', ']' ) );
 
 				agfNode.appendChild(agfLink);
@@ -263,7 +263,7 @@ Twinkle.fluff.callbacks = {
 			var optional_summary = prompt( "Please specify a reason for the revert:                                ", "" );  // padded out to widen prompt in Firefox
 			if (optional_summary === null)
 			{
-				self.statelem.error( 'Aborted by user.' );
+				self.statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return;
 			}
 			var summary = "Reverted to revision " + revertToRevID + " by " + revertToUser + (optional_summary ? ": " + optional_summary : '') + "." +

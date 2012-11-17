@@ -18,14 +18,14 @@ Twinkle.image = function twinkleimage() {
 
 Twinkle.image.callback = function twinkleimageCallback() {
 	if( !twinkleUserAuthorized ) {
-		alert("Your account is too new to use Twinkle.");
+		alert("নবাগত,আপনার অ্যাকাঊন্টটি  টুইংকল ব্যবহার করার জন্য নয়।");
 		return;
 	}
 	var Window = new Morebits.simpleWindow( 600, 300 );
 	Window.setTitle( "File for dated speedy deletion" );
-	Window.setScriptName( "Twinkle" );
-	Window.addFooterLink( "Speedy deletion policy", "WP:CSD" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#image" );
+	Window.setScriptName( "টুইংকল" );
+	Window.addFooterLink( "দ্রুত অপসারণের নীতিমালা", "WP:CSD" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#image" );
 
 	var form = new Morebits.quickForm( Twinkle.image.callback.evaluate );
 	form.append( {

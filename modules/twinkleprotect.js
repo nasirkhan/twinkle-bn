@@ -15,20 +15,20 @@ Twinkle.protect = function twinkleprotect() {
 	}
 
 	twAddPortletLink(Twinkle.protect.callback, Morebits.userIsInGroup('sysop') ? "PP" : "RPP", "tw-rpp",
-		Morebits.userIsInGroup('sysop') ? "Protect page" : "Request page protection" );
+		Morebits.userIsInGroup('sysop') ? "পাতা সুরক্ষা" : "পাতা সুরক্ষার আবেদন" );
 };
 
 Twinkle.protect.callback = function twinkleprotectCallback() {
 	if (!twinkleUserAuthorized) {
-		alert("Your account is too new to use Twinkle.");
+		alert("নবাগত,আপনার অ্যাকাঊন্টটি  টুইংকল ব্যবহার করার জন্য নয়।");
 		return;
 	}
 	var Window = new Morebits.simpleWindow( 620, 530 );
 	Window.setTitle( Morebits.userIsInGroup( 'sysop' ) ? "Apply, request or tag page protection" : "Request or tag page protection" );
-	Window.setScriptName( "Twinkle" );
+	Window.setScriptName( "টুইংকল" );
 	Window.addFooterLink( "Protection templates", "Template:Protection templates" );
 	Window.addFooterLink( "Protection policy", "WP:PROT" );
-	Window.addFooterLink( "Twinkle help", "WP:TW/DOC#protect" );
+	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#protect" );
 
 	var form = new Morebits.quickForm( Twinkle.protect.callback.evaluate );
 	var actionfield = form.append( {
