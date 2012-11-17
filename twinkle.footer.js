@@ -9,7 +9,7 @@ var scriptpathbefore = mw.util.wikiScript( "index" ) + "?title=",
 $.ajax({
 	url: scriptpathbefore + "User:" + encodeURIComponent( mw.config.get("wgUserName")) + "/twinkleoptions.js" + scriptpathafter,
 	dataType: "text",
-	error: function () { mw.util.jsMessage( "twinkleoptions.js লোড হয়নি" ); },
+	error: function () { mw.util.jsMessage( "twinkleoptions.js লোড হয়নি" ); },
 	success: function ( optionsText ) {
 
 		// Quick pass if user has no options
@@ -72,7 +72,6 @@ Twinkle.load = function () {
 	Twinkle.talkback();
 	// Deletion
 	Twinkle.speedy();
-	Twinkle.prod();
 	Twinkle.xfd();
 	Twinkle.image();
 	// Maintenance
