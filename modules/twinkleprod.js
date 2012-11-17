@@ -12,7 +12,7 @@ Twinkle.prod = function twinkleprod() {
 		return;
 	}
 	
-	twAddPortletLink( Twinkle.prod.callback, "PROD", "tw-prod", "Propose deletion via WP:PROD" );
+	twAddPortletLink( Twinkle.prod.callback, "অপসারণের প্রস্তাবনা", "tw-prod", "WP:PROD এর মাধ্যমে অপসারণের প্রস্তাবনা" );
 };
 
 Twinkle.prod.callback = function twinkleprodCallback() {

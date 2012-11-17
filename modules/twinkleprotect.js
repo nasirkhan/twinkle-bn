@@ -14,7 +14,7 @@ Twinkle.protect = function twinkleprotect() {
 		return;
 	}
 
-	twAddPortletLink(Twinkle.protect.callback, Morebits.userIsInGroup('sysop') ? "PP" : "RPP", "tw-rpp",
+	twAddPortletLink(Twinkle.protect.callback, Morebits.userIsInGroup('sysop') ? "পাতা সুরক্ষা" : "RPP", "tw-rpp",
 		Morebits.userIsInGroup('sysop') ? "পাতা সুরক্ষা" : "পাতা সুরক্ষার আবেদন" );
 };
 

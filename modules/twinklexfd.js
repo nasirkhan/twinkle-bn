@@ -16,7 +16,7 @@ Twinkle.xfd = function twinklexfd() {
 	if ( mw.config.get('wgNamespaceNumber') < 0 || !mw.config.get('wgArticleId') || (mw.config.get('wgNamespaceNumber') === 6 && (document.getElementById('mw-sharedupload') || (!document.getElementById('mw-imagepage-section-filehistory') && !Morebits.wiki.isPageRedirect()))) ) {
 		return;
 	}
-	twAddPortletLink( Twinkle.xfd.callback, "এক্সএফডি", "tw-xfd", "(এক্সএফডি)অন্য সকল অপসারণের প্রস্তাবনা" );
+	twAddPortletLink( Twinkle.xfd.callback, "অপসারণ আলোচনা", "tw-xfd", "(এক্সএফডি)অন্য সকল অপসারণ প্রস্তাবনার আলোচনা" );
 };
 
 Twinkle.xfd.num2order = function twinklexfdNum2order( num ) {
