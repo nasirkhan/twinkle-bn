@@ -34,7 +34,7 @@ Twinkle.warn.callback = function twinklewarnCallback() {
 		return;
 	}
 	if( mw.config.get('wgTitle').split( '/' )[0] === mw.config.get('wgUserName') &&
-			!confirm( 'Warning yourself can be seen as a sign of mental instability! Are you sure you want to proceed?' ) ) {
+			!confirm( 'নিজেকেই সতর্কবার্তা পাঠানো মানসিক অসুস্থ্যতার লক্ষন হিসাবে বিবেচনা করা হয়, আপনি কি সত্যই নিজেকে সর্তকীবার্তা পাঠাবেন?' ) ) {
 		return;
 	}
 	
@@ -48,7 +48,7 @@ Twinkle.warn.callback = function twinklewarnCallback() {
 	var main_select = form.append( {
 			type:'field',
 			label:'দাখিল করার জন্য সতর্কীকরণ/বিজ্ঞাপ্তি প্রকার পছন্দ করুন',
-			tooltip:'প্রথমে প্রধান সতর্কীকরণ বিভাগ পছন্দ করুন তারপর নির্দিষ্ট সতর্কবার্তা//First choose a main warning group, then the specific warning to issue.'
+			tooltip:'প্রথমে প্রধান সতর্কীকরণ বিভাগ পছন্দ করুন তারপর নির্দিষ্ট সতর্কবার্তা নির্ধারণ করুন।'
 		} );
 
 	var main_group = main_select.append( {
@@ -58,15 +58,15 @@ Twinkle.warn.callback = function twinklewarnCallback() {
 		} );
 
 	var defaultGroup = parseInt(Twinkle.getPref('defaultWarningGroup'), 10);
-	main_group.append( { type:'option', label:'General note (1)', value:'level1', selected: ( defaultGroup === 1 || defaultGroup < 1 || ( Morebits.userIsInGroup( 'sysop' ) ? defaultGroup > 8 : defaultGroup > 7 ) ) } );
-	main_group.append( { type:'option', label:'Caution (2)', value:'level2', selected: ( defaultGroup === 2 ) } );
-	main_group.append( { type:'option', label:'Warning (3)', value:'level3', selected: ( defaultGroup === 3 ) } );
-	main_group.append( { type:'option', label:'Final warning (4)', value:'level4', selected: ( defaultGroup === 4 ) } );
-	main_group.append( { type:'option', label:'Only warning (4im)', value:'level4im', selected: ( defaultGroup === 5 ) } );
+	main_group.append( { type:'option', label:'সাধারণ নোটিশ (1)', value:'level1', selected: ( defaultGroup === 1 || defaultGroup < 1 || ( Morebits.userIsInGroup( 'sysop' ) ? defaultGroup > 8 : defaultGroup > 7 ) ) } );
+	main_group.append( { type:'option', label:'প্রাথমিক সতর্কীকরণ (2)', value:'level2', selected: ( defaultGroup === 2 ) } );
+	main_group.append( { type:'option', label:'সতর্কীবার্তা (3)', value:'level3', selected: ( defaultGroup === 3 ) } );
+	main_group.append( { type:'option', label:'সর্বশেষ সতর্কীবার্তা (4)', value:'level4', selected: ( defaultGroup === 4 ) } );
+	main_group.append( { type:'option', label:'শুধুমাত্র সতর্কীবার্তা (4im)', value:'level4im', selected: ( defaultGroup === 5 ) } );
 	main_group.append( { type:'option', label:'Single issue notices', value:'singlenotice', selected: ( defaultGroup === 6 ) } );
 	main_group.append( { type:'option', label:'Single issue warnings', value:'singlewarn', selected: ( defaultGroup === 7 ) } );
 	if( Morebits.userIsInGroup( 'sysop' ) ) {
-		main_group.append( { type:'option', label:'Blocking', value:'block', selected: ( defaultGroup === 8 ) } );
+		main_group.append( { type:'option', label:'বাধাদান', value:'block', selected: ( defaultGroup === 8 ) } );
 	}
 
 	main_select.append( { type:'select', name:'sub_group', event:Twinkle.warn.callback.change_subcategory } ); //Will be empty to begin with.
@@ -79,19 +79,19 @@ Twinkle.warn.callback = function twinklewarnCallback() {
 			tooltip:'An article can be linked within the notice, perhaps because it was a revert to said article that dispatched this notice. Leave empty for no article to be linked.'
 		} );
 
-	var more = form.append( { type: 'field', name: 'reasonGroup', label: 'Warning information' } );
-	more.append( { type:'textarea', label:'Optional message:', name:'reason', tooltip:'Perhaps a reason, or that a more detailed notice must be appended' } );
+	var more = form.append( { type: 'field', name: 'reasonGroup', label: 'সতর্কীকরণ তথ্য' } );
+	more.append( { type:'textarea', label:'বার্তা:', name:'reason', tooltip:'Perhaps a reason, or that a more detailed notice must be appended' } );
 
 	var previewlink = document.createElement( 'a' );
 	$(previewlink).click(function(){
 		Twinkle.warn.callbacks.preview(result);  // |result| is defined below
 	});
 	previewlink.style.cursor = "pointer";
-	previewlink.textContent = 'Preview';
+	previewlink.textContent = 'প্রিভিউ';
 	more.append( { type: 'div', id: 'warningpreview', label: [ previewlink ] } );
 	more.append( { type: 'div', id: 'twinklewarn-previewbox', style: 'display: none' } );
 
-	more.append( { type:'submit', label:'Submit' } );
+	more.append( { type:'submit', label:'কার্যকর করুন' } );
 
 	var result = form.render();
 	Window.setContent( result );
@@ -113,503 +113,503 @@ Twinkle.warn.callback = function twinklewarnCallback() {
 Twinkle.warn.messages = {
 	level1: {
 		"uw-vandalism1": {
-			label:"Vandalism",
-			summary:"General note: Nonconstructive editing"
+			label:"ধ্বংশপ্রবণতা",
+			summary:"সাধারণ নোটিশ: Nonconstructive editing"
 		},
 		"uw-test1": {
 			label:"Editing tests",
-			summary:"General note: Editing tests"
+			summary:"সাধারণ নোটিশ: Editing tests"
 		},
 		"uw-delete1": {
 			label:"Removal of content, blanking",
-			summary:"General note: Removal of content, blanking"
+			summary:"সাধারণ নোটিশ: Removal of content, blanking"
 		},
 		"uw-redirect1": { 
 			label:"Creating malicious redirects", 
-			summary:"General note: Creating malicious redirects" 
+			summary:"সাধারণ নোটিশ: Creating malicious redirects" 
 		},
 		"uw-tdel1": { 
 			label:"Removal of maintenance templates", 
-			summary:"General note: Removal of maintenance templates" 
+			summary:"সাধারণ নোটিশ: Removal of maintenance templates" 
 		},
 		"uw-joke1": { 
 			label:"Using improper humor", 
-			summary:"General note: Using improper humor" 
+			summary:"সাধারণ নোটিশ: Using improper humor" 
 		},
 		"uw-create1": { 
 			label:"Creating inappropriate pages", 
-			summary:"General note: Creating inappropriate pages" 
+			summary:"সাধারণ নোটিশ: Creating inappropriate pages" 
 		},
 		"uw-upload1": { 
 			label:"Uploading unencyclopedic images", 
-			summary:"General note: Uploading unencyclopedic images" 
+			summary:"সাধারণ নোটিশ: Uploading unencyclopedic images" 
 		},
 		"uw-image1": { 
 			label:"Image-related vandalism", 
-			summary:"General note: Image-related vandalism" 
+			summary:"সাধারণ নোটিশ: Image-related vandalism" 
 		},
 		"uw-ics1": { 
 			label:"Uploading files missing copyright status", 
-			summary:"General note: Uploading files missing copyright status" 
+			summary:"সাধারণ নোটিশ: Uploading files missing copyright status" 
 		},
 		"uw-idt1": { 
 			label:"Removing file deletion tags", 
-			summary:"General note: Removing file deletion tags" 
+			summary:"সাধারণ নোটিশ: Removing file deletion tags" 
 		},
 		"uw-spam1": { 
 			label:"Adding spam links", 
-			summary:"General note: Adding spam links" 
+			summary:"সাধারণ নোটিশ: Adding spam links" 
 		},
 		"uw-advert1": { 
 			label:"Using Wikipedia for advertising or promotion", 
-			summary:"General note: Using Wikipedia for advertising or promotion" 
+			summary:"সাধারণ নোটিশ: Using Wikipedia for advertising or promotion" 
 		},
 		"uw-npov1": { 
 			label:"Not adhering to neutral point of view", 
-			summary:"General note: Not adhering to neutral point of view" 
+			summary:"সাধারণ নোটিশ: Not adhering to neutral point of view" 
 		},
 		"uw-unsourced1": { 
 			label:"Addition of unsourced or improperly cited material", 
-			summary:"General note: Addition of unsourced or improperly cited material" 
+			summary:"সাধারণ নোটিশ: Addition of unsourced or improperly cited material" 
 		},
 		"uw-error1": { 
 			label:"Introducing deliberate factual errors", 
-			summary:"General note: Introducing factual errors" 
+			summary:"সাধারণ নোটিশ: Introducing factual errors" 
 		},
 		"uw-nor1": { 
 			label:"Adding original research, including unpublished syntheses of source material", 
-			summary:"General note: Adding original research, including unpublished syntheses of source material" 
+			summary:"সাধারণ নোটিশ: Adding original research, including unpublished syntheses of source material" 
 		},
 		"uw-biog1": { 
 			label:"Adding unreferenced controversial information about living persons", 
-			summary:"General note: Adding unreferenced controversial information about living persons" 
+			summary:"সাধারণ নোটিশ: Adding unreferenced controversial information about living persons" 
 		},
 		"uw-defam1": { 
 			label:"Addition of defamatory content", 
-			summary:"General note: Addition of defamatory content" 
+			summary:"সাধারণ নোটিশ: Addition of defamatory content" 
 		},
 		"uw-uncen1": { 
 			label:"Censorship of material", 
-			summary:"General note: Censorship of material" 
+			summary:"সাধারণ নোটিশ: Censorship of material" 
 		},
 		"uw-mos1": { 
 			label:"Manual of style", 
-			summary:"General note: Formatting, date, language, etc (Manual of style)" 
+			summary:"সাধারণ নোটিশ: Formatting, date, language, etc (Manual of style)" 
 		},
 		"uw-move1": { 
 			label:"Page moves against naming conventions or consensus", 
-			summary:"General note: Page moves against naming conventions or consensus" 
+			summary:"সাধারণ নোটিশ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat1": { 
 			label:"Using talk page as forum", 
-			summary:"General note: Using talk page as forum" 
+			summary:"সাধারণ নোটিশ: Using talk page as forum" 
 		},
 		"uw-tpv1": { 
 			label:"Refactoring others' talk page comments", 
-			summary:"General note: Refactoring others' talk page comments" 
+			summary:"সাধারণ নোটিশ: Refactoring others' talk page comments" 
 		},
 		"uw-afd1": { 
 			label:"Removing {{afd}} templates",
-			summary:"General note: Removing {{afd}} templates"
+			summary:"সাধারণ নোটিশ: Removing {{afd}} templates"
 		},
 		"uw-speedy1": { 
 			label:"Removing {{speedy deletion}} templates",
-			summary:"General note: Removing {{speedy deletion}} templates"
+			summary:"সাধারণ নোটিশ: Removing {{speedy deletion}} templates"
 		},
 		"uw-blpprod1": { 
 			label:"Removing {{blp prod}} templates",
-			summary:"General note: Removing {{blp prod}} templates"
+			summary:"সাধারণ নোটিশ: Removing {{blp prod}} templates"
 		},
 		"uw-npa1": { 
 			label:"Personal attack directed at a specific editor", 
-			summary:"General note: Personal attack directed at a specific editor" 
+			summary:"সাধারণ নোটিশ: Personal attack directed at a specific editor" 
 		},
 		"uw-agf1": { 
 			label:"Not assuming good faith", 
-			summary:"General note: Not assuming good faith" 
+			summary:"সাধারণ নোটিশ: Not assuming good faith" 
 		},
 		"uw-own1": { 
 			label:"Ownership of articles", 
-			summary:"General note: Ownership of articles"
+			summary:"সাধারণ নোটিশ: Ownership of articles"
 		},
 		"uw-tempabuse1": { 
 			label:"Improper use of warning or blocking template", 
-			summary:"General note: Improper use of warning or blocking template"
+			summary:"সাধারণ নোটিশ: Improper use of warning or blocking template"
 		},
 		"uw-genre1": { 
 			label:"Frequent or mass changes to genres without consensus or references", 
-			summary:"General note: Frequent or mass changes to genres without consensus or references"
+			summary:"সাধারণ নোটিশ: Frequent or mass changes to genres without consensus or references"
 		}
 	},
 	level2: {
 		"uw-vandalism2": { 
 			label:"Vandalism", 
-			summary:"Caution: Vandalism" 
+			summary:"প্রাথমিক সতর্কীকরণ: Vandalism" 
 		},
 		"uw-test2": { 
 			label:"Editing tests", 
-			summary:"Caution: Editing tests" 
+			summary:"প্রাথমিক সতর্কীকরণ: Editing tests" 
 		},
 		"uw-delete2": { 
 			label:"Removal of content, blanking",
-			summary:"Caution: Removal of content, blanking"
+			summary:"প্রাথমিক সতর্কীকরণ: Removal of content, blanking"
 		},
 		"uw-redirect2": { 
 			label:"Creating malicious redirects", 
-			summary:"Caution: Creating malicious redirects" 
+			summary:"প্রাথমিক সতর্কীকরণ: Creating malicious redirects" 
 		},
 		"uw-tdel2": { 
 			label:"Removal of maintenance templates", 
-			summary:"Caution: Removal of maintenance templates" 
+			summary:"প্রাথমিক সতর্কীকরণ: Removal of maintenance templates" 
 		},
 		"uw-joke2": { 
 			label:"Using improper humor", 
-			summary:"Caution: Using improper humor" 
+			summary:"প্রাথমিক সতর্কীকরণ: Using improper humor" 
 		},
 		"uw-create2": { 
 			label:"Creating inappropriate pages", 
-			summary:"Caution: Creating inappropriate pages" 
+			summary:"প্রাথমিক সতর্কীকরণ: Creating inappropriate pages" 
 		},
 		"uw-upload2": { 
 			label:"Uploading unencyclopedic images", 
-			summary:"Caution: Uploading unencyclopedic images" 
+			summary:"প্রাথমিক সতর্কীকরণ: Uploading unencyclopedic images" 
 		},
 		"uw-image2": { 
 			label:"Image-related vandalism", 
-			summary:"Caution: Image-related vandalism" 
+			summary:"প্রাথমিক সতর্কীকরণ: Image-related vandalism" 
 		},
 		"uw-ics2": { 
 			label:"Uploading files missing copyright status", 
-			summary:"Caution: Uploading files missing copyright status" 
+			summary:"প্রাথমিক সতর্কীকরণ: Uploading files missing copyright status" 
 		},
 		"uw-idt2": { 
 			label:"Removing file deletion tags", 
-			summary:"Caution: Removing file deletion tags" 
+			summary:"প্রাথমিক সতর্কীকরণ: Removing file deletion tags" 
 		},
 		"uw-spam2": { 
 			label:"Adding spam links", 
-			summary:"Caution: Adding spam links" 
+			summary:"প্রাথমিক সতর্কীকরণ: Adding spam links" 
 		},
 		"uw-advert2": { 
 			label:"Using Wikipedia for advertising or promotion", 
-			summary:"Caution: Using Wikipedia for advertising or promotion" 
+			summary:"প্রাথমিক সতর্কীকরণ: Using Wikipedia for advertising or promotion" 
 		},
 		"uw-npov2": { 
 			label:"Not adhering to neutral point of view", 
-			summary:"Caution: Not adhering to neutral point of view" 
+			summary:"প্রাথমিক সতর্কীকরণ: Not adhering to neutral point of view" 
 		},
 		"uw-unsourced2": { 
 			label:"Addition of unsourced or improperly cited material", 
-			summary:"Caution: Addition of unsourced or improperly cited material" 
+			summary:"প্রাথমিক সতর্কীকরণ: Addition of unsourced or improperly cited material" 
 		},
 		"uw-error2": { 
 			label:"Introducing deliberate factual errors", 
-			summary:"Caution: Introducing factual errors" 
+			summary:"প্রাথমিক সতর্কীকরণ: Introducing factual errors" 
 		},
 		"uw-nor2": { 
 			label:"Adding original research, including unpublished syntheses of sourced material", 
-			summary:"Caution: Adding original research, including unpublished syntheses of sourced material"
+			summary:"প্রাথমিক সতর্কীকরণ: Adding original research, including unpublished syntheses of sourced material"
 		},
 		"uw-biog2": { 
 			label:"Adding unreferenced controversial information about living persons", 
-			summary:"Caution: Adding unreferenced controversial information about living persons" 
+			summary:"প্রাথমিক সতর্কীকরণ: Adding unreferenced controversial information about living persons" 
 		},
 		"uw-defam2": { 
 			label:"Addition of defamatory content", 
-			summary:"Caution: Addition of defamatory content" 
+			summary:"প্রাথমিক সতর্কীকরণ: Addition of defamatory content" 
 		},
 		"uw-uncen2": { 
 			label:"Censorship of material", 
-			summary:"Caution: Censorship of material" 
+			summary:"প্রাথমিক সতর্কীকরণ: Censorship of material" 
 		},
 		"uw-mos2": { 
 			label:"Manual of style", 
-			summary:"Caution: Formatting, date, language, etc (Manual of style)" 
+			summary:"প্রাথমিক সতর্কীকরণ: Formatting, date, language, etc (Manual of style)" 
 		},
 		"uw-move2": { 
 			label:"Page moves against naming conventions or consensus", 
-			summary:"Caution: Page moves against naming conventions or consensus" 
+			summary:"প্রাথমিক সতর্কীকরণ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat2": { 
 			label:"Using talk page as forum", 
-			summary:"Caution: Using talk page as forum" 
+			summary:"প্রাথমিক সতর্কীকরণ: Using talk page as forum" 
 		},
 		"uw-tpv2": { 
 			label:"Refactoring others' talk page comments", 
-			summary:"Caution: Refactoring others' talk page comments" 
+			summary:"প্রাথমিক সতর্কীকরণ: Refactoring others' talk page comments" 
 		},
 		"uw-afd2": { 
 			label:"Removing {{afd}} templates",
-			summary:"Caution: Removing {{afd}} templates"
+			summary:"প্রাথমিক সতর্কীকরণ: Removing {{afd}} templates"
 		},
 		"uw-speedy2": { 
 			label:"Removing {{speedy deletion}} templates",
-			summary:"Caution: Removing {{speedy deletion}} templates"
+			summary:"প্রাথমিক সতর্কীকরণ: Removing {{speedy deletion}} templates"
 		},
 		"uw-blpprod2": { 
 			label:"Removing {{blp prod}} templates",
-			summary:"Caution: Removing {{blp prod}} templates"
+			summary:"প্রাথমিক সতর্কীকরণ: Removing {{blp prod}} templates"
 		},
 		"uw-npa2": { 
 			label:"Personal attack directed at a specific editor", 
-			summary:"Caution: Personal attack directed at a specific editor" 
+			summary:"প্রাথমিক সতর্কীকরণ: Personal attack directed at a specific editor" 
 		},
 		"uw-agf2": { 
 			label:"Not assuming good faith", 
-			summary:"Caution: Not assuming good faith" 
+			summary:"প্রাথমিক সতর্কীকরণ: Not assuming good faith" 
 		},
 		"uw-own2": { 
 			label:"Ownership of articles", 
-			summary:"Caution: Ownership of articles"
+			summary:"প্রাথমিক সতর্কীকরণ: Ownership of articles"
 		},
 		"uw-tempabuse2": { 
 			label:"Improper use of warning or blocking template", 
-			summary:"Caution: Improper use of warning or blocking template"
+			summary:"প্রাথমিক সতর্কীকরণ: Improper use of warning or blocking template"
 		},
 		"uw-genre2": { 
 			label:"Frequent or mass changes to genres without consensus or references", 
-			summary:"Caution: Frequent or mass changes to genres without consensus or references"
+			summary:"প্রাথমিক সতর্কীকরণ: Frequent or mass changes to genres without consensus or references"
 		}
 	},
 	level3: {
 		"uw-vandalism3": { 
 			label:"Vandalism", 
-			summary:"Warning: Vandalism" 
+			summary:"সতর্কীকরণ: Vandalism" 
 		},
 		"uw-test3": { 
 			label:"Editing tests", 
-			summary:"Warning: Editing tests" 
+			summary:"সতর্কীকরণ: Editing tests" 
 		},
 		"uw-delete3": { 
 			label:"Removal of content, blanking", 
-			summary:"Warning: Removal of content, blanking"
+			summary:"সতর্কীকরণ: Removal of content, blanking"
 		},
 		"uw-redirect3": { 
 			label:"Creating malicious redirects", 
-			summary:"Warning: Creating malicious redirects" 
+			summary:"সতর্কীকরণ: Creating malicious redirects" 
 		},
 		"uw-tdel3": { 
 			label:"Removal of maintenance templates", 
-			summary:"Warning: Removal of maintenance templates" 
+			summary:"সতর্কীকরণ: Removal of maintenance templates" 
 		},
 		"uw-joke3": { 
 			label:"Using improper humor", 
-			summary:"Warning: Using improper humor" 
+			summary:"সতর্কীকরণ: Using improper humor" 
 		},
 		"uw-create3": { 
 			label:"Creating inappropriate pages", 
-			summary:"Warning: Creating inappropriate pages" 
+			summary:"সতর্কীকরণ: Creating inappropriate pages" 
 		},
 		"uw-upload3": { 
 			label:"Uploading unencyclopedic images", 
-			summary:"Warning: Uploading unencyclopedic images" 
+			summary:"সতর্কীকরণ: Uploading unencyclopedic images" 
 		},
 		"uw-image3": { 
 			label:"Image-related vandalism", 
-			summary:"Warning: Image-related vandalism" 
+			summary:"সতর্কীকরণ: Image-related vandalism" 
 		},
 		"uw-ics3": { 
 			label:"Uploading files missing copyright status", 
-			summary:"Warning: Uploading files missing copyright status" 
+			summary:"সতর্কীকরণ: Uploading files missing copyright status" 
 		},
 		"uw-idt3": { 
 			label:"Removing file deletion tags", 
-			summary:"Warning: Removing file deletion tags" 
+			summary:"সতর্কীকরণ: Removing file deletion tags" 
 		},
 		"uw-spam3": { 
 			label:"Adding spam links", 
-			summary:"Warning: Adding spam links" 
+			summary:"সতর্কীকরণ: Adding spam links" 
 		},
 		"uw-advert3": { 
 			label:"Using Wikipedia for advertising or promotion", 
-			summary:"Warning: Using Wikipedia for advertising or promotion" 
+			summary:"সতর্কীকরণ: Using Wikipedia for advertising or promotion" 
 		},
 		"uw-npov3": { 
 			label:"Not adhering to neutral point of view", 
-			summary:"Warning: Not adhering to neutral point of view" 
+			summary:"সতর্কীকরণ: Not adhering to neutral point of view" 
 		},
 		"uw-unsourced3": { 
 			label:"Addition of unsourced or improperly cited material", 
-			summary:"Warning: Addition of unsourced or improperly cited material" 
+			summary:"সতর্কীকরণ: Addition of unsourced or improperly cited material" 
 		},
 		"uw-error3": { 
 			label:"Introducing deliberate factual errors", 
-			summary:"Warning: Introducing deliberate factual errors" 
+			summary:"সতর্কীকরণ: Introducing deliberate factual errors" 
 		},
 		"uw-nor3": { 
 			label:"Adding original research, including unpublished syntheses of sourced material", 
-			summary:"Warning: Adding original research, including unpublished syntheses of sourced material"
+			summary:"সতর্কীকরণ: Adding original research, including unpublished syntheses of sourced material"
 		},
 		"uw-biog3": { 
 			label:"Adding unreferenced controversial or defamatory information about living persons", 
-			summary:"Warning: Adding unreferenced controversial information about living persons" 
+			summary:"সতর্কীকরণ: Adding unreferenced controversial information about living persons" 
 		},
 		"uw-defam3": { 
 			label:"Addition of defamatory content", 
-			summary:"Warning: Addition of defamatory content" 
+			summary:"সতর্কীকরণ: Addition of defamatory content" 
 		},
 		"uw-uncen3": { 
 			label:"Censorship of material", 
-			summary:"Warning: Censorship of material" 
+			summary:"সতর্কীকরণ: Censorship of material" 
 		},
 		"uw-mos3": { 
 			label:"Manual of style", 
-			summary:"Warning: Formatting, date, language, etc (Manual of style)" 
+			summary:"সতর্কীকরণ: Formatting, date, language, etc (Manual of style)" 
 		},
 		"uw-move3": { 
 			label:"Page moves against naming conventions or consensus", 
-			summary:"Warning: Page moves against naming conventions or consensus" 
+			summary:"সতর্কীকরণ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat3": { 
 			label:"Using talk page as forum", 
-			summary:"Warning: Using talk page as forum" 
+			summary:"সতর্কীকরণ: Using talk page as forum" 
 		},
 		"uw-tpv3": { 
 			label:"Refactoring others' talk page comments", 
-			summary:"Warning: Refactoring others' talk page comments" 
+			summary:"সতর্কীকরণ: Refactoring others' talk page comments" 
 		},
 		"uw-afd3": { 
 			label:"Removing {{afd}} templates",
-			summary:"Warning: Removing {{afd}} templates"
+			summary:"সতর্কীকরণ: Removing {{afd}} templates"
 		},
 		"uw-speedy3": { 
 			label:"Removing {{speedy deletion}} templates",
-			summary:"Warning: Removing {{speedy deletion}} templates"
+			summary:"সতর্কীকরণ: Removing {{speedy deletion}} templates"
 		},
 		"uw-blpprod3": { 
 			label:"Removing {{blpprod}} templates",
-			summary:"Warning: Removing {{blpprod}} templates"
+			summary:"সতর্কীকরণ: Removing {{blpprod}} templates"
 		},
 		"uw-npa3": { 
 			label:"Personal attack directed at a specific editor", 
-			summary:"Warning: Personal attack directed at a specific editor" 
+			summary:"সতর্কীকরণ: Personal attack directed at a specific editor" 
 		},
 		"uw-agf3": { 
 			label:"Not assuming good faith", 
-			summary:"Warning: Not assuming good faith" 
+			summary:"সতর্কীকরণ: Not assuming good faith" 
 		},
 		"uw-own3": { 
 			label:"Ownership of articles", 
-			summary:"Warning: Ownership of articles"
+			summary:"সতর্কীকরণ: Ownership of articles"
 		},
 		"uw-genre3": { 
 			label:"Frequent or mass changes to genres without consensus or reference", 
-			summary:"Warning: Frequent or mass changes to genres without consensus or reference"
+			summary:"সতর্কীকরণ: Frequent or mass changes to genres without consensus or reference"
 		}
 
 	},
 	level4: {
 		"uw-generic4": { 
 			label:"Generic warning (for template series missing level 4)", 
-			summary:"Final warning notice" 
+			summary:"সর্বশেষ সতর্কীকরণ নোটিশ" 
 		},
 		"uw-vandalism4": { 
 			label:"Vandalism", 
-			summary:"Final warning: Vandalism" 
+			summary:"সর্বশেষ সতর্কীকরণ: Vandalism" 
 		},
 		"uw-test4": { 
 			label:"Editing tests", 
-			summary:"Final warning: Editing tests" 
+			summary:"সর্বশেষ সতর্কীকরণ: Editing tests" 
 		},
 		"uw-delete4": { 
 			label:"Removal of content, blanking", 
-			summary:"Final warning: Removal of content, blanking" 
+			summary:"সর্বশেষ সতর্কীকরণ: Removal of content, blanking" 
 		},
 		"uw-redirect4": { 
 			label:"Creating malicious redirects", 
-			summary:"Final warning: Creating malicious redirects" 
+			summary:"সর্বশেষ সতর্কীকরণ: Creating malicious redirects" 
 		},
 		"uw-tdel4": { 
 			label:"Removal of maintenance templates", 
-			summary:"Final warning: Removal of maintenance templates" 
+			summary:"সর্বশেষ সতর্কীকরণ: Removal of maintenance templates" 
 		},
 		"uw-joke4": { 
 			label:"Using improper humor", 
-			summary:"Final warning: Using improper humor" 
+			summary:"সর্বশেষ সতর্কীকরণ: Using improper humor" 
 		},
 		"uw-create4": { 
 			label:"Creating inappropriate pages", 
-			summary:"Final warning: Creating inappropriate pages" 
+			summary:"সর্বশেষ সতর্কীকরণ: Creating inappropriate pages" 
 		},
 		"uw-upload4": { 
 			label:"Uploading unencyclopedic images", 
-			summary:"Final warning: Uploading unencyclopedic images" 
+			summary:"সর্বশেষ সতর্কীকরণ: Uploading unencyclopedic images" 
 		},
 		"uw-image4": { 
 			label:"Image-related vandalism", 
-			summary:"Final warning: Image-related vandalism" 
+			summary:"সর্বশেষ সতর্কীকরণ: Image-related vandalism" 
 		},
 		"uw-ics4": { 
 			label:"Uploading files missing copyright status", 
-			summary:"Final warning: Uploading files missing copyright status" 
+			summary:"সর্বশেষ সতর্কীকরণ: Uploading files missing copyright status" 
 		},
 		"uw-idt4": { 
 			label:"Removing file deletion tags", 
-			summary:"Final warning: Removing file deletion tags" 
+			summary:"সর্বশেষ সতর্কীকরণ: Removing file deletion tags" 
 		},
 		"uw-spam4": { 
 			label:"Adding spam links", 
-			summary:"Final warning: Adding spam links" 
+			summary:"সর্বশেষ সতর্কীকরণ: Adding spam links" 
 		},
 		"uw-advert4": { 
 			label:"Using Wikipedia for advertising or promotion", 
-			summary:"Final warning: Using Wikipedia for advertising or promotion" 
+			summary:"সর্বশেষ সতর্কীকরণ: Using Wikipedia for advertising or promotion" 
 		},
 		"uw-npov4": { 
 			label:"Not adhering to neutral point of view", 
-			summary:"Final warning: Not adhering to neutral point of view" 
+			summary:"সর্বশেষ সতর্কীকরণ: Not adhering to neutral point of view" 
 		},
 		"uw-error4": { 
 			label:"Introducing deliberate factual errors", 
-			summary:"Final Warning: Introducing deliberate factual errors"
+			summary:"সর্বশেষ সতর্কীকরণ: Introducing deliberate factual errors"
 		},
 		"uw-nor4": { 
 			label:"Adding original research, including unpublished syntheses of sourced material", 
-			summary:"Final Warning: Adding original research, including unpublished syntheses of sourced material"
+			summary:"সর্বশেষ সতর্কীকরণ: Adding original research, including unpublished syntheses of sourced material"
 		},
 		"uw-biog4": { 
 			label:"Adding unreferenced defamatory information about living persons", 
-			summary:"Final warning: Adding unreferenced controversial information about living persons" 
+			summary:"সর্বশেষ সতর্কীকরণ: Adding unreferenced controversial information about living persons" 
 		},
 		"uw-defam4": { 
 			label:"Addition of defamatory content", 
-			summary:"Final warning: Addition of defamatory content" 
+			summary:"সর্বশেষ সতর্কীকরণ: Addition of defamatory content" 
 		},
 		"uw-uncen4": { 
 			label:"Censorship of material", 
-			summary:"Final warning: Censorship of material" 
+			summary:"সর্বশেষ সতর্কীকরণ: Censorship of material" 
 		},
 		"uw-mos4": { 
 			label:"Manual of style", 
-			summary:"Final warning: Formatting, date, language, etc (Manual of style)" 
+			summary:"সর্বশেষ সতর্কীকরণ: Formatting, date, language, etc (Manual of style)" 
 		},
 		"uw-move4": { 
 			label:"Page moves against naming conventions or consensus", 
-			summary:"Final warning: Page moves against naming conventions or consensus" 
+			summary:"সর্বশেষ সতর্কীকরণ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat4": { 
 			label:"Using talk page as forum", 
-			summary:"Final warning: Using talk page as forum" 
+			summary:"সর্বশেষ সতর্কীকরণ: Using talk page as forum" 
 		},
 		"uw-tpv4": { 
 			label:"Refactoring others' talk page comments", 
-			summary:"Final warning: Refactoring others' talk page comments" 
+			summary:"সর্বশেষ সতর্কীকরণ: Refactoring others' talk page comments" 
 		},
 		"uw-afd4": { 
 			label:"Removing {{afd}} templates",
-			summary:"Final warning: Removing {{afd}} templates"
+			summary:"সর্বশেষ সতর্কীকরণ: Removing {{afd}} templates"
 		},
 		"uw-speedy4": { 
 			label:"Removing {{speedy deletion}} templates",
-			summary:"Final warning: Removing {{speedy deletion}} templates"
+			summary:"সর্বশেষ সতর্কীকরণ: Removing {{speedy deletion}} templates"
 		},
 		"uw-blpprod4": { 
 			label:"Removing {{blpprod}} templates",
-			summary:"Final warning: Removing {{blpprod}} templates"
+			summary:"সর্বশেষ সতর্কীকরণ: Removing {{blpprod}} templates"
 		},
 		"uw-npa4": { 
 			label:"Personal attack directed at a specific editor", 
-			summary:"Final warning: Personal attack directed at a specific editor"
+			summary:"সর্বশেষ সতর্কীকরণ: Personal attack directed at a specific editor"
 		}
 
 	},
