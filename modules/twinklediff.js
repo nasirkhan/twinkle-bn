@@ -18,7 +18,7 @@ Twinkle.diff = function twinklediff() {
 		'oldid': 'prev'
 	};
 
-	twAddPortletLink( mw.util.wikiScript("index")+ "?" + $.param( query ), 'Last', 'tw-lastdiff', 'Show most recent diff' );
+	twAddPortletLink( mw.util.wikiScript("index")+ "?" + $.param( query ), 'শেষ', 'tw-lastdiff', 'অন্তিম পার্থক্য দেখাও' );
 
 	// Show additional tabs only on diff pages
 	if (Morebits.queryString.exists('diff')) {
