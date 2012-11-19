@@ -16,7 +16,7 @@ Twinkle.xfd = function twinklexfd() {
 	if ( mw.config.get('wgNamespaceNumber') < 0 || !mw.config.get('wgArticleId') || (mw.config.get('wgNamespaceNumber') === 6 && (document.getElementById('mw-sharedupload') || (!document.getElementById('mw-imagepage-section-filehistory') && !Morebits.wiki.isPageRedirect()))) ) {
 		return;
 	}
-	twAddPortletLink( Twinkle.xfd.callback, "অপসারণ প্রস্তাবনা", "tw-xfd", "(এক্সএফডি)অন্য সকল অপসারণ প্রস্তাবনার আলোচনা" );
+	twAddPortletLink( Twinkle.xfd.callback, "অপসারণ প্রস্তাবনা", "tw-xfd", "(এক্সএফডি)অন্য সকল অপসারণ প্রস্তাবনার প্রস্তাবনা" );
 };
 
 Twinkle.xfd.num2order = function twinklexfdNum2order( num ) {
@@ -34,7 +34,7 @@ Twinkle.xfd.currentRationale = null;
 Twinkle.xfd.printRationale = function twinklexfdPrintRationale() {
 	if (Twinkle.xfd.currentRationale) {
 		var p = document.createElement("p");
-		p.textContent = "Your deletion rationale is provided below, which you can copy and paste into a new XFD dialog if you wish to try again:";
+		p.textContent = "অপসারণের কারণটি নিচে উল্লেখ করা হয়েছে, আপনি পুনরায় চেষ্টা করতে চাইলে এখান থেকে কপি করে নতুন এক্সএফডি উইন্ডোতে লিখতে পারেন:";
 		var pre = document.createElement("pre");
 		pre.className = "toccolours";
 		pre.style.marginTop = "0";
@@ -48,14 +48,14 @@ Twinkle.xfd.printRationale = function twinklexfdPrintRationale() {
 
 Twinkle.xfd.callback = function twinklexfdCallback() {
 	if (!twinkleUserAuthorized) {
-		alert("Your account is too new to use Twinkle.");
+		alert("নবাগত,আপনার অ্যাকাঊন্টটি  টুইংকল ব্যবহার করার জন্য নয়।");
 		return;
 	}
 
 	var Window = new Morebits.simpleWindow( 600, 350 );
 	Window.setTitle( "অপসারণের প্রস্তাবনা (এক্সএফডি))" );
 	Window.setScriptName( "টুইংকল" );
-	Window.addFooterLink( "অপসারণ আলোচনা সম্পর্কে", "WP:XFD" );
+	Window.addFooterLink( "অপসারণ প্রস্তাবনা সম্পর্কে", "WP:XFD" );
 	Window.addFooterLink( "টুইংকল সাহায্য", "WP:TW/DOC#xfd" );
 
 	var form = new Morebits.quickForm( Twinkle.xfd.callback.evaluate );
@@ -92,7 +92,7 @@ Twinkle.xfd.callback = function twinklexfdCallback() {
 		} );
   categories.append( {
 			type: 'option',
-			label: 'CfD/S (বিষয়শ্রেণী নাম পরিবর্তনের আলোচনা)',
+			label: 'CfD/S (বিষয়শ্রেণী নাম পরিবর্তনের প্রস্তাবনা)',
 			value: 'cfds'
 		} );
 	categories.append( {
@@ -103,7 +103,7 @@ Twinkle.xfd.callback = function twinklexfdCallback() {
 		} );
 	categories.append( {
 			type: 'option',
-			label: 'RfD (পুনঃর্নিদেশ অপসারণ প্রস্তাবনার আলোচনা)',
+			label: 'RfD (পুনঃর্নিদেশ অপসারণ প্রস্তাবনার প্রস্তাবনা)',
 			selected: Morebits.wiki.isPageRedirect(),
 			value: 'rfd'
 		} );
@@ -111,10 +111,10 @@ Twinkle.xfd.callback = function twinklexfdCallback() {
 			type: 'checkbox',
 			list: [
 				{
-					label: 'Notify page creator if possible',
+					label: 'সম্ভব হলে প্রনেতাকে জানান',
 					value: 'notify',
 					name: 'notify',
-					tooltip: "A notification template will be placed on the creator's talk page if this is true.",
+					tooltip: "এই অপশনটি নির্বাচন করা থাকলে প্রনেতার আলাপ পাতায় একটি টেমপ্লেট যুক্ত করা হবে।",
 					checked: true
 				}
 			]
@@ -162,14 +162,14 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 							label: 'অপসারণ ট্যাগে <noinclude> কোড ব্যবহার করুন',
 							value: 'noinclude',
 							name: 'noinclude',
-							tooltip: 'Will wrap the deletion tag in &lt;noinclude&gt; tags, so that it won\'t transclude. This option is not normally required.'
+							tooltip: 'অপসারণ ট্যাগটি &lt;noinclude&gt; কোডের মাধ্যমে ব্যবহার করা হবে। সাধারণ কাজের জন্য এটি ব্যবহার করার প্রয়োজন নেই।'
 						}
 					]
 		} );
 		var afd_category = work_area.append( {
 				type:'select',
 				name:'xfdcat',
-				label:'Choose what category this nomination belongs in:'
+				label:'অপসারণ প্রস্তাবনার বিষয় নির্বাচন করুন:'
 			} );
 
 		afd_category.append( { type:'option', label:'অজানা', value:'?', selected:true } );
@@ -197,7 +197,7 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 	case 'tfd':
 		work_area = new Morebits.quickForm.element( {
 				type: 'field',
-				label: 'আলোচনার টেমপ্লেটসমূহ',
+				label: 'প্রস্তাবনার টেমপ্লেটসমূহ',
 				name: 'work_area'
 			} );
 		work_area.append( {
@@ -300,12 +300,12 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 	case 'cfd':
 		work_area = new Morebits.quickForm.element( {
 				type: 'field',
-				label: 'Categories for discussion',
+				label: 'বিষয়শ্রেণী অপসারণের প্রস্তাবনা',
 				name: 'work_area'
 			} );
 		var cfd_category = work_area.append( {
 				type: 'select',
-				label: 'Choose type of action wanted: ',
+				label: 'যে কাজটি করা হবে নির্বাচন করুন: ',
 				name: 'xfdcat',
 				event: function(e) {
 					var value = e.target.value;
@@ -318,11 +318,11 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 					}
 					// update label
 					if( value === 'cfs' ) {
-						target.previousSibling.textContent = "Target categories: ";
+						target.previousSibling.textContent = "নির্দিষ্ট বিষয়শ্রেণী: ";
 					} else if( value === 'cfc' ) {
-						target.previousSibling.textContent = "Target article: ";
+						target.previousSibling.textContent = "নির্দিষ্ট নিবন্ধ: ";
 					} else {
-						target.previousSibling.textContent = "Target category: ";
+						target.previousSibling.textContent = "নির্দিষ্ট বিষয়শ্রেণী: ";
 					}
 					// add/remove extra input box
 					if( value === 'cfs' && $(target.parentNode).find("input[name='xfdtarget2']").length === 0 ) {
@@ -335,16 +335,16 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 					}
 				}
 			} );
-		cfd_category.append( { type: 'option', label: 'Deletion', value: 'cfd', selected: true } );
-		cfd_category.append( { type: 'option', label: 'Merge', value: 'cfm' } );
-		cfd_category.append( { type: 'option', label: 'Renaming', value: 'cfr' } );
+		cfd_category.append( { type: 'option', label: 'অপসারণ', value: 'cfd', selected: true } );
+		cfd_category.append( { type: 'option', label: 'একীকরণ', value: 'cfm' } );
+		cfd_category.append( { type: 'option', label: 'নাম পরিবর্তন', value: 'cfr' } );
 		cfd_category.append( { type: 'option', label: 'Split', value: 'cfs' } );
-		cfd_category.append( { type: 'option', label: 'Convert into article', value: 'cfc' } );
+		cfd_category.append( { type: 'option', label: 'নিবন্ধে রূপান্তর', value: 'cfc' } );
 
 		work_area.append( {
 				type: 'input',
 				name: 'xfdtarget',
-				label: 'Target page: ',
+				label: 'নির্দিষ্ট পাতা: ',
 				disabled: true,
 				value: ''
 			} );
@@ -360,7 +360,7 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 	case 'cfds':
 		work_area = new Morebits.quickForm.element( {
 				type: 'field',
-				label: 'Categories for speedy renaming',
+				label: 'দ্রুত নাম পরিবর্তনের বিষয়শ্রেণীসমূহ',
 				name: 'work_area'
 			} );
 		var cfds_category = work_area.append( {
@@ -401,7 +401,7 @@ Twinkle.xfd.callback.change_category = function twinklexfdCallbackChangeCategory
 	case 'rfd':
 		work_area = new Morebits.quickForm.element( {
 				type: 'field',
-				label: 'Redirects for discussion',
+				label: 'পুনঃনির্দেশ অপসারণের প্রস্তাবনা',
 				name: 'work_area'
 			} );
 		work_area.append( {
@@ -473,14 +473,14 @@ Twinkle.xfd.callbacks = {
 			}
 			apiobj.params.discussionpage = 'উইকিপিডিয়া:নিবন্ধ অপসারণের প্রস্তাবনা/' + mw.config.get('wgPageName') + apiobj.params.numbering;
 
-			Morebits.status.info( "Next discussion page", "[[" + apiobj.params.discussionpage + "]]" );
+			Morebits.status.info( "পরবর্তী প্রস্তাবনা পাতা", "[[" + apiobj.params.discussionpage + "]]" );
 
 			// Updating data for the action completed event
 			Morebits.wiki.actionCompleted.redirect = apiobj.params.discussionpage;
 			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to the discussion page";
 
 			// Tagging article
-			var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "Adding deletion tag to article");
+			var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "নিবন্ধে অপসারণ ট্যাগ যুক্ত করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(true);  // should never be needed, but if the article is moved, we would want to follow the redirect
 			wikipedia_page.setCallbackParameters(apiobj.params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.afd.taggingArticle);
@@ -506,13 +506,13 @@ Twinkle.xfd.callbacks = {
 			// Now we know we want to go ahead with it, trigger the other AJAX requests
 
 			// Starting discussion page
-			var wikipedia_page = new Morebits.wiki.page(params.discussionpage, "Creating article deletion discussion page");
+			var wikipedia_page = new Morebits.wiki.page(params.discussionpage, "নিবন্ধ অপসারণের প্রস্তাবনা পাতা তৈরী করা হচ্ছে");
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.afd.discussionPage);
 
 			// Today's list
 			var date = new Date();
-			wikipedia_page = new Morebits.wiki.page('Wikipedia:Articles for deletion/Log/' + date.getUTCFullYear() + ' ' +
+			wikipedia_page = new Morebits.wiki.page('উইকিপিডিয়া:নিবন্ধ অপসারণের প্রস্তাবনা/Log/' + date.getUTCFullYear() + ' ' +
 				date.getUTCMonthName() + ' ' + date.getUTCDate(), "Adding discussion to today's list");
 			wikipedia_page.setFollowRedirect(true);
 			wikipedia_page.setCallbackParameters(params);
@@ -529,7 +529,7 @@ Twinkle.xfd.callbacks = {
 			text = text.replace(/\{\{\s*(dated prod|dated prod blp|Prod blp\/dated|Proposed deletion\/dated|prod2|Proposed deletion endorsed|New unreviewed article|Userspace draft)\s*(\|(?:\{\{[^{}]*\}\}|[^{}])*)?\}\}\s*/ig, "");
 			// Then, test if there are speedy deletion-related templates on the article.
 			var textNoSd = text.replace(/\{\{\s*(db(-\w*)?|delete|(?:hang|hold)[\- ]?on)\s*(\|(?:\{\{[^{}]*\}\}|[^{}])*)?\}\}\s*/ig, "");
-			if (text !== textNoSd && confirm("A speedy deletion tag was found on this page. Should it be removed?")) {
+			if (text !== textNoSd && confirm("এই পাতায় একটি দ্রুত অপসারণের টেমপ্লেট পাওয়া গিয়েছে, সরিয়ে ফেলা হবে?")) {
 				text = textNoSd;
 			}
 
@@ -794,7 +794,7 @@ Twinkle.xfd.callbacks = {
 			var params = pageobj.getCallbackParameters();
 
 			pageobj.setPageText("{{subst:mfd2|text=" + params.reason + " ~~~~|pg=" + mw.config.get('wgPageName') + "}}\n");
-			pageobj.setEditSummary("Creating deletion discussion page for [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
+			pageobj.setEditSummary("[[" + mw.config.get('wgPageName') + "]] এর জন্য অপসারণ প্রস্তাবনা তৈরী করা হয়েছে। " + Twinkle.getPref('summaryAd'));
 			switch (Twinkle.getPref('xfdWatchDiscussion')) {
 				case 'yes':
 					pageobj.setWatchlist(true);
@@ -822,15 +822,15 @@ Twinkle.xfd.callbacks = {
 			var new_data = "{{subst:mfd3|pg=" + mw.config.get('wgPageName') + params.numbering + "}}";
 
 			if( date_header_regex.test( text ) ) { // we have a section already
-				statelem.info( 'Found today\'s section, proceeding to add new entry' );
+				statelem.info( 'আজকের অনুচ্ছেদটি খুঁজে পাওয়া গিয়েছে, নতুন অনুচ্ছেদটি তৈরী করা হচ্ছে' );
 				text = text.replace( date_header_regex, "$1\n" + new_data );
 			} else { // we need to create a new section
-				statelem.info( 'No section for today found, proceeding to create one' );
+				statelem.info( 'আজকের অনুচ্ছেদটি খুঁজে পাওয়া যাচ্ছে না, নতুন একটি অনুচ্ছেদ তৈরী করা হচ্ছে' );
 				text = text.replace("===", date_header + new_data + "\n\n===");
 			}
 
 			pageobj.setPageText(text);
-			pageobj.setEditSummary("Adding [[" + params.discussionpage + "]]." + Twinkle.getPref('summaryAd'));
+			pageobj.setEditSummary("[[" + params.discussionpage + "]] যুক্ত করা হচ্ছে।" + Twinkle.getPref('summaryAd'));
 			switch (Twinkle.getPref('xfdWatchList')) {
 				case 'yes':
 					pageobj.setWatchlist(true);
@@ -850,7 +850,7 @@ Twinkle.xfd.callbacks = {
 			var params = pageobj.getCallbackParameters();
 
 			// Really notify the creator
-			Twinkle.xfd.callbacks.mfd.userNotificationMain(params, initialContrib, "Notifying initial contributor");
+			Twinkle.xfd.callbacks.mfd.userNotificationMain(params, initialContrib, "প্রথম অবদানকারীকে জানানো হচ্ছে");
 
 			// Also notify the user who owns the subpage if they are not the creator
 			if (params.notifyuserspace) {
@@ -892,14 +892,14 @@ Twinkle.xfd.callbacks = {
 			params.uploader = initialContrib;
 
 			// Adding discussion
-			wikipedia_page = new Morebits.wiki.page(params.logpage, "Adding discussion to today's list");
+			wikipedia_page = new Morebits.wiki.page(params.logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(true);
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.ffd.todaysList);
 
 			// Notification to first contributor
 			if(params.usertalk) {
-				var usertalkpage = new Morebits.wiki.page('User talk:' + initialContrib, "Notifying initial contributor (" + initialContrib + ")");
+				var usertalkpage = new Morebits.wiki.page('User talk:' + initialContrib, "প্রথম অবদানকারী (" + initialContrib + ") -কে জানানো হচ্ছে");
 				var notifytext = "\n{{subst:idw|1=" + mw.config.get('wgTitle') + "}}";
 				usertalkpage.setAppendText(notifytext);
 				usertalkpage.setEditSummary("Notification: listing at [[WP:FFD|files for deletion]] of [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
@@ -1018,7 +1018,7 @@ Twinkle.xfd.callbacks = {
 		},
 		userNotification: function(pageobj) {
 			var initialContrib = pageobj.getCreator();
-			var usertalkpage = new Morebits.wiki.page('User talk:' + initialContrib, "Notifying initial contributor (" + initialContrib + ")");
+			var usertalkpage = new Morebits.wiki.page('ব্যবহারকারী আলাপ:' + initialContrib, "প্রথম অবদানকারী (" + initialContrib + ")-কে জানানো হচ্ছে");
 			var notifytext = "\n{{subst:idw-puf|1=" + mw.config.get('wgTitle') + "}} ~~~~";
 			usertalkpage.setAppendText(notifytext);
 			usertalkpage.setEditSummary("Notification: listing at [[WP:PUF|possibly unfree files]] of [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
@@ -1202,12 +1202,12 @@ Twinkle.xfd.callbacks = {
 				newcatname + "]]\u00A0\u2013 " + params.xfdcat + (params.reason ? (": " + params.reason) : ".") + " ~~~~" );
 				// U+00A0 NO-BREAK SPACE; U+2013 EN RULE
 			if( text === old_text ) {
-				statelem.error( 'failed to find target spot for the discussion' );
+				statelem.error( 'প্রস্তাবনাটি তালিকাভুক্ত করার জন্য নির্ধারিত পাতাটি খুঁজে পাওয়া যাচ্ছে না' );
 				return;
 			}
 
 			pageobj.setPageText(text);
-			pageobj.setEditSummary("Adding [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
+			pageobj.setEditSummary("[[" + mw.config.get('wgPageName') + "]] যুক্ত করা হচ্ছে।" + Twinkle.getPref('summaryAd'));
 			switch (Twinkle.getPref('xfdWatchDiscussion')) {
 				case 'yes':
 					pageobj.setWatchlist(true);
@@ -1233,7 +1233,7 @@ Twinkle.xfd.callbacks = {
 			var xmlDoc = apiobj.responseXML;
 			var target = $(xmlDoc).find('redirects r').first().attr('to');
 			if( !target ) {
-				apiobj.statelem.error( "This page is currently not a redirect, aborting" );
+				apiobj.statelem.error( "এটি পুনঃনির্দেশ পাতা নয়, বাতিল করা হচ্ছে" );
 				return;
 			}
 			apiobj.params.target = target;
@@ -1244,7 +1244,7 @@ Twinkle.xfd.callbacks = {
 			params.logpage = 'Wikipedia:Redirects for discussion/Log/' + date.getUTCFullYear() + ' ' + date.getUTCMonthName() + ' ' + date.getUTCDate();
 
 			// Tagging redirect
-			var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "Adding deletion tag to redirect");
+			var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "পুনঃনির্দেশ পাতায় অপসারণ ট্যাগ যুক্ত করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(false);
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.rfd.taggingRedirect);
@@ -1254,7 +1254,7 @@ Twinkle.xfd.callbacks = {
 			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's log";
 
 			// Adding discussion
-			wikipedia_page = new Morebits.wiki.page(params.logpage, "আজকের তালিকায় আলোচনাটি যুক্ত করা হচ্ছে");
+			wikipedia_page = new Morebits.wiki.page(params.logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(true);
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.rfd.todaysList);
@@ -1318,7 +1318,7 @@ Twinkle.xfd.callbacks = {
 		},
 		userNotification: function(pageobj) {
 			var initialContrib = pageobj.getCreator();
-			var usertalkpage = new Morebits.wiki.page('User talk:' + initialContrib, "Notifying initial contributor (" + initialContrib + ")");
+			var usertalkpage = new Morebits.wiki.page('ব্যবহারকারী আলাপ:' + initialContrib, "প্রনেতা (" + initialContrib + ")-কে জানানো হচ্ছে");
 			var notifytext = "\n{{subst:RFDNote|1=" + mw.config.get('wgPageName') + "}} ~~~~";
 			usertalkpage.setAppendText(notifytext);
 			usertalkpage.setEditSummary("Notification: listing at [[WP:RFD|redirects for discussion]] of [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
@@ -1416,7 +1416,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 		Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's log";
 
 		// Adding discussion
-		wikipedia_page = new Morebits.wiki.page(logpage, "আজকের তালিকায় আলোচনাটি যুক্ত করা হচ্ছে");
+		wikipedia_page = new Morebits.wiki.page(logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
 		wikipedia_page.setFollowRedirect(true);
 		wikipedia_page.setCallbackParameters({ reason: reason });
 		wikipedia_page.load(Twinkle.xfd.callbacks.tfd.todaysList);
@@ -1458,13 +1458,13 @@ Twinkle.xfd.callback.evaluate = function(e) {
 			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's list";
 
 			// Tagging file
-			wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "Tagging file with PUF tag");
+			wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "ছবিতে PUF ট্যাগ যোগ করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(true);
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.puf.taggingImage);
 
 			// Adding discussion
-			wikipedia_page = new Morebits.wiki.page(params.logpage, "আজকের তালিকায় আলোচনাটি যুক্ত করা হচ্ছে");
+			wikipedia_page = new Morebits.wiki.page(params.logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(true);
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.puf.todaysList);
@@ -1484,7 +1484,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to the discussion page";
 
 			// Tagging file
-			wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "Adding deletion tag to file page");
+			wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "ফাইলে অপসারণ ট্যাগ যোগ করা হচ্ছে");
 			wikipedia_page.setFollowRedirect(true);
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.xfd.callbacks.ffd.taggingImage);
@@ -1524,7 +1524,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 		wikipedia_page.load(Twinkle.xfd.callbacks.cfd.taggingCategory);
 
 		// Adding discussion to list
-		wikipedia_page = new Morebits.wiki.page(logpage, "আজকের তালিকায় আলোচনাটি যুক্ত করা হচ্ছে");
+		wikipedia_page = new Morebits.wiki.page(logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
 		//wikipedia_page.setPageSection(2);
 			// pageSection has been disabled - the API seems to throw up with nonexistent edit conflicts
 			// it can be turned on again once the problem is fixed, to save bandwidth
@@ -1558,7 +1558,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 		wikipedia_page.load(Twinkle.xfd.callbacks.cfds.taggingCategory);
 
 		// Adding discussion to list
-		wikipedia_page = new Morebits.wiki.page(logpage, "তালিকায় আলোচনাটি যুক্ত করা হচ্ছে");
+		wikipedia_page = new Morebits.wiki.page(logpage, "তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
 		wikipedia_page.setCallbackParameters(params);
 		wikipedia_page.load(Twinkle.xfd.callbacks.cfds.addToList);
 
