@@ -224,7 +224,8 @@ Twinkle.config.sections = [
 		}
 	]
 },
-
+/* 
+// disabling module as it is not being used in Bengali Wikipedia
 {
 	title: "Proposed deletion (PROD)",
 	preferences: [
@@ -257,7 +258,7 @@ Twinkle.config.sections = [
 			type: "string"
 		}
 	]
-},
+},*/
 
 {
 	title: "Revert and rollback",  // twinklefluff module
