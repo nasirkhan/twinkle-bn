@@ -614,7 +614,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Welcome user",
+	title: "ব্যবহারকারী স্বাগতম",
 	inFriendlyConfig: true,
 	preferences: [
 		{
