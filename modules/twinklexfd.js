@@ -477,7 +477,7 @@ Twinkle.xfd.callbacks = {
 
 			// Updating data for the action completed event
 			Morebits.wiki.actionCompleted.redirect = apiobj.params.discussionpage;
-			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to the discussion page";
+			Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, now redirecting to the discussion page";
 
 			// Tagging article
 			var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "নিবন্ধে অপসারণ ট্যাগ যুক্ত করা হচ্ছে");
@@ -745,7 +745,7 @@ Twinkle.xfd.callbacks = {
 
 			// Updating data for the action completed event
 			Morebits.wiki.actionCompleted.redirect = apiobj.params.discussionpage;
-			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to the discussion page";
+			Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, now redirecting to the discussion page";
 
 			// Discussion page
 			wikipedia_page = new Morebits.wiki.page(apiobj.params.discussionpage, "Creating deletion discussion page");
@@ -1251,7 +1251,7 @@ Twinkle.xfd.callbacks = {
 
 			// Updating data for the action completed event
 			Morebits.wiki.actionCompleted.redirect = params.logpage;
-			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's log";
+			Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, now redirecting to today's log";
 
 			// Adding discussion
 			wikipedia_page = new Morebits.wiki.page(params.logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
@@ -1413,7 +1413,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 
 		// Updating data for the action completed event
 		Morebits.wiki.actionCompleted.redirect = logpage;
-		Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's log";
+		Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, now redirecting to today's log";
 
 		// Adding discussion
 		wikipedia_page = new Morebits.wiki.page(logpage, "আজকের তালিকায় প্রস্তাবনাটি যুক্ত করা হচ্ছে");
@@ -1439,7 +1439,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 			'apfilterredir': 'nonredirects',
 			'aplimit': Morebits.userIsInGroup( 'sysop' ) ? 5000 : 500
 		};
-		wikipedia_api = new Morebits.wiki.api( "Looking for prior nominations of this page", query, Twinkle.xfd.callbacks.mfd.main );
+		wikipedia_api = new Morebits.wiki.api( "এই পাতার পূর্বের মনোনয়নগুলো খোঁজা হচ্ছে", query, Twinkle.xfd.callbacks.mfd.main );
 		wikipedia_api.params = { usertalk: usertalk, notifyuserspace: notifyuserspace, reason: reason, noinclude: noinclude, xfdcat: xfdcat };
 		wikipedia_api.post();
 		break;
@@ -1455,7 +1455,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 
 			// Updating data for the action completed event
 			Morebits.wiki.actionCompleted.redirect = logpage;
-			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's list";
+			Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, আজকের তালিকায় ফিরিয়ে আনা হচ্ছে";
 
 			// Tagging file
 			wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "ছবিতে PUF ট্যাগ যোগ করা হচ্ছে");
@@ -1481,7 +1481,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 		} else {
 			// Updating data for the action completed event
 			Morebits.wiki.actionCompleted.redirect = logpage;
-			Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to the discussion page";
+			Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, আলাপ পাতায় ফিরিয়ে আনা হচ্ছে";
 
 			// Tagging file
 			wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "ফাইলে অপসারণ ট্যাগ যোগ করা হচ্ছে");
@@ -1516,7 +1516,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 
 		// Updating data for the action completed event
 		Morebits.wiki.actionCompleted.redirect = logpage;
-		Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to today's log";
+		Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, আজকের তালিকায় ফিরিয়ে আনা হচ্ছে";
 
 		// Tagging category
 		wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "বিষয়শ্রেণীতে অপসারণের ট্যাগ যুক্ত করা হচ্ছে");
@@ -1550,7 +1550,7 @@ Twinkle.xfd.callback.evaluate = function(e) {
 
 		// Updating data for the action completed event
 		Morebits.wiki.actionCompleted.redirect = logpage;
-		Morebits.wiki.actionCompleted.notice = "Nomination completed, now redirecting to the discussion page";
+		Morebits.wiki.actionCompleted.notice = "মনোনয়ন সম্মন্ন, আলাপ পাতায় ফিরিয়ে আনা হচ্ছে";
 
 		// Tagging category
 		wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "বিষয়শ্রেণীতে নাম পরিবর্তের ট্যাগ লাগানো হচ্ছে");

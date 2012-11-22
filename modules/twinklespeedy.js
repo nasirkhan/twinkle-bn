@@ -91,7 +91,7 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 						label: 'আলাপ পাতাও অপসারণ করুন',
 						value: 'talkpage',
 						name: 'talkpage',
-						tooltip: "আপনি যদি ইহা নির্বাচন করেন তাহলে  সংশ্লিষ্ট আলাপ পাতাও অপসারণ  হবে। If you choose the F8 (moved to Commons) criterion, this option is ignored and the talk page is *not* deleted.",
+						tooltip: "আপনি যদি ইহা নির্বাচন করেন তাহলে  সংশ্লিষ্ট আলাপ পাতাও অপসারণ  হবে। আপনি যদি কারণ হিসাবে F8 (কমন্সে স্থানান্তর) নির্বাচন করে থাকেন, তাহলে এই অপশনটি কার্যকর হবে না এবং আলাপ পাতারি *অপসারিত হবে না*।",
 						checked: Twinkle.getPref('deleteTalkPageOnDelete'),
 						disabled: Twinkle.getPref('deleteSysopDefaultToTag'),
 						event: function( event ) {
@@ -108,7 +108,7 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 						label: 'সেইসাথে সকল পুনর্নির্দেশনাগুলি অপসারণ কর',
 						value: 'redirects',
 						name: 'redirects',
-						tooltip: "এর মাধ্যমে আপনি সকল পুনর্নির্দেশনাগুলি অপসারণ করতে পারবেন। Avoid this option for procedural (e.g. move/merge) deletions.",
+						tooltip: "এর মাধ্যমে আপনি সকল পুনর্নির্দেশনাগুলি অপসারণ করতে পারবেন। নিয়মিত অপসারণ (যেমন: স্থানান্তর/একীকরণ) এর ক্ষেত্রে এই অপশনটি নির্বাচন না করার পরামর্শ দেয়া হচ্ছে।",
 						checked: Twinkle.getPref('deleteRedirectsOnDelete'),
 						disabled: Twinkle.getPref('deleteSysopDefaultToTag'),
 						event: function( event ) {
@@ -157,7 +157,7 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 	form.append( {
 			type: 'div',
 			name: 'work_area',
-			label: 'Failed to initialize the CSD module. Please try again, or tell the Twinkle developers about the issue.'
+			label: 'দ্রুত অপসারণ মডিউলটি চালু করা যাচ্ছে না, অনুগ্রহ করে টুইংকল ডেভলপারকে জানান।'
 		} );
 
 	if( Twinkle.getPref( 'speedySelectionStyle' ) !== 'radioClick' ) {
@@ -183,12 +183,12 @@ Twinkle.speedy.callback.dbMultipleChanged = function twinklespeedyCallbackDbMult
 	if (checked && Twinkle.getPref('speedySelectionStyle') === 'radioClick') {
 		work_area.append( {
 				type: 'div',
-				label: 'When finished choosing criteria, click:'
+				label: 'বিচার ধারা নির্ধারনের পর ক্লিক করুন:'
 			} );
 		work_area.append( {
 				type: 'button',
 				name: 'submit-multiple',
-				label: 'Submit Query',
+				label: 'কার্যকর করুন',
 				event: function( event ) {
 					Twinkle.speedy.callback.evaluateUser( event );
 					event.stopPropagation();
@@ -286,7 +286,7 @@ Twinkle.speedy.getFileList = function twinklespeedyGetFileList(multiple) {
 	result.push({
 		label: 'ফ৩:লাইসেন্স তথ্য  সঠিক নয়',
 		value: 'noncom',
-		tooltip: 'Files licensed as "for non-commercial use only", "non-derivative use" or "used with permission" that were uploaded on or after 2005-05-19, except where they have been shown to comply with the limited standards for the use of non-free content. This includes files licensed under a "Non-commercial Creative Commons License". Such files uploaded before 2005-05-19 may also be speedily deleted if they are not used in any articles'
+		tooltip: '"for non-commercial use only", "non-derivative use" অথবা "used with permission" that were uploaded on or after 2005-05-19, except where they have been shown to comply with the limited standards for the use of non-free content. This includes files licensed under a "Non-commercial Creative Commons License". Such files uploaded before 2005-05-19 may also be speedily deleted if they are not used in any articles'
 	});
 	if (Morebits.userIsInGroup('sysop')) {
 		result.push({
@@ -798,7 +798,7 @@ Twinkle.speedy.callbacks = {
 			if( mw.config.get('wgNamespaceNumber') === 6 && params.normalized !== 'f8' ) {
 				$link = $('<a/>', {
 					'href': '#',
-					'text': 'click here to go to the Unlink tool',
+					'text': 'Unlink টুল ব্যবহারের জন্য এখানে ক্লিক করুন',
 					'css': { 'fontSize': '130%', 'fontWeight': 'bold' },
 					'click': function(){
 						Morebits.wiki.actionCompleted.redirect = null;
@@ -814,7 +814,7 @@ Twinkle.speedy.callbacks = {
 			} else if (params.normalized !== 'f8') {
 				$link = $('<a/>', {
 					'href': '#',
-					'text': 'click here to go to the Unlink tool',
+					'text': 'Unlink টুল ব্যবহারের জন্য এখানে ক্লিক করুন',
 					'css': { 'fontSize': '130%', 'fontWeight': 'bold' },
 					'click': function(){
 						Morebits.wiki.actionCompleted.redirect = null;
@@ -845,8 +845,8 @@ Twinkle.speedy.callbacks = {
 					'bltitle': mw.config.get('wgPageName'),
 					'bllimit': 5000  // 500 is max for normal users, 5000 for bots and sysops
 				};
-				var wikipedia_api = new Morebits.wiki.api( 'getting list of redirects...', query, Twinkle.speedy.callbacks.sysop.deleteRedirectsMain,
-					new Morebits.status( 'Deleting redirects' ) );
+				var wikipedia_api = new Morebits.wiki.api( 'পুনঃনির্দেশগুলো তালিকা তৈরী করা হচ্ছে...', query, Twinkle.speedy.callbacks.sysop.deleteRedirectsMain,
+					new Morebits.status( 'পুনঃনির্দেশগুলো অপসারণ করা হচ্ছে' ) );
 				wikipedia_api.params = params;
 				wikipedia_api.post();
 			}
@@ -854,7 +854,7 @@ Twinkle.speedy.callbacks = {
 		openUserTalkPage: function( pageobj ) {
 			pageobj.getStatusElement().unlink();  // don't need it anymore
 			var user = pageobj.getCreator();
-			var statusIndicator = new Morebits.status('Opening user talk page edit form for ' + user, 'opening...');
+			var statusIndicator = new Morebits.status('ব্যবহারকারী ' + user, 'এর আলাপ পাতা খোলা হচ্ছে...');
 
 			var query = {
 				'title': 'User talk:' + user,
@@ -912,7 +912,7 @@ Twinkle.speedy.callbacks = {
 
 			$snapshot.each(function(key, value) {
 				var title = $(value).attr('title');
-				var page = new Morebits.wiki.page(title, 'Deleting redirect "' + title + '"');
+				var page = new Morebits.wiki.page(title, 'পুনঃনির্দেশ "' + title + '" অপসারিত হচ্ছে');
 				page.setEditSummary('[[WP:CSD#G8|G8]]: Redirect to deleted page "' + mw.config.get('wgPageName') + '"' + Twinkle.getPref('deletionSummaryAd'));
 				page.deletePage(onsuccess);
 			});
@@ -928,7 +928,7 @@ Twinkle.speedy.callbacks = {
 			var statelem = pageobj.getStatusElement();
 
 			if (!pageobj.exists()) {
-				statelem.error( "It seems that the page doesn't exist; perhaps it has already been deleted" );
+				statelem.error( "এই নামে কোনো পাতা নেই; হয়তো এটি পূর্বে অপসারিত হয়েছে" );
 				return;
 			}
 
@@ -1175,7 +1175,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var dbrationale = prompt('Please enter a mandatory rationale.   \n\"This page qualifies for speedy deletion because:\"', "");
 			if (!dbrationale || !dbrationale.replace(/^\s*/, "").replace(/\s*$/, ""))
 			{
-				statelem.error( 'You must specify a rationale.  Aborted by user.' );
+				statelem.error( 'আপনাকে অবশ্যই একটি বিচারধারা নির্বাচন করতে হবে। ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			parameters["1"] = dbrationale;
@@ -1186,7 +1186,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 				var u1rationale = prompt('[CSD U1] Please provide a mandatory rationale to explain why this user talk page should be deleted:', "");
 				if (!u1rationale || !u1rationale.replace(/^\s*/, "").replace(/\s*$/, ""))
 				{
-					statelem.error( 'You must specify a rationale.  Aborted by user.' );
+					statelem.error( 'আপনাকে অবশ্যই একটি বিচারধারা নির্বাচন করতে হবে। ব্যবহারকারি বাতিল করেছেন।' );
 					return null;
 				}
 				parameters.rationale = u1rationale;
@@ -1197,7 +1197,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			var filename = prompt( '[CSD F8] Please enter the name of the file on Commons:', pagenamespaces );
 			if (filename === null)
 			{
-				statelem.error( 'Aborted by user.' );
+				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 				return null;
 			}
 			if (filename !== '' && filename !== pagenamespaces)
@@ -1410,7 +1410,7 @@ Twinkle.speedy.getUserTalkParameters = function twinklespeedyGetUserTalkParamete
 Twinkle.speedy.resolveCsdValues = function twinklespeedyResolveCsdValues(e) {
 	var values = (e.target.form ? e.target.form : e.target).getChecked('csd');
 	if (values.length === 0) {
-		alert( "Please select a criterion!" );
+		alert( "অনুগ্রহ করে একটি বিচারধারা নির্বচন করুন!" );
 		return null;
 	}
 	return values;
@@ -1530,9 +1530,9 @@ Twinkle.speedy.callback.evaluateUser = function twinklespeedyCallbackEvaluateUse
 	Morebits.status.init( form );
 
 	Morebits.wiki.actionCompleted.redirect = mw.config.get('wgPageName');
-	Morebits.wiki.actionCompleted.notice = "Tagging complete";
+	Morebits.wiki.actionCompleted.notice = "ট্যাগ সংযোজন সম্পন্ন";
 
-	var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "Tagging page");
+	var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "ট্যাগ সংযোজন করা হচ্ছে");
 	wikipedia_page.setCallbackParameters(params);
 	wikipedia_page.load(Twinkle.speedy.callbacks.user.main);
 };
