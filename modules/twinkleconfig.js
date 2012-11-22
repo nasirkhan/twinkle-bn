@@ -17,13 +17,13 @@
 Twinkle.config = {};
 
 Twinkle.config.commonEnums = {
-	watchlist: { yes: "Add to watchlist", no: "Don't add to watchlist", "default": "Follow your site preferences" },
-	talkPageMode: { window: "In a window, replacing other user talks", tab: "In a new tab", blank: "In a totally new window" }
+	watchlist: { yes: "নজরতালিকায় অন্তরভুক্ত করুন", no: "নজরতালিকায় তালিকাভুক্ত করবেন না", "default": "সাইটের পছন্দসমূহ অনুযায়ী" },
+	talkPageMode: { window: "নতুন উইন্ডোতে, পূর্বের ব্যবহারকারী আলাপ পাতা প্রতিস্থাপন", tab: "নতুন ট্যাবে", blank: "নতুন উইন্ডোতে" }
 };
 
 Twinkle.config.commonSets = {
 	csdCriteria: {
-		db: "Custom rationale ({{db}})",
+		db: "বিশেষ বিচারধারা ({{db}})",
 		g1: "G1", g2: "G2", g3: "G3", g4: "G4", g5: "G5", g6: "G6", g7: "G7", g8: "G8", g10: "G10", g11: "G11", g12: "G12",
 		a1: "A1", a2: "A2", a3: "A3", a5: "A5", a7: "A7", a9: "A9", a10: "A10",
 		u1: "U1", u2: "U2", u3: "U3",
@@ -45,7 +45,7 @@ Twinkle.config.commonSets = {
 		"p1", "p2"
 	],
 	csdCriteriaNotification: {
-		db: "Custom rationale ({{db}})",
+		db: "সাধারন বিচারধারা ({{db}})",
 		g1: "G1", g2: "G2", g3: "G3", g4: "G4", g6: 'G6 ("unnecessary disambig." and "copy-paste move" only)',
 		g10: "G10", g11: "G11", g12: "G12",
 		a1: "A1", a2: "A2", a3: "A3", a5: "A5", a7: "A7", a9: "A9", a10: "A10",
@@ -68,7 +68,7 @@ Twinkle.config.commonSets = {
 		"p1", "p2"
 	],
 	csdAndDICriteria: {
-		db: "Custom rationale ({{db}})",
+		db: "বিশেষ বিচারধারা ({{db}})",
 		g1: "G1", g2: "G2", g3: "G3", g4: "G4", g5: "G5", g6: "G6", g7: "G7", g8: "G8", g10: "G10", g11: "G11", g12: "G12",
 		a1: "A1", a2: "A2", a3: "A3", a5: "A5", a7: "A7", a9: "A9", a10: "A10",
 		u1: "U1", u2: "U2", u3: "U3",
@@ -90,26 +90,26 @@ Twinkle.config.commonSets = {
 		"p1", "p2"
 	],
 	namespacesNoSpecial: {
-		"0": "Article",
-		"1": "Talk (article)",
-		"2": "User",
-		"3": "User talk",
-		"4": "Wikipedia",
-		"5": "Wikipedia talk",
-		"6": "File",
-		"7": "File talk",
-		"8": "MediaWiki",
-		"9": "MediaWiki talk",
-		"10": "Template",
-		"11": "Template talk",
-		"12": "Help",
-		"13": "Help talk",
-		"14": "Category",
-		"15": "Category talk",
-		"100": "Portal",
-		"101": "Portal talk",
+		"0": "নিবন্ধ",
+		"1": "আলাপ (নিবন্ধ)",
+		"2": "ব্যবহারকারী",
+		"3": "ব্যবহারকারী আলাপ",
+		"4": "উইকিপিডিয়া",
+		"5": "উইকিপিডিয়া আলাপ",
+		"6": "ফাইল",
+		"7": "ফাইল আলাপ",
+		"8": "মিডিয়াউইকি",
+		"9": "মিডিয়াউইকি আলাপ",
+		"10": "টেমপ্লেট",
+		"11": "টেমপ্লেট আলাপ",
+		"12": "সাহায্য",
+		"13": "সাহায্য আলাপ",
+		"14": "বিষয়শ্রেণী",
+		"15": "বিষয়শ্রেণী আলাপ",
+		"100": "প্রবেশদ্বার",
+		"101": "প্রবেশদ্বার আলাপ",
 		"108": "Book",
-		"109": "Book talk"
+		"109": "Book আলাপ"
 	}
 };
 
@@ -143,7 +143,7 @@ Twinkle.config.commonSets = {
 
 Twinkle.config.sections = [
 {
-	title: "General",
+	title: "সাধারণ",
 	preferences: [
 		// TwinkleConfig.summaryAd (string)
 		// Text to be appended to the edit summary of edits made using Twinkle
@@ -195,7 +195,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Image deletion (DI)",
+	title: "ছবি অপসারণ (DI)",
 	preferences: [
 		// TwinkleConfig.notifyUserOnDeli (boolean)
 		// If the user should be notified after placing a file deletion tag
@@ -261,7 +261,7 @@ Twinkle.config.sections = [
 },*/
 
 {
-	title: "Revert and rollback",  // twinklefluff module
+	title: "রিভার্ট এবং রোলব্যাক",  // twinklefluff module
 	preferences: [
 		// TwinkleConfig.openTalkPage (array)
 		// What types of actions that should result in opening of talk page
@@ -328,7 +328,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Shared IP tagging",
+	title: "শেয়ার্ড আইপি ট্যাগ করা",
 	inFriendlyConfig: true,
 	preferences: [
 		{
@@ -340,7 +340,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Speedy deletion (CSD)",
+	title: "দ্রুত অপসারণ (CSD)",
 	preferences: [
 		{
 			name: "speedySelectionStyle",
@@ -482,7 +482,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Tag",
+	title: "ট্যাগ",
 	inFriendlyConfig: true,
 	preferences: [
 		{
@@ -524,7 +524,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Talkback",
+	title: "ফিরতি বার্তা",
 	inFriendlyConfig: true,
 	preferences: [
 		{
@@ -659,7 +659,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "XFD (deletion discussions)",
+	title: "XFD (অপসারণ প্রস্তাবনা)",
 	preferences: [
 		// TwinkleConfig.xfdWatchPage (string)
 		// The watchlist setting of the page being nominated for XfD. Either "yes" (add to watchlist), "no" (don't
@@ -708,7 +708,7 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Hidden",
+	title: "লুকানো",
 	hidden: true,
 	preferences: [
 		// twinkle.header.js: portlet setup
@@ -1101,7 +1101,7 @@ Twinkle.config.init = function twinkleconfigInit() {
 						resetlink.style.cssFloat = "right";
 					}
 					resetlink.style.margin = "0 0.6em";
-					resetlink.appendChild(document.createTextNode("Reset"));
+					resetlink.appendChild(document.createTextNode("রিসেট"));
 					cell.appendChild(resetlink);
 				}
 				row.appendChild(cell);
@@ -1129,7 +1129,7 @@ Twinkle.config.init = function twinkleconfigInit() {
 		footera.setAttribute("href", "#tw-reset-all");
 		footera.setAttribute("id", "twinkle-config-resetall");
 		footera.addEventListener("click", Twinkle.config.resetAllPrefs, false);
-		footera.appendChild(document.createTextNode("Restore defaults"));
+		footera.appendChild(document.createTextNode("ডিফল্ট সেটিংস ব্যবহার"));
 		footerspan.appendChild(footera);
 		footerbox.appendChild(footerspan);
 		contentform.appendChild(footerbox);
@@ -1157,15 +1157,15 @@ Twinkle.config.init = function twinkleconfigInit() {
 			box.style.borderWidth = "2px";
 
 			if (mw.config.get("wgArticleId") > 0) {  // page exists
-				box.appendChild(document.createTextNode("This page contains your Twinkle preferences. You can change them using the "));
+				box.appendChild(document.createTextNode("এই পাতায় আপনার টুইংকলের পছন্দসমূহ দেখানো হচ্ছে। আপনি এটি পরিবর্তন করতে পারবেন "));
 			} else {  // page does not exist
-				box.appendChild(document.createTextNode("You can customize Twinkle to suit your preferences by using the "));
+				box.appendChild(document.createTextNode("টুইংকলে আপনার পছন্দসমূহ নির্ধারণ করতে পারবেন "));
 			}
 			link = document.createElement("a");
 			link.setAttribute("href", mw.util.wikiGetlink(mw.config.get("wgFormattedNamespaces")[mw.config.get("wgNamespaceIds").project] + ":Twinkle/Preferences") );
-			link.appendChild(document.createTextNode("Twinkle preferences panel"));
+			link.appendChild(document.createTextNode("টুইংকল পছন্দসমূহ প্যানেল থেকে"));
 			box.appendChild(link);
-			box.appendChild(document.createTextNode(", or by editing this page."));
+			box.appendChild(document.createTextNode(", অথবা এই পাতা সম্পাদনার মাধ্যমে।"));
 			$(box).insertAfter($("#contentSub"));
 
 		} else if (mw.config.get("wgTitle").indexOf(mw.config.get("wgUserName")) === 0 &&
@@ -1173,10 +1173,10 @@ Twinkle.config.init = function twinkleconfigInit() {
 			// place "Looking for Twinkle options?" notice
 			box.style.width = "60%";
 
-			box.appendChild(document.createTextNode("If you want to set Twinkle preferences, you can use the "));
+			box.appendChild(document.createTextNode("টুইংকলে আপনার পছন্দসমূহ পরিবর্তন করতে চান, তাহলে ব্যবহার করুন "));
 			link = document.createElement("a");
 			link.setAttribute("href", mw.util.wikiGetlink(mw.config.get("wgFormattedNamespaces")[mw.config.get("wgNamespaceIds").project] + ":Twinkle/Preferences") );
-			link.appendChild(document.createTextNode("Twinkle preferences panel"));
+			link.appendChild(document.createTextNode("টুইংকল পছন্দসমূহ প্যানেল"));
 			box.appendChild(link);
 			box.appendChild(document.createTextNode("."));
 			$(box).insertAfter($("#contentSub"));
@@ -1210,7 +1210,7 @@ Twinkle.config.listDialog.addRow = function twinkleconfigListDialogAddRow(dlgtab
 	var removeButton = document.createElement("button");
 	removeButton.setAttribute("type", "button");
 	removeButton.addEventListener("click", function() { $(contenttr).remove(); }, false);
-	removeButton.textContent = "Remove";
+	removeButton.textContent = "অপসারণ";
 	contenttd.appendChild(removeButton);
 	contenttr.appendChild(contenttd);
 
@@ -1314,21 +1314,21 @@ Twinkle.config.listDialog.display = function twinkleconfigListDialogDisplay(e) {
 		Twinkle.config.listDialog.save($prefbutton, dlgtbody);
 		dialog.close();
 	}, false);
-	button.textContent = "Save changes";
+	button.textContent = "পরিবর্তন সংরক্ষন";
 	dialogcontent.appendChild(button);
 	button = document.createElement("button");
 	button.setAttribute("type", "submit");  // so Morebits.simpleWindow puts the button in the button pane
 	button.addEventListener("click", function(e) {
 		Twinkle.config.listDialog.reset($prefbutton, dlgtbody);
 	}, false);
-	button.textContent = "Reset";
+	button.textContent = "রিসেট";
 	dialogcontent.appendChild(button);
 	button = document.createElement("button");
 	button.setAttribute("type", "submit");  // so Morebits.simpleWindow puts the button in the button pane
 	button.addEventListener("click", function(e) {
 		dialog.close();  // the event parameter on this function seems to be broken
 	}, false);
-	button.textContent = "Cancel";
+	button.textContent = "বাতিল";
 	dialogcontent.appendChild(button);
 
 	dialog.setContent(dialogcontent);
@@ -1457,10 +1457,10 @@ Twinkle.config.resetAllPrefs = function twinkleconfigResetAllPrefs() {
 Twinkle.config.save = function twinkleconfigSave(e) {
 	Morebits.status.init( document.getElementById("twinkle-config-content") );
 
-	Morebits.wiki.actionCompleted.notice = "Save";
+	Morebits.wiki.actionCompleted.notice = "সংরক্ষণ";
 
 	var userjs = mw.config.get("wgFormattedNamespaces")[mw.config.get("wgNamespaceIds").user] + ":" + mw.config.get("wgUserName") + "/twinkleoptions.js";
-	var wikipedia_page = new Morebits.wiki.page(userjs, "Saving preferences to " + userjs);
+	var wikipedia_page = new Morebits.wiki.page(userjs, userjs + " পাতায় পছন্দসমূহ সংরক্ষন করা হচ্ছে ");
 	wikipedia_page.setCallbackParameters(e.target);
 	wikipedia_page.load(Twinkle.config.writePrefs);
 
@@ -1684,8 +1684,8 @@ Twinkle.config.writePrefs = function twinkleconfigWritePrefs(pageobj) {
 	var text =
 		"// twinkleoptions.js: personal Twinkle preferences file\n" +
 		"//\n" +
-		"// NOTE: The easiest way to change your Twinkle preferences is by using the\n" +
-		"// Twinkle preferences panel, at [[" + mw.config.get("wgPageName") + "]].\n" +
+		"// খেয়াল করুন: টুইংকলের পছন্দসমূহ পরিবর্তনের সব থেকে সহজ পদ্ধতি হল\n" +
+		"// Twinkle preferences panel: [[" + mw.config.get("wgPageName") + "]].\n" +
 		"//\n" +
 		"// This file is AUTOMATICALLY GENERATED.  Any changes you make (aside from\n" +
 		"// changing the configuration parameters in a valid-JavaScript way) will be\n" +
@@ -1700,7 +1700,7 @@ Twinkle.config.writePrefs = function twinkleconfigWritePrefs(pageobj) {
 		"// End of twinkleoptions.js\n";
 
 	pageobj.setPageText(text);
-	pageobj.setEditSummary("Saving Twinkle preferences: automatic edit from [[" + mw.config.get("wgPageName") + "]] ([[WP:TW|TW]])");
+	pageobj.setEditSummary("টুইংকল পছন্দসমূহ সংরক্ষিত হচ্ছে: [[" + mw.config.get("wgPageName") + "]] থেকে সংস্ক্রিয় সম্পাদনা ([[WP:TW|TW]])");
 	pageobj.setCreateOption("recreate");
 	pageobj.save(Twinkle.config.saveSuccess);
 };
@@ -1712,7 +1712,7 @@ Twinkle.config.saveSuccess = function twinkleconfigSaveSuccess(pageobj) {
 	noticebox.className = "successbox";
 	noticebox.style.fontSize = "100%";
 	noticebox.style.marginTop = "2em";
-	noticebox.innerHTML = "<p><b>Your Twinkle preferences have been saved.</b></p><p>To see the changes, you will need to <b>clear your browser cache entirely</b> (see <a href=\"" + mw.util.wikiGetlink("WP:BYPASS") + "\" title=\"WP:BYPASS\">WP:BYPASS</a> for instructions).</p>";
+	noticebox.innerHTML = "<p><b>আপনার টুইংকলের পছন্দসমূহ সংরক্ষন করা হয়েছে।</b></p><p>পরিবর্তনগুলো কার্যকর করার জন্য আপনার ব্রাউজারের ক্যাশ পরিষ্কার করাতে হবে</b> (বিস্তারিত দেখুন এখানে <a href=\"" + mw.util.wikiGetlink("WP:BYPASS") + "\" title=\"WP:BYPASS\">WP:BYPASS</a>)।</p>";
 	Morebits.status.root.appendChild(noticebox);
 	var noticeclear = document.createElement("br");
 	noticeclear.style.clear = "both";
