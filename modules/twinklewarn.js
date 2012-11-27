@@ -30,7 +30,7 @@ Twinkle.warn = function twinklewarn() {
 
 Twinkle.warn.callback = function twinklewarnCallback() {
 	if ( !twinkleUserAuthorized ) {
-		alert("Your account is too new to use Twinkle.");
+		alert("নবাগত, আপনার আপনার অ্যাকাউন্ট টুইংকল ব্যবহারের উপযোগী নয়।");
 		return;
 	}
 	if( mw.config.get('wgTitle').split( '/' )[0] === mw.config.get('wgUserName') &&
@@ -114,39 +114,39 @@ Twinkle.warn.messages = {
 	level1: {
 		"uw-vandalism1": {
 			label:"ধ্বংশপ্রবণতা",
-			summary:"সাধারণ নোটিশ: Nonconstructive editing"
+			summary:"সাধারণ নোটিশ: অগঠনমূলক সম্পাদনা"
 		},
 		"uw-test1": {
-			label:"Editing tests",
-			summary:"সাধারণ নোটিশ: Editing tests"
+			label:"পরীক্ষামূলক সম্পাদনা",
+			summary:"সাধারণ নোটিশ: পরীক্ষামূলক সম্পাদনা"
 		},
 		"uw-delete1": {
-			label:"Removal of content, blanking",
-			summary:"সাধারণ নোটিশ: Removal of content, blanking"
+			label:"তথ্য অপসারণ, পাতা খালি করা",
+			summary:"সাধারণ নোটিশ: তথ্য অপসারণ, পাতা খালি করা"
 		},
 		"uw-redirect1": { 
-			label:"Creating malicious redirects", 
-			summary:"সাধারণ নোটিশ: Creating malicious redirects" 
+			label:"ক্ষতিকর পুনঃনির্দেশ তৈরী", 
+			summary:"সাধারণ নোটিশ: ক্ষতিকর পুনঃনির্দেশ তৈরী" 
 		},
 		"uw-tdel1": { 
-			label:"Removal of maintenance templates", 
-			summary:"সাধারণ নোটিশ: Removal of maintenance templates" 
+			label:"রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ", 
+			summary:"সাধারণ নোটিশ: রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ" 
 		},
 		"uw-joke1": { 
-			label:"Using improper humor", 
-			summary:"সাধারণ নোটিশ: Using improper humor" 
+			label:"কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা", 
+			summary:"সাধারণ নোটিশ: কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা" 
 		},
 		"uw-create1": { 
-			label:"Creating inappropriate pages", 
-			summary:"সাধারণ নোটিশ: Creating inappropriate pages" 
+			label:"ভুল পাতা তৈরী", 
+			summary:"সাধারণ নোটিশ: ভুল পাতা তৈরী" 
 		},
 		"uw-upload1": { 
-			label:"Uploading unencyclopedic images", 
-			summary:"সাধারণ নোটিশ: Uploading unencyclopedic images" 
+			label:"অবিশ্বকোষীয় ছবি আপলোড", 
+			summary:"সাধারণ নোটিশ: অবিশ্বকোষীয় ছবি আপলোড" 
 		},
 		"uw-image1": { 
-			label:"Image-related vandalism", 
-			summary:"সাধারণ নোটিশ: Image-related vandalism" 
+			label:"ছবি সম্পর্কিত ধ্বংশপ্রবণতা", 
+			summary:"সাধারণ নোটিশ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics1": { 
 			label:"Uploading files missing copyright status", 
@@ -243,40 +243,40 @@ Twinkle.warn.messages = {
 	},
 	level2: {
 		"uw-vandalism2": { 
-			label:"Vandalism", 
-			summary:"প্রাথমিক সতর্কীকরণ: Vandalism" 
+			label:"ধ্বংশপ্রবণতা", 
+			summary:"প্রাথমিক সতর্কীকরণ: ধ্বংশপ্রবণতা" 
 		},
 		"uw-test2": { 
-			label:"Editing tests", 
-			summary:"প্রাথমিক সতর্কীকরণ: Editing tests" 
+			label:"পরীক্ষামূলক সম্পাদনা", 
+			summary:"প্রাথমিক সতর্কীকরণ: পরীক্ষামূলক সম্পাদনা" 
 		},
 		"uw-delete2": { 
-			label:"Removal of content, blanking",
-			summary:"প্রাথমিক সতর্কীকরণ: Removal of content, blanking"
+			label:"তথ্য অপসারণ, পাতা খালি করা",
+			summary:"প্রাথমিক সতর্কীকরণ: তথ্য অপসারণ, পাতা খালি করা"
 		},
 		"uw-redirect2": { 
-			label:"Creating malicious redirects", 
-			summary:"প্রাথমিক সতর্কীকরণ: Creating malicious redirects" 
+			label:"ক্ষতিকর পুনঃনির্দেশ তৈরী", 
+			summary:"প্রাথমিক সতর্কীকরণ: ক্ষতিকর পুনঃনির্দেশ তৈরী" 
 		},
 		"uw-tdel2": { 
-			label:"Removal of maintenance templates", 
-			summary:"প্রাথমিক সতর্কীকরণ: Removal of maintenance templates" 
+			label:"রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ", 
+			summary:"প্রাথমিক সতর্কীকরণ: রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ" 
 		},
 		"uw-joke2": { 
-			label:"Using improper humor", 
-			summary:"প্রাথমিক সতর্কীকরণ: Using improper humor" 
+			label:"কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা", 
+			summary:"প্রাথমিক সতর্কীকরণ: কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা" 
 		},
 		"uw-create2": { 
-			label:"Creating inappropriate pages", 
-			summary:"প্রাথমিক সতর্কীকরণ: Creating inappropriate pages" 
+			label:"ভুল পাতা তৈরী", 
+			summary:"প্রাথমিক সতর্কীকরণ: ভুল পাতা তৈরী" 
 		},
 		"uw-upload2": { 
-			label:"Uploading unencyclopedic images", 
-			summary:"প্রাথমিক সতর্কীকরণ: Uploading unencyclopedic images" 
+			label:"অবিশ্বকোষীয় ছবি আপলোড", 
+			summary:"প্রাথমিক সতর্কীকরণ: অবিশ্বকোষীয় ছবি আপলোড" 
 		},
 		"uw-image2": { 
-			label:"Image-related vandalism", 
-			summary:"প্রাথমিক সতর্কীকরণ: Image-related vandalism" 
+			label:"ছবি সম্পর্কিত ধ্বংশপ্রবণতা", 
+			summary:"প্রাথমিক সতর্কীকরণ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics2": { 
 			label:"Uploading files missing copyright status", 
@@ -373,40 +373,40 @@ Twinkle.warn.messages = {
 	},
 	level3: {
 		"uw-vandalism3": { 
-			label:"Vandalism", 
-			summary:"সতর্কীকরণ: Vandalism" 
+			label:"ধ্বংশপ্রবণতা", 
+			summary:"সতর্কীকরণ: ধ্বংশপ্রবণতা" 
 		},
 		"uw-test3": { 
-			label:"Editing tests", 
-			summary:"সতর্কীকরণ: Editing tests" 
+			label:"পরীক্ষামূলক সম্পাদনা", 
+			summary:"সতর্কীকরণ: পরীক্ষামূলক সম্পাদনা" 
 		},
 		"uw-delete3": { 
-			label:"Removal of content, blanking", 
-			summary:"সতর্কীকরণ: Removal of content, blanking"
+			label:"তথ্য অপসারণ, পাতা খালি করা", 
+			summary:"সতর্কীকরণ: তথ্য অপসারণ, পাতা খালি করা"
 		},
 		"uw-redirect3": { 
-			label:"Creating malicious redirects", 
-			summary:"সতর্কীকরণ: Creating malicious redirects" 
+			label:"ক্ষতিকর পুনঃনির্দেশ তৈরী", 
+			summary:"সতর্কীকরণ: ক্ষতিকর পুনঃনির্দেশ তৈরী" 
 		},
 		"uw-tdel3": { 
-			label:"Removal of maintenance templates", 
-			summary:"সতর্কীকরণ: Removal of maintenance templates" 
+			label:"রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ", 
+			summary:"সতর্কীকরণ: রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ" 
 		},
 		"uw-joke3": { 
-			label:"Using improper humor", 
-			summary:"সতর্কীকরণ: Using improper humor" 
+			label:"কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা", 
+			summary:"সতর্কীকরণ: কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা" 
 		},
 		"uw-create3": { 
-			label:"Creating inappropriate pages", 
-			summary:"সতর্কীকরণ: Creating inappropriate pages" 
+			label:"ভুল পাতা তৈরী", 
+			summary:"সতর্কীকরণ: ভুল পাতা তৈরী" 
 		},
 		"uw-upload3": { 
-			label:"Uploading unencyclopedic images", 
-			summary:"সতর্কীকরণ: Uploading unencyclopedic images" 
+			label:"অবিশ্বকোষীয় ছবি আপলোড", 
+			summary:"সতর্কীকরণ: অবিশ্বকোষীয় ছবি আপলোড" 
 		},
 		"uw-image3": { 
-			label:"Image-related vandalism", 
-			summary:"সতর্কীকরণ: Image-related vandalism" 
+			label:"ছবি সম্পর্কিত ধ্বংশপ্রবণতা", 
+			summary:"সতর্কীকরণ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics3": { 
 			label:"Uploading files missing copyright status", 
@@ -504,40 +504,40 @@ Twinkle.warn.messages = {
 			summary:"সর্বশেষ সতর্কীকরণ নোটিশ" 
 		},
 		"uw-vandalism4": { 
-			label:"Vandalism", 
-			summary:"সর্বশেষ সতর্কীকরণ: Vandalism" 
+			label:"ধ্বংশপ্রবণতা", 
+			summary:"সর্বশেষ সতর্কীকরণ: ধ্বংশপ্রবণতা" 
 		},
 		"uw-test4": { 
-			label:"Editing tests", 
-			summary:"সর্বশেষ সতর্কীকরণ: Editing tests" 
+			label:"পরীক্ষামূলক সম্পাদনা", 
+			summary:"সর্বশেষ সতর্কীকরণ: পরীক্ষামূলক সম্পাদনা" 
 		},
 		"uw-delete4": { 
-			label:"Removal of content, blanking", 
-			summary:"সর্বশেষ সতর্কীকরণ: Removal of content, blanking" 
+			label:"তথ্য অপসারণ, পাতা খালি করা", 
+			summary:"সর্বশেষ সতর্কীকরণ: তথ্য অপসারণ, পাতা খালি করা" 
 		},
 		"uw-redirect4": { 
-			label:"Creating malicious redirects", 
-			summary:"সর্বশেষ সতর্কীকরণ: Creating malicious redirects" 
+			label:"ক্ষতিকর পুনঃনির্দেশ তৈরী", 
+			summary:"সর্বশেষ সতর্কীকরণ: ক্ষতিকর পুনঃনির্দেশ তৈরী" 
 		},
 		"uw-tdel4": { 
-			label:"Removal of maintenance templates", 
-			summary:"সর্বশেষ সতর্কীকরণ: Removal of maintenance templates" 
+			label:"রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ", 
+			summary:"সর্বশেষ সতর্কীকরণ: রক্ষনাবেক্ষণ টেমপ্লেট অপসারণ" 
 		},
 		"uw-joke4": { 
-			label:"Using improper humor", 
-			summary:"সর্বশেষ সতর্কীকরণ: Using improper humor" 
+			label:"কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা", 
+			summary:"সর্বশেষ সতর্কীকরণ: কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা" 
 		},
 		"uw-create4": { 
-			label:"Creating inappropriate pages", 
-			summary:"সর্বশেষ সতর্কীকরণ: Creating inappropriate pages" 
+			label:"ভুল পাতা তৈরী", 
+			summary:"সর্বশেষ সতর্কীকরণ: ভুল পাতা তৈরী" 
 		},
 		"uw-upload4": { 
-			label:"Uploading unencyclopedic images", 
-			summary:"সর্বশেষ সতর্কীকরণ: Uploading unencyclopedic images" 
+			label:"অবিশ্বকোষীয় ছবি আপলোড", 
+			summary:"সর্বশেষ সতর্কীকরণ: অবিশ্বকোষীয় ছবি আপলোড" 
 		},
 		"uw-image4": { 
-			label:"Image-related vandalism", 
-			summary:"সর্বশেষ সতর্কীকরণ: Image-related vandalism" 
+			label:"ছবি সম্পর্কিত ধ্বংশপ্রবণতা", 
+			summary:"সর্বশেষ সতর্কীকরণ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics4": { 
 			label:"Uploading files missing copyright status", 
@@ -615,32 +615,32 @@ Twinkle.warn.messages = {
 	},
 	level4im: {
 		"uw-vandalism4im": { 
-			label:"Vandalism", 
-			summary:"Only warning: Vandalism" 
+			label:"ধ্বংশপ্রবণতা", 
+			summary:"Only warning: ধ্বংশপ্রবণতা" 
 		},
 		"uw-delete4im": { 
-			label:"Removal of content, blanking", 
-			summary:"Only warning: Removal of content, blanking" 
+			label:"তথ্য অপসারণ, পাতা খালি করা", 
+			summary:"Only warning: তথ্য অপসারণ, পাতা খালি করা" 
 		},
 		"uw-redirect4im": { 
-			label:"Creating malicious redirects", 
-			summary:"Only warning: Creating malicious redirects" 
+			label:"ক্ষতিকর পুনঃনির্দেশ তৈরী", 
+			summary:"Only warning: ক্ষতিকর পুনঃনির্দেশ তৈরী" 
 		},
 		"uw-joke4im": { 
-			label:"Using improper humor", 
-			summary:"Only warning: Using improper humor" 
+			label:"কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা", 
+			summary:"Only warning: কৌতুকপূর্ণ অথবা ব্যাঙ্গাত্বক সম্পাদনা" 
 		},
 		"uw-create4im": { 
-			label:"Creating inappropriate pages", 
-			summary:"Only warning: Creating inappropriate pages" 
+			label:"ভুল পাতা তৈরী", 
+			summary:"Only warning: ভুল পাতা তৈরী" 
 		},
 		"uw-upload4im": { 
-			label:"Uploading unencyclopedic images", 
-			summary:"Only warning: Uploading unencyclopedic images" 
+			label:"অবিশ্বকোষীয় ছবি আপলোড", 
+			summary:"Only warning: অবিশ্বকোষীয় ছবি আপলোড" 
 		},
 		"uw-image4im": { 
-			label:"Image-related vandalism", 
-			summary:"Only warning: Image-related vandalism" 
+			label:"ছবি সম্পর্কিত ধ্বংশপ্রবণতা", 
+			summary:"Only warning: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-spam4im": { 
 			label:"Adding spam links", 

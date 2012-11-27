@@ -530,7 +530,7 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 	});
 	if (!multiple) {
 		result.push({
-			label: 'স৬:ইতিহাস একিকরণ',
+			label: 'স৬:ইতিহাস একীকরণ',
 			value: 'histmerge',
 			tooltip: 'Temporarily deleting a page in order to merge page histories'
 		});
@@ -935,7 +935,7 @@ Twinkle.speedy.callbacks = {
 			var text = pageobj.getPageText();
 			var params = pageobj.getCallbackParameters();
 
-			statelem.status( 'Checking for tags on the page...' );
+			statelem.status( 'এই পাতার অন্যান্য ট্যাগ খোঁজা হচ্ছে...' );
 
 			// check for existing deletion tags
 			var tag = /(?:\{\{\s*(db|delete|db-.*?|speedy deletion-.*?)(?:\s*\||\s*\}\}))/.exec( text );
@@ -945,7 +945,7 @@ Twinkle.speedy.callbacks = {
 			}
 
 			var xfd = /(?:\{\{([rsaiftcm]fd|md1|proposed deletion)[^{}]*?\}\})/i.exec( text );
-			if( xfd && !confirm( "The deletion-related template {{" + xfd[1] + "}} was found on the page. Do you still want to add a CSD template?" ) ) {
+			if( xfd && !confirm( "{{" + xfd[1] + "}} অপসারণ আলোচনা সংক্রান্ত টেমপ্লেট খুঁজে পাওয়া গিয়েছে। আপনি কি নিশ্চিত ভাবে দ্রুত অপসারণ টেমপ্লেট সংযোজন করতে চান?" ) ) {
 				return;
 			}
 

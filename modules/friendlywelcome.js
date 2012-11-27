@@ -306,9 +306,9 @@ Twinkle.welcome.selectTemplate = function(e) {
 
 Twinkle.welcome.templates = {
 	"welcome": {
-		description: "standard welcome",
+		description: "স্বাগতম",
 		linkedArticle: true,
-		syntax: "{{subst:welcome|$USERNAME$|art=$ARTICLE$}} ~~~~"
+		syntax: "{{subst:স্বাগতম|$USERNAME$|art=$ARTICLE$}} ~~~~"
 	},
 	"welcome-short": {
 		description: "a shorter welcome message",
