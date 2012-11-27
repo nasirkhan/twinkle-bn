@@ -127,8 +127,8 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 					label: 'যদি সম্ভব হয় প্রনেতাকে জানান',
 					value: 'notify',
 					name: 'notify',
-					tooltip: "A notification template will be placed on the talk page of the creator, IF you have a notification enabled in your Twinkle preferences " +
-						"for the criterion you choose AND this box is checked. The creator may be welcomed as well.",
+					tooltip: "প্রনেতার আলাপ পাতায় একটি নোটিফিকেশন টেমপ্লেট যুক্ত করা হবে, যদি আপনার টুইংকল পছন্দসমূহ পাতায় নোটিফিকেশন পাঠানোর অপশনটি চালু থাকে " +
+						"যে অপশনগুলোর জন্য আপনি নোটিফিকেশন চালু রাখবেন সেই সকল ক্ষেত্রে প্রনেতাকে জানানো হবে, একই সাথে সেই ব্যবহারকারীকে স্বাগত জানানো হবে",
 					checked: !Morebits.userIsInGroup( 'sysop' ) || Twinkle.getPref('deleteSysopDefaultToTag'),
 					disabled: Morebits.userIsInGroup( 'sysop' ) && !Twinkle.getPref('deleteSysopDefaultToTag'),
 					event: function( event ) {
@@ -144,7 +144,7 @@ Twinkle.speedy.initDialog = function twinklespeedyInitDialog(callbackfunc) {
 					label: 'অধিক বিচার ধারা মতে ট্যাগ যুক্ত করা',
 					value: 'multiple',
 					name: 'multiple',
-					tooltip: "When selected, you can select several criteria that apply to the page. For example, G11 and A7 are a common combination for articles.",
+					tooltip: "আপনি একাধিক বিচার ধারা মতে ট্যাগ যুক্ত করতে পারবেন। যেমন নিবন্ধের ক্ষেত্রে প্রায় সময়ই G11 এবং A7 একই সাথে ব্যবহৃত হয়।",
 					disabled: Morebits.userIsInGroup( 'sysop' ) && !Twinkle.getPref('deleteSysopDefaultToTag'),
 					event: function( event ) {
 						Twinkle.speedy.callback.dbMultipleChanged( event.target.form, event.target.checked );
@@ -220,7 +220,7 @@ Twinkle.speedy.callback.dbMultipleChanged = function twinklespeedyCallbackDbMult
 		case 7:  // file talk
 			work_area.append( { type: 'header', label: 'ফাইল' } );
 			work_area.append( { type: radioOrCheckbox, name: 'csd', list: Twinkle.speedy.getFileList(value) } );
-			work_area.append( { type: 'div', label: 'Tagging for CSD F4 (no license), F5 (orphaned fair use), F6 (no fair use rationale), and F11 (no permission) can be done using Twinkle\'s "DI" tab.' } );
+			work_area.append( { type: 'div', label: 'F4 (লাইসেন্স নেই), F5 (ত্রুটিপূর্ণ সৌজন্যমূলক ব্যবহার), F6 (সৌজন্যমূলক ব্যবহারের কারণ উল্লেখ না করা), এবং F11 (লাইসেন্স ছাড়া ছবি) বিচার ধারা অনুযায়ী ট্যাগ করার কাজটি টুইংকলের "DI" ট্যাব থেকেও করা যায়।' } );
 			break;
 
 		case 10:  // template
@@ -507,7 +507,7 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 		tooltip: 'A page created to test editing or other Wikipedia functions. Pages in the User namespace are not included, nor are valid but unused or duplicate templates (although criterion T3 may apply).'
 	});
 	result.push({
-		label: 'স৩:[[উইকিপিডিয়া:ধ্বংসপ্রবণতা|ধ্বংসপ্রবণ]]',
+		label: 'স৩:উইকিপিডিয়া:ধ্বংসপ্রবণতা',
 		value: 'vandalism',
 		tooltip: 'Plain pure vandalism (including redirects left behind from pagemove vandalism)'
 	});
@@ -540,22 +540,22 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 			tooltip: 'Making way for a noncontroversial move like reversing a redirect'
 		});
 		result.push({
-			label: 'G6: XfD',
+			label: 'স৬: অপসারণ প্রস্তাবনা (এক্সএফডি)',
 			value: 'xfd',
 			tooltip: 'An admin has closed a deletion discussion (at AfD, FfD, RfD, TfD, CfD, or MfD) as "delete", but they didn\'t actually delete the page.'
 		});
 		result.push({
-			label: 'G6: Unnecessary disambiguation page',
+			label: 'স৬: অপ্রয়োজনীয় দ্ব্যর্থতা নিরসন পাতা',
 			value: 'disambig',
 			tooltip: 'This only applies for orphaned disambiguation pages which either: (1) disambiguate two or fewer existing Wikipedia pages and whose title ends in "(disambiguation)" (i.e., there is a primary topic); or (2) disambiguates no (zero) existing Wikipedia pages, regardless of its title.'
 		});
 		result.push({
-			label: 'G6: Redirect to malplaced disambiguation page',
+			label: 'স৬: একাধিক দ্ব্যর্থতা নিরসন পাতায় পুনঃনির্দেশ',
 			value: 'movedab',
 			tooltip: 'This only applies for redirects to disambiguation pages ending in (disambiguation) where a primary topic does not exist.'
 		});
 		result.push({
-			label: 'G6: Copy-and-paste page move',
+			label: 'স৬: কপি-পেস্ট পাতা স্থানান্তর',
 			value: 'copypaste',
 			tooltip: 'This only applies for a copy-and-paste page move of another page that needs to be temporarily deleted to make room for a clean page move.'
 		});
@@ -566,24 +566,24 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 		tooltip: 'Other non-controversial "housekeeping" tasks'
 	});
 	result.push({
-		label: 'G7: Author requests deletion, or author blanked',
+		label: 'স৭: প্রনেতার অপসারণ অনুরোধ, অথবা প্রনেতা পাতাটি খালিল করেছেন',
 		value: 'author',
 		tooltip: 'Any page for which deletion is requested by the original author in good faith, provided the page\'s only substantial content was added by its author. If the author blanks the page, this can also be taken as a deletion request.'
 	});
 	result.push({
-		label: 'G8: Pages dependent on a non-existent or deleted page',
+		label: 'স৮: অপসারিত পাতার উপর নির্ভরশীল পাতা',
 		value: 'g8',
 		tooltip: 'such as talk pages with no corresponding subject page; subpages with no parent page; file pages without a corresponding file; redirects to invalid targets, such as nonexistent targets, redirect loops, and bad titles; or categories populated by deleted or retargeted templates. This excludes any page that is useful to the project, and in particular: deletion discussions that are not logged elsewhere, user and user talk pages, talk page archives, plausible redirects that can be changed to valid targets, and file pages or talk pages for files that exist on Wikimedia Commons.'
 	});
 	if (!multiple) {
 		result.push({
-			label: 'G8: Subpages with no parent page',
+			label: 'স৮: অপসারিত পাতার উপপাতা',
 			value: 'subpage',
 			tooltip: 'This excludes any page that is useful to the project, and in particular: deletion discussions that are not logged elsewhere, user and user talk pages, talk page archives, plausible redirects that can be changed to valid targets, and file pages or talk pages for files that exist on Wikimedia Commons.'
 		});
 	}
 	result.push({
-		label: 'G10: Attack page',
+		label: 'স১০: আক্রমনাত্বক পাতা',
 		value: 'attack',
 		tooltip: 'Pages that serve no purpose but to disparage their subject or some other entity (e.g., "John Q. Doe is an imbecile"). This includes a biography of a living person that is negative in tone and unsourced, where there is no NPOV version in the history to revert to. Administrators deleting such pages should not quote the content of the page in the deletion summary!'
 	});
@@ -595,12 +595,12 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 		});
 	}
 	result.push({
-		label: 'G11: Unambiguous advertising',
+		label: 'স১১: দ্ব্যর্থহীন বিজ্ঞাপন',
 		value: 'spam',
 		tooltip: 'Pages which exclusively promote a company, product, group, service, or person and which would need to be fundamentally rewritten in order to become encyclopedic. Note that an article about a company or a product which describes its subject from a neutral point of view does not qualify for this criterion; an article that is blatant advertising should have inappropriate content as well'
 	});
 	result.push({
-		label: 'G12: Unambiguous copyright infringement',
+		label: 'স১২: দ্ব্যর্থহীন কপিরাইট লঙ্ঘন',
 		value: 'copyvio',
 		tooltip: 'Either: (1) Material was copied from another website that does not have a license compatible with Wikipedia, or is photography from a stock photo seller (such as Getty Images or Corbis) or other commercial content provider; (2) There is no non-infringing content in the page history worth saving; or (3) The infringement was introduced at once by a single person rather than created organically on wiki and then copied by another website such as one of the many Wikipedia mirrors'
 	});
@@ -619,7 +619,7 @@ Twinkle.speedy.redirectList = [
 		tooltip: 'However, redirects from common misspellings or misnomers are generally useful, as are redirects in other languages'
 	},
 	{
-		label: 'G8: Redirects to invalid targets, such as nonexistent targets, redirect loops, and bad titles',
+		label: 'স৮: ভুল পুনঃনির্দেশ, যেমন অপসারিত পাতার পুনঃনির্দেশ, পুনঃনির্দেশ লুপ, ভুল শিরনাম ইত্যাদি',
 		value: 'redirnone',
 		tooltip: 'This excludes any page that is useful to the project, and in particular: deletion discussions that are not logged elsewhere, user and user talk pages, talk page archives, plausible redirects that can be changed to valid targets, and file pages or talk pages for files that exist on Wikimedia Commons.'
 	}
@@ -744,11 +744,11 @@ Twinkle.speedy.reasonHash = {
 	'badfiletype': 'Useless media file (not an image, audio or video)',
 	'nopermission': 'No evidence of permission',
 // Categories
-	'catempty': 'Empty category',
+	'catempty': 'খালি বিষয়শ্রেণী',
 // User pages
-	'userreq': 'User request to delete page in own userspace',
-	'nouser': 'Userpage or subpage of a nonexistent user',
-	'gallery': '[[WP:NFC|Non-free]] [[Help:Gallery|gallery]]',
+	'userreq': 'ব্যবহারকারী কতৃক তার নিজের নামস্থানের পাতা অপসারণ অনুরোধ',
+	'nouser': 'নিবন্ধিত নয় এমন ব্যবহারকারী সংস্লিষ্ট উপপাতা অপসারণ',
+	'gallery': '[[WP:NFC|মুক্ত নয়]] এমন ছবির [[Help:Gallery|গ্যালারী]]',
 // Templates
 	'policy': 'Template that unambiguously misrepresents established policy',
 	't3': 'Unused, redundant template',
@@ -756,8 +756,8 @@ Twinkle.speedy.reasonHash = {
 	'p1': '[[WP:P|Portal]] page that would be subject to speedy deletion as an article',
 	'emptyportal': '[[WP:P|Portal]] without a substantial topic base',
 // Redirects
-	'rediruser': 'Cross-[[WP:NS|namespace]] [[WP:R|redirect]] from mainspace',
-	'redirtypo': 'Recently created, implausible [[WP:R|redirect]]'
+	'rediruser': 'মূল নামস্থান থেকে অন্য [[WP:NS|নামস্থানের]] প্রতি [[WP:R|পুনঃনির্দেশ]]',
+	'redirtypo': 'সম্প্রতি তৈরীকৃত, ভুল [[WP:R|পুনঃনির্দেশ]]'
 };
 
 Twinkle.speedy.callbacks = {
@@ -789,7 +789,7 @@ Twinkle.speedy.callbacks = {
 			    params.normalized !== 'f8' &&
 			    document.getElementById( 'ca-talk' ).className !== 'new') {
 				var talkpage = new Morebits.wiki.page( Morebits.wikipedia.namespaces[ mw.config.get('wgNamespaceNumber') + 1 ] + ':' + mw.config.get('wgTitle'), "Deleting talk page" );
-				talkpage.setEditSummary('[[WP:CSD#G8|G8]]: Talk page of deleted page "' + mw.config.get('wgPageName') + '"' + Twinkle.getPref('deletionSummaryAd'));
+				talkpage.setEditSummary('[[WP:CSD#G8|G8]]: অপসারিত পাতার আলাপ পাতা "' + mw.config.get('wgPageName') + '"' + Twinkle.getPref('deletionSummaryAd'));
 				talkpage.deletePage();
 			}
 
@@ -819,7 +819,7 @@ Twinkle.speedy.callbacks = {
 					'click': function(){
 						Morebits.wiki.actionCompleted.redirect = null;
 						Twinkle.speedy.dialog.close();
-						Twinkle.unlink.callback("Removing links to deleted page " + mw.config.get('wgPageName'));
+						Twinkle.unlink.callback("অপসারিত পাতা " + mw.config.get('wgPageName') + "-এর লিংক অপসারিত হচ্ছে");
 					}
 				});
 				$bigtext = $('<span/>', {
@@ -857,7 +857,7 @@ Twinkle.speedy.callbacks = {
 			var statusIndicator = new Morebits.status('ব্যবহারকারী ' + user, 'এর আলাপ পাতা খোলা হচ্ছে...');
 
 			var query = {
-				'title': 'User talk:' + user,
+				'title': 'ব্যবহারকারী আলাপ:' + user,
 				'action': 'edit',
 				'preview': 'yes',
 				'vanarticle': mw.config.get('wgPageName').replace(/_/g, ' ')
@@ -913,7 +913,7 @@ Twinkle.speedy.callbacks = {
 			$snapshot.each(function(key, value) {
 				var title = $(value).attr('title');
 				var page = new Morebits.wiki.page(title, 'পুনঃনির্দেশ "' + title + '" অপসারিত হচ্ছে');
-				page.setEditSummary('[[WP:CSD#G8|G8]]: Redirect to deleted page "' + mw.config.get('wgPageName') + '"' + Twinkle.getPref('deletionSummaryAd'));
+				page.setEditSummary('[[WP:CSD#G8|G8]]: অপসারির পাতা "' + mw.config.get('wgPageName') + "-এর পুনঃনির্দেশ" + '"' + Twinkle.getPref('deletionSummaryAd'));
 				page.deletePage(onsuccess);
 			});
 		}
@@ -1075,11 +1075,11 @@ Twinkle.speedy.callbacks = {
 					}
 					notifytext += (params.welcomeuser ? "" : "|nowelcome=yes") + "}} ~~~~";
 
-					var editsummary = "Notification: speedy deletion nomination";
+					var editsummary = "নোটিশ: দ্রুত অপসারণের তালিকাভুক্ত";
 					if (params.normalizeds.indexOf("g10") === -1) {  // no article name in summary for G10 deletions
 						editsummary += " of [[" + mw.config.get('wgPageName') + "]].";
 					} else {
-						editsummary += " of an attack page.";
+						editsummary += " একটি আক্রমনাত্বক পাতা.";
 					}
 
 					usertalkpage.setAppendText(notifytext);
@@ -1107,7 +1107,7 @@ Twinkle.speedy.callbacks = {
 		//   for CSD: params.values, params.normalizeds  (note: normalizeds is an array)
 		//   for DI: params.fromDI = true, params.type, params.normalized  (note: normalized is a string)
 		addToLog: function(params, initialContrib) {
-			var wikipedia_page = new Morebits.wiki.page("User:" + mw.config.get('wgUserName') + "/" + Twinkle.getPref('speedyLogPageName'), "Adding entry to userspace log");
+			var wikipedia_page = new Morebits.wiki.page("ব্যবহারকারী:" + mw.config.get('wgUserName') + "/" + Twinkle.getPref('speedyLogPageName'), "Adding entry to userspace log");
 			params.logInitialContrib = initialContrib;
 			wikipedia_page.setCallbackParameters(params);
 			wikipedia_page.load(Twinkle.speedy.callbacks.user.saveLog);
@@ -1154,12 +1154,12 @@ Twinkle.speedy.callbacks = {
 			}
 
 			if (params.logInitialContrib) {
-				text += "; notified {{user|" + params.logInitialContrib + "}}";
+				text += "; {{user|" + params.logInitialContrib + "}}-কে জানান‌ হয়েছে";
 			}
 			text += " ~~~~~\n";
 
 			pageobj.setPageText(text);
-			pageobj.setEditSummary("Logging speedy deletion nomination of [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
+			pageobj.setEditSummary("দ্রুত অপসারণের মনোনয়ন তালিকাভুক্ত করা হচ্ছে [[" + mw.config.get('wgPageName') + "]]." + Twinkle.getPref('summaryAd'));
 			pageobj.setCreateOption("recreate");
 			pageobj.save();
 		}

@@ -38,7 +38,7 @@ Twinkle.unlink.callback = function(presetReason) {
 	form.append( {
 		type: 'textarea',
 		name: 'reason',
-		label: 'Reason: ',
+		label: 'কারণ: ',
 		value: (presetReason ? presetReason : '')
 	} );
 
@@ -64,14 +64,14 @@ Twinkle.unlink.callback = function(presetReason) {
 			'blnamespace': Twinkle.getPref('unlinkNamespaces')
 		};
 	}
-	var wikipedia_api = new Morebits.wiki.api( 'Grabbing backlinks', query, Twinkle.unlink.callbacks.display.backlinks );
+	var wikipedia_api = new Morebits.wiki.api( 'ব্যকলিংক খোঁজা হচ্ছে', query, Twinkle.unlink.callbacks.display.backlinks );
 	wikipedia_api.params = { form: form, Window: Window, image: mw.config.get('wgNamespaceNumber') === 6 };
 	wikipedia_api.post();
 
 	var root = document.createElement( 'div' );
 	root.style.padding = '15px';  // just so it doesn't look broken
 	Morebits.status.init( root );
-	wikipedia_api.statelem.status( "loading..." );
+	wikipedia_api.statelem.status( "লোড হচ্ছে..." );
 	Window.setContent( root );
 	Window.display();
 };
@@ -89,7 +89,7 @@ Twinkle.unlink.callback.evaluate = function twinkleunlinkCallbackEvaluate(event)
 		Morebits.wiki.addCheckpoint();
 
 		if( !pages.length ) {
-			statusIndicator.info( '100% (completed)' );
+			statusIndicator.info( '১০০% (সম্পন্ন)' );
 			Morebits.wiki.removeCheckpoint();
 			return;
 		}
@@ -99,7 +99,7 @@ Twinkle.unlink.callback.evaluate = function twinkleunlinkCallbackEvaluate(event)
 		for (var i = 0; i < pages.length; ++i)
 		{
 			var myparams = $.extend({}, params);
-			var articlepage = new Morebits.wiki.page(pages[i], 'Unlinking in article "' + pages[i] + '"');
+			var articlepage = new Morebits.wiki.page(pages[i], 'নিবন্ধ থেকে লিংক অপসারণ "' + pages[i] + '"');
 			articlepage.setCallbackParameters(myparams);
 			articlepage.load(imageusage ? Twinkle.unlink.callbacks.unlinkImageInstances : Twinkle.unlink.callbacks.unlinkBacklinks);
 		}
@@ -152,11 +152,11 @@ Twinkle.unlink.callbacks = {
 					apiobj.params.form.append( { type:'header', label: 'File usage' } );
 					namespaces = [];
 					$.each(Twinkle.getPref('unlinkNamespaces'), function(k, v) {
-						namespaces.push(Morebits.wikipedia.namespacesFriendly[v]);
+						namespaces.push(Morebits.wikipedia.naumespacesFriendly[v]);
 					});
 					apiobj.params.form.append( {
 						type: 'div',
-						label: "Selected namespaces: " + namespaces.join(', '),
+						label: "নির্বাচিত নামস্থান: " + namespaces.join(', '),
 						tooltip: "You can change this with your Twinkle preferences, at [[WP:TWPREFS]]"
 					});
 					if ($(xmlDoc).find('query-continue').length) {

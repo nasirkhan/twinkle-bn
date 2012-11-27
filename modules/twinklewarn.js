@@ -149,20 +149,20 @@ Twinkle.warn.messages = {
 			summary:"সাধারণ নোটিশ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics1": { 
-			label:"Uploading files missing copyright status", 
-			summary:"সাধারণ নোটিশ: Uploading files missing copyright status" 
+			label:"ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড", 
+			summary:"সাধারণ নোটিশ: ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড" 
 		},
 		"uw-idt1": { 
-			label:"Removing file deletion tags", 
-			summary:"সাধারণ নোটিশ: Removing file deletion tags" 
+			label:"ফাইল অপসারণ ট্যাগ মুছে ফেলা", 
+			summary:"সাধারণ নোটিশ: ফাইল অপসারণ ট্যাগ মুছে ফেলা" 
 		},
 		"uw-spam1": { 
-			label:"Adding spam links", 
-			summary:"সাধারণ নোটিশ: Adding spam links" 
+			label:"স্প্যাম লিংক সংযোজন", 
+			summary:"সাধারণ নোটিশ: স্প্যাম লিংক সংযোজন" 
 		},
 		"uw-advert1": { 
-			label:"Using Wikipedia for advertising or promotion", 
-			summary:"সাধারণ নোটিশ: Using Wikipedia for advertising or promotion" 
+			label:"বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার", 
+			summary:"সাধারণ নোটিশ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov1": { 
 			label:"Not adhering to neutral point of view", 
@@ -201,28 +201,28 @@ Twinkle.warn.messages = {
 			summary:"সাধারণ নোটিশ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat1": { 
-			label:"Using talk page as forum", 
-			summary:"সাধারণ নোটিশ: Using talk page as forum" 
+			label:"আলাপ পাতা ফোরাম হিসাবে ব্যবহার", 
+			summary:"সাধারণ নোটিশ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv1": { 
 			label:"Refactoring others' talk page comments", 
 			summary:"সাধারণ নোটিশ: Refactoring others' talk page comments" 
 		},
 		"uw-afd1": { 
-			label:"Removing {{afd}} templates",
-			summary:"সাধারণ নোটিশ: Removing {{afd}} templates"
+			label:"{{afd}} টেমপ্লেট অপসারণ",
+			summary:"সাধারণ নোটিশ: {{afd}} টেমপ্লেট অপসারণ"
 		},
 		"uw-speedy1": { 
-			label:"Removing {{speedy deletion}} templates",
-			summary:"সাধারণ নোটিশ: Removing {{speedy deletion}} templates"
+			label:"{{speedy deletion}} টেমপ্লেট অপসারণ",
+			summary:"সাধারণ নোটিশ: {{speedy deletion}} টেমপ্লেট অপসারণ"
 		},
 		"uw-blpprod1": { 
-			label:"Removing {{blp prod}} templates",
-			summary:"সাধারণ নোটিশ: Removing {{blp prod}} templates"
+			label:"{{blp prod}} টেমপ্লেট অপসারণ",
+			summary:"সাধারণ নোটিশ: {{blp prod}} টেমপ্লেট অপসারণ"
 		},
 		"uw-npa1": { 
-			label:"Personal attack directed at a specific editor", 
-			summary:"সাধারণ নোটিশ: Personal attack directed at a specific editor" 
+			label:"নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন", 
+			summary:"সাধারণ নোটিশ: নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন" 
 		},
 		"uw-agf1": { 
 			label:"Not assuming good faith", 
@@ -279,20 +279,20 @@ Twinkle.warn.messages = {
 			summary:"প্রাথমিক সতর্কীকরণ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics2": { 
-			label:"Uploading files missing copyright status", 
-			summary:"প্রাথমিক সতর্কীকরণ: Uploading files missing copyright status" 
+			label:"ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড", 
+			summary:"প্রাথমিক সতর্কীকরণ: ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড" 
 		},
 		"uw-idt2": { 
-			label:"Removing file deletion tags", 
-			summary:"প্রাথমিক সতর্কীকরণ: Removing file deletion tags" 
+			label:"ফাইল অপসারণ ট্যাগ মুছে ফেলা", 
+			summary:"প্রাথমিক সতর্কীকরণ: ফাইল অপসারণ ট্যাগ মুছে ফেলা" 
 		},
 		"uw-spam2": { 
-			label:"Adding spam links", 
-			summary:"প্রাথমিক সতর্কীকরণ: Adding spam links" 
+			label:"স্প্যাম লিংক সংযোজন", 
+			summary:"প্রাথমিক সতর্কীকরণ: স্প্যাম লিংক সংযোজন" 
 		},
 		"uw-advert2": { 
-			label:"Using Wikipedia for advertising or promotion", 
-			summary:"প্রাথমিক সতর্কীকরণ: Using Wikipedia for advertising or promotion" 
+			label:"বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার", 
+			summary:"প্রাথমিক সতর্কীকরণ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov2": { 
 			label:"Not adhering to neutral point of view", 
@@ -331,28 +331,28 @@ Twinkle.warn.messages = {
 			summary:"প্রাথমিক সতর্কীকরণ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat2": { 
-			label:"Using talk page as forum", 
-			summary:"প্রাথমিক সতর্কীকরণ: Using talk page as forum" 
+			label:"আলাপ পাতা ফোরাম হিসাবে ব্যবহার", 
+			summary:"প্রাথমিক সতর্কীকরণ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv2": { 
 			label:"Refactoring others' talk page comments", 
 			summary:"প্রাথমিক সতর্কীকরণ: Refactoring others' talk page comments" 
 		},
 		"uw-afd2": { 
-			label:"Removing {{afd}} templates",
-			summary:"প্রাথমিক সতর্কীকরণ: Removing {{afd}} templates"
+			label:"{{afd}} টেমপ্লেট অপসারণ",
+			summary:"প্রাথমিক সতর্কীকরণ: {{afd}} টেমপ্লেট অপসারণ"
 		},
 		"uw-speedy2": { 
-			label:"Removing {{speedy deletion}} templates",
-			summary:"প্রাথমিক সতর্কীকরণ: Removing {{speedy deletion}} templates"
+			label:"{{speedy deletion}} টেমপ্লেট অপসারণ",
+			summary:"প্রাথমিক সতর্কীকরণ: {{speedy deletion}} টেমপ্লেট অপসারণ"
 		},
 		"uw-blpprod2": { 
-			label:"Removing {{blp prod}} templates",
-			summary:"প্রাথমিক সতর্কীকরণ: Removing {{blp prod}} templates"
+			label:"{{blp prod}} টেমপ্লেট অপসারণ",
+			summary:"প্রাথমিক সতর্কীকরণ: {{blp prod}} টেমপ্লেট অপসারণ"
 		},
 		"uw-npa2": { 
-			label:"Personal attack directed at a specific editor", 
-			summary:"প্রাথমিক সতর্কীকরণ: Personal attack directed at a specific editor" 
+			label:"নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন", 
+			summary:"প্রাথমিক সতর্কীকরণ: নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন" 
 		},
 		"uw-agf2": { 
 			label:"Not assuming good faith", 
@@ -409,20 +409,20 @@ Twinkle.warn.messages = {
 			summary:"সতর্কীকরণ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics3": { 
-			label:"Uploading files missing copyright status", 
-			summary:"সতর্কীকরণ: Uploading files missing copyright status" 
+			label:"ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড", 
+			summary:"সতর্কীকরণ: ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড" 
 		},
 		"uw-idt3": { 
-			label:"Removing file deletion tags", 
-			summary:"সতর্কীকরণ: Removing file deletion tags" 
+			label:"ফাইল অপসারণ ট্যাগ মুছে ফেলা", 
+			summary:"সতর্কীকরণ: ফাইল অপসারণ ট্যাগ মুছে ফেলা" 
 		},
 		"uw-spam3": { 
-			label:"Adding spam links", 
-			summary:"সতর্কীকরণ: Adding spam links" 
+			label:"স্প্যাম লিংক সংযোজন", 
+			summary:"সতর্কীকরণ: স্প্যাম লিংক সংযোজন" 
 		},
 		"uw-advert3": { 
-			label:"Using Wikipedia for advertising or promotion", 
-			summary:"সতর্কীকরণ: Using Wikipedia for advertising or promotion" 
+			label:"বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার", 
+			summary:"সতর্কীকরণ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov3": { 
 			label:"Not adhering to neutral point of view", 
@@ -461,28 +461,28 @@ Twinkle.warn.messages = {
 			summary:"সতর্কীকরণ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat3": { 
-			label:"Using talk page as forum", 
-			summary:"সতর্কীকরণ: Using talk page as forum" 
+			label:"আলাপ পাতা ফোরাম হিসাবে ব্যবহার", 
+			summary:"সতর্কীকরণ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv3": { 
 			label:"Refactoring others' talk page comments", 
 			summary:"সতর্কীকরণ: Refactoring others' talk page comments" 
 		},
 		"uw-afd3": { 
-			label:"Removing {{afd}} templates",
-			summary:"সতর্কীকরণ: Removing {{afd}} templates"
+			label:"{{afd}} টেমপ্লেট অপসারণ",
+			summary:"সতর্কীকরণ: {{afd}} টেমপ্লেট অপসারণ"
 		},
 		"uw-speedy3": { 
-			label:"Removing {{speedy deletion}} templates",
-			summary:"সতর্কীকরণ: Removing {{speedy deletion}} templates"
+			label:"{{speedy deletion}} টেমপ্লেট অপসারণ",
+			summary:"সতর্কীকরণ: {{speedy deletion}} টেমপ্লেট অপসারণ"
 		},
 		"uw-blpprod3": { 
 			label:"Removing {{blpprod}} templates",
 			summary:"সতর্কীকরণ: Removing {{blpprod}} templates"
 		},
 		"uw-npa3": { 
-			label:"Personal attack directed at a specific editor", 
-			summary:"সতর্কীকরণ: Personal attack directed at a specific editor" 
+			label:"নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন", 
+			summary:"সতর্কীকরণ: নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন" 
 		},
 		"uw-agf3": { 
 			label:"Not assuming good faith", 
@@ -540,20 +540,20 @@ Twinkle.warn.messages = {
 			summary:"সর্বশেষ সতর্কীকরণ: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-ics4": { 
-			label:"Uploading files missing copyright status", 
-			summary:"সর্বশেষ সতর্কীকরণ: Uploading files missing copyright status" 
+			label:"ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড", 
+			summary:"সর্বশেষ সতর্কীকরণ: ত্রুটিপুর্ণ তথ্যসূত্রযুক্ত ফাইল আপলোড" 
 		},
 		"uw-idt4": { 
-			label:"Removing file deletion tags", 
-			summary:"সর্বশেষ সতর্কীকরণ: Removing file deletion tags" 
+			label:"ফাইল অপসারণ ট্যাগ মুছে ফেলা", 
+			summary:"সর্বশেষ সতর্কীকরণ: ফাইল অপসারণ ট্যাগ মুছে ফেলা" 
 		},
 		"uw-spam4": { 
-			label:"Adding spam links", 
-			summary:"সর্বশেষ সতর্কীকরণ: Adding spam links" 
+			label:"স্প্যাম লিংক সংযোজন", 
+			summary:"সর্বশেষ সতর্কীকরণ: স্প্যাম লিংক সংযোজন" 
 		},
 		"uw-advert4": { 
-			label:"Using Wikipedia for advertising or promotion", 
-			summary:"সর্বশেষ সতর্কীকরণ: Using Wikipedia for advertising or promotion" 
+			label:"বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার", 
+			summary:"সর্বশেষ সতর্কীকরণ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov4": { 
 			label:"Not adhering to neutral point of view", 
@@ -588,28 +588,28 @@ Twinkle.warn.messages = {
 			summary:"সর্বশেষ সতর্কীকরণ: Page moves against naming conventions or consensus" 
 		},
 		"uw-chat4": { 
-			label:"Using talk page as forum", 
-			summary:"সর্বশেষ সতর্কীকরণ: Using talk page as forum" 
+			label:"আলাপ পাতা ফোরাম হিসাবে ব্যবহার", 
+			summary:"সর্বশেষ সতর্কীকরণ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv4": { 
 			label:"Refactoring others' talk page comments", 
 			summary:"সর্বশেষ সতর্কীকরণ: Refactoring others' talk page comments" 
 		},
 		"uw-afd4": { 
-			label:"Removing {{afd}} templates",
-			summary:"সর্বশেষ সতর্কীকরণ: Removing {{afd}} templates"
+			label:"{{afd}} টেমপ্লেট অপসারণ",
+			summary:"সর্বশেষ সতর্কীকরণ: {{afd}} টেমপ্লেট অপসারণ"
 		},
 		"uw-speedy4": { 
-			label:"Removing {{speedy deletion}} templates",
-			summary:"সর্বশেষ সতর্কীকরণ: Removing {{speedy deletion}} templates"
+			label:"{{speedy deletion}} টেমপ্লেট অপসারণ",
+			summary:"সর্বশেষ সতর্কীকরণ: {{speedy deletion}} টেমপ্লেট অপসারণ"
 		},
 		"uw-blpprod4": { 
 			label:"Removing {{blpprod}} templates",
 			summary:"সর্বশেষ সতর্কীকরণ: Removing {{blpprod}} templates"
 		},
 		"uw-npa4": { 
-			label:"Personal attack directed at a specific editor", 
-			summary:"সর্বশেষ সতর্কীকরণ: Personal attack directed at a specific editor"
+			label:"নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন", 
+			summary:"সর্বশেষ সতর্কীকরণ: নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন"
 		}
 
 	},
@@ -643,12 +643,12 @@ Twinkle.warn.messages = {
 			summary:"Only warning: ছবি সম্পর্কিত ধ্বংশপ্রবণতা" 
 		},
 		"uw-spam4im": { 
-			label:"Adding spam links", 
-			summary:"Only warning: Adding spam links" 
+			label:"স্প্যাম লিংক সংযোজন", 
+			summary:"Only warning: স্প্যাম লিংক সংযোজন" 
 		},
 		"uw-advert4im": { 
-			label:"Using Wikipedia for advertising or promotion", 
-			summary:"Only warning: Using Wikipedia for advertising or promotion" 
+			label:"বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার", 
+			summary:"Only warning: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-biog4im": { 
 			label:"Adding unreferenced defamatory information about living persons", 
@@ -663,8 +663,8 @@ Twinkle.warn.messages = {
 			summary:"Only warning: Page moves against naming conventions or consensus" 
 		},
 		"uw-npa4im": { 
-			label:"Personal attack directed at a specific editor", 
-			summary:"Only warning: Personal attack directed at a specific editor"
+			label:"নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন", 
+			summary:"Only warning: নির্দিষ্ট ব্যবহারকারীর প্রতি ব্যক্তিগত আক্রমন"
 		}
 	},
 	singlenotice: {
@@ -1249,7 +1249,7 @@ Twinkle.warn.callback.change_category = function twinklewarnCallbackChangeCatego
 		more.append( {
 			type: 'input',
 			name: 'block_reason',
-			label: '"You have been blocked for ..." ',
+			label: '"আপনাকে বাধা দেয়া হয়েছে ..." ',
 			tooltip: 'An optional reason, to replace the default generic reason. Only available for the generic block templates.'
 		} );
 		e.target.root.insertBefore( more.render(), e.target.root.lastChild );
@@ -1507,16 +1507,16 @@ Twinkle.warn.callbacks = {
 		}
 		
 		if ( Twinkle.getPref('showSharedIPNotice') && Morebits.isIPAddress( mw.config.get('wgTitle') ) ) {
-			Morebits.status.info( 'Info', 'Adding a shared IP notice' );
+			Morebits.status.info( 'তথ্য', 'শেয়ার্ড আইপি নোটিশ সংযোজন' );
 			text +=  "\n{{subst:SharedIPAdvice}}";
 		}
 
 		var summary = messageData.summary;
 		if ( messageData.suppressArticleInSummary !== true && params.article ) {
 			if ( params.sub_group === "uw-socksuspect" ) {  // this template requires a username
-				summary += " of [[User:" + params.article + "]]";
+				summary += " [[ব্যবহারকারী:" + params.article + "]] এর";
 			} else {
-				summary += " on [[" + params.article + "]]";
+				summary += " [[" + params.article + "]] পাতায়";
 			}
 		}
 		summary += "." + Twinkle.getPref("summaryAd");
@@ -1533,7 +1533,7 @@ Twinkle.warn.callback.evaluate = function twinklewarnCallbackEvaluate(e) {
 	// First, check to make sure a reason was filled in if uw-username was selected
 	
 	if(e.target.sub_group.value === 'uw-username' && e.target.article.value.trim() === '') {
-		alert("You must supply a reason for the {{uw-username}} template.");
+		alert("আপনাকে অবশ্যই {{uw-username}} টেমপ্লেটটি ব্যবহারের কারণ উল্লেখ করতে হবে।");
 		return;
 	}
 
@@ -1551,9 +1551,9 @@ Twinkle.warn.callback.evaluate = function twinklewarnCallbackEvaluate(e) {
 	Morebits.status.init( e.target );
 
 	Morebits.wiki.actionCompleted.redirect = mw.config.get('wgPageName');
-	Morebits.wiki.actionCompleted.notice = "Warning complete, reloading talk page in a few seconds";
+	Morebits.wiki.actionCompleted.notice = "সতর্কীবার্তা পাঠানো হয়েছে, কয়েক সেকেন্ডের মধ্যে আলাপ পাতা ফিরিয়ে আনা হবে";
 
-	var wikipedia_page = new Morebits.wiki.page( mw.config.get('wgPageName'), 'User talk page modification' );
+	var wikipedia_page = new Morebits.wiki.page( mw.config.get('wgPageName'), 'ব্যবহারকারী আলাপ পাতা পরিবর্তিত হয়েছে' );
 	wikipedia_page.setCallbackParameters( params );
 	wikipedia_page.setFollowRedirect( true );
 	wikipedia_page.load( Twinkle.warn.callbacks.main );
