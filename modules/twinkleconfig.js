@@ -149,8 +149,8 @@ Twinkle.config.sections = [
 		// Text to be appended to the edit summary of edits made using Twinkle
 		{
 			name: "summaryAd",
-			label: "\"Ad\" to be appended to Twinkle's edit summaries",
-			helptip: "The summary ad should start with a space, and be kept short.",
+			label: "সম্পাদনা সারাংশে টুইংকলের বিজ্ঞাপন থাকবে",
+			helptip: "সম্পাদনা সারাংশের বিজ্ঞাপনের শুরুতে একটি স্পেস থাকবে এবং এটি অত্যান্ত সংক্ষিপ্ত আকারের হবে।",
 			type: "string"
 		},
 
@@ -158,8 +158,8 @@ Twinkle.config.sections = [
 		// Text to be appended to the edit summary of deletions made using Twinkle
 		{
 			name: "deletionSummaryAd",
-			label: "Summary ad to use for deletion summaries",
-			helptip: "Normally the same as the edit summary ad above.",
+			label: "অপসারণ সারাংশে টুইংকলের বিজ্ঞাপন থাকবে",
+			helptip: "সম্পাদনা সারাংশের বিজ্ঞাপনটি এখানে ব্যবহার করা যেতে পারে।",
 			adminOnly: true,
 			type: "string"
 		},
@@ -168,8 +168,8 @@ Twinkle.config.sections = [
 		// Text to be appended to the edit summary of page protections made using Twinkle
 		{
 			name: "protectionSummaryAd",
-			label: "Summary ad to use for page protections",
-			helptip: "Normally the same as the edit summary ad above.",
+			label: "পাতা সুরক্ষা সারাংশে টুইংকলের বিজ্ঞাপন থাকবে",
+			helptip: "সম্পাদনা সারাংশের বিজ্ঞাপনটি এখানে ব্যবহার করা যেতে পারে।",
 			adminOnly: true,
 			type: "string"
 		},
@@ -180,7 +180,7 @@ Twinkle.config.sections = [
 		// 'blank': force open in a new window, even if such a window exists
 		{
 			name: "userTalkPageMode",
-			label: "When opening a user talk page, open it",
+			label: "ব্যবহারকারী আলাপ পাতাগুলো সম্পাদনার জন্য খুলুন",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.talkPageMode
 		},
@@ -188,7 +188,7 @@ Twinkle.config.sections = [
 		// TwinkleConfig.dialogLargeFont (boolean)
 		{
 			name: "dialogLargeFont",
-			label: "Use larger text in Twinkle dialogs",
+			label: "টুইংকল উইন্ডোতে বড় আকারের লেখা দেখুন",
 			type: "boolean"
 		}
 	]
@@ -201,7 +201,7 @@ Twinkle.config.sections = [
 		// If the user should be notified after placing a file deletion tag
 		{
 			name: "notifyUserOnDeli",
-			label: "Check the \"notify initial uploader\" box by default",
+			label: "ডিফল্টভাবে \"মূল আপলোডারকে জানান\" অপশনটি সক্রিয় থাকবে",
 			type: "boolean"
 		},
 
@@ -209,7 +209,7 @@ Twinkle.config.sections = [
 		// The watchlist setting of the page tagged for deletion. Either "yes", "no", or "default". Default is "default" (Duh).
 		{
 			name: "deliWatchPage",
-			label: "Add image page to watchlist when tagging",
+			label: "ট্যাগ সংযোজনের পর ছবিটি নজরতালিকায় যোগ করা হবে",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
 		},
@@ -218,7 +218,7 @@ Twinkle.config.sections = [
 		// The watchlist setting of the user talk page if a notification is placed. Either "yes", "no", or "default". Default is "default" (Duh).
 		{
 			name: "deliWatchUser",
-			label: "Add user talk page of initial uploader to watchlist when notifying",
+			label: "ট্যাগ সংযোজনের সময় মূল আপলোডারের আলাপ পাতাটি নজরতালিকায় যোগ করা হবে",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
 		}
@@ -267,16 +267,16 @@ Twinkle.config.sections = [
 		// What types of actions that should result in opening of talk page
 		{
 			name: "openTalkPage",
-			label: "Open user talk page after these types of reversions",
+			label: "এই ধরনের সম্পাদনার পর ব্যবহারকারী আলাপ পাতা খোলা হবে",
 			type: "set",
-			setValues: { agf: "AGF rollback", norm: "Normal rollback", vand: "Vandalism rollback", torev: "\"Restore this version\"" }
+			setValues: { agf: "AGF রোলব্যাক", norm: "সাধারণ রোলব্যাক", vand: "রোলব্যাক (ধ্বংসপ্রবণতা)", torev: "এই সংস্করণটি ফিরিয়ে আনুন" }
 		},
 
 		// TwinkleConfig.openTalkPageOnAutoRevert (bool)
 		// Defines if talk page should be opened when calling revert from contrib page, because from there, actions may be multiple, and opening talk page not suitable. If set to true, openTalkPage defines then if talk page will be opened.
 		{
 			name: "openTalkPageOnAutoRevert",
-			label: "Open user talk page when invoking rollback from user contributions",
+			label: "কোন ব্যবহারকারীর অবদান রোলব্যাক করার পার তার আলাপ পাতা খুলুন",
 			helptip: "Often, you may be rolling back many pages at a time from a vandal's contributions page, so it would be unsuitable to open the user talk page. Hence, this option is off by default. When this is on, the desired options must be enabled in the previous setting for this to work.",
 			type: "boolean"
 		},
@@ -285,32 +285,32 @@ Twinkle.config.sections = [
 		// What types of actions that should result in marking edit as minor
 		{
 			name: "markRevertedPagesAsMinor",
-			label: "Mark as minor edit for these types of reversions",
+			label: "এই ধরনের সম্পাদনাগুলো অনুল্লেখিত হিসাবে চিহ্নিত করুন",
 			type: "set",
-			setValues: { agf: "AGF rollback", norm: "Normal rollback", vand: "Vandalism rollback", torev: "\"Restore this version\"" }
+			setValues: { agf: "AGF রোলব্যাক", norm: "সাধারণ রোলব্যাক", vand: "রোলব্যাক (ধ্বংসপ্রবণতা)", torev: "এই সংস্করণটি ফিরিয়ে আনুন" }
 		},
 
 		// TwinkleConfig.watchRevertedPages (array)
 		// What types of actions that should result in forced addition to watchlist
 		{
 			name: "watchRevertedPages",
-			label: "Add pages to watchlist for these types of reversions",
+			label: "এই ধরনের সম্পাদনার সময় পাতাগুলো নজর তালিকায় রাখুন",
 			type: "set",
-			setValues: { agf: "AGF rollback", norm: "Normal rollback", vand: "Vandalism rollback", torev: "\"Restore this version\"" }
+			setValues: { agf: "AGF রোলব্যাক", norm: "সাধারণ রোলব্যাক", vand: "রোলব্যাক (ধ্বংসপ্রবণতা)", torev: "এই সংস্করণটি ফিরিয়ে আনুন" }
 		},
 
 		// TwinkleConfig.offerReasonOnNormalRevert (boolean)
 		// If to offer a prompt for extra summary reason for normal reverts, default to true
 		{
 			name: "offerReasonOnNormalRevert",
-			label: "Prompt for reason for normal rollbacks",
-			helptip: "\"Normal\" rollbacks are the ones that are invoked from the middle [rollback] link.",
+			label: "সাধারণ রোলব্যাকের পর কারণ উল্লেখ করার উইন্ডো খুলুন",
+			helptip: "সাধারণ রোলব্যাক বলতে মাঝের [রোলব্যাক] লিংকটি বুঝানো হচ্ছে।",
 			type: "boolean"
 		},
 
 		{
 			name: "confirmOnFluff",
-			label: "Provide a confirmation message before reverting",
+			label: "রোলব্যাক করার পূর্বে নিশ্চিতকরণ বার্তা দেখাও",
 			helptip: "For users of pen or touch devices, and chronically indecisive people.",
 			type: "boolean"
 		},
@@ -333,7 +333,7 @@ Twinkle.config.sections = [
 	preferences: [
 		{
 			name: "markSharedIPAsMinor",
-			label: "Mark shared IP tagging as a minor edit",
+			label: "শেয়ার্ড আইপিতে ট্যাগ সংযোজন অনুল্লেখিত সম্পাদনা হিসাবে বিবেচনা করুন",
 			type: "boolean"
 		}
 	]
@@ -344,9 +344,9 @@ Twinkle.config.sections = [
 	preferences: [
 		{
 			name: "speedySelectionStyle",
-			label: "When to go ahead and tag/delete the page",
+			label: "ট্যাগ সংযোজন অথবা অপসারণ সম্পন্ন করা হবে, যখন",
 			type: "enum",
-			enumValues: { "buttonClick": 'When I click "Submit"', "radioClick": "As soon as I click an option" }
+			enumValues: { "buttonClick": '"কার্যকর করুন" বাটনে ক্লিক করা হবে', "radioClick": "অপশনটি নির্বাচন করা হবে" }
 		},
 		{
 			name: "speedyPromptOnG7",
@@ -358,7 +358,7 @@ Twinkle.config.sections = [
 		// Whether to add speedy tagged pages to watchlist
 		{
 			name: "watchSpeedyPages",
-			label: "Add page to watchlist when tagging with these criteria",
+			label: "নিচের বিষয়গুলোতে ট্যাগ সংযোজন করা হলে, পাতাটি নজর তালিকায় রাখা হবে",
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdCriteria,
 			setDisplayOrder: Twinkle.config.commonSets.csdCriteriaDisplayOrder
@@ -368,8 +368,8 @@ Twinkle.config.sections = [
 		// If, when applying speedy template to page, to mark the page as patrolled (if the page was reached from NewPages)
 		{
 			name: "markSpeedyPagesAsPatrolled",
-			label: "Mark page as patrolled when tagging (if possible)",
-			helptip: "Due to technical limitations, pages are only marked as patrolled when they are reached via Special:NewPages.",
+			label: "ট্যাগ সংযোজনের পর পাতাটি পরিক্ষিত বলে চিহ্নিত করুন (যদি সম্ভব হয়)",
+			helptip: "কারিগরি ত্রুটির কারণে যখন Special:NewPages পাতা থেকে চিহ্নিত করা হবে, কেবলমাত্র সেই সময় পাতাটি পরীক্ষিত হিসাবে চিহ্নিত হবে।",
 			type: "boolean"
 		},
 
@@ -377,8 +377,8 @@ Twinkle.config.sections = [
 		// What types of actions should result that the author of the page being notified of nomination
 		{
 			name: "notifyUserOnSpeedyDeletionNomination",
-			label: "Notify page creator only when tagging with these criteria",
-			helptip: "Even if you choose to notify from the CSD screen, the notification will only take place for those criteria selected here.",
+			label: "এই ট্যাগগুলো সংযোজনের পর প্রণেতাকে জানানো হবে",
+			helptip: "যদি আপনি দ্রুত অপসারণ পাতা থেকে নির্বাচন করে থাকেন, তবুও কেবলমাত্র এই বিষয়গুলোর ক্ষেত্রে ট্যাগ সংযোজন করা হবে।",
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdCriteriaNotification,
 			setDisplayOrder: Twinkle.config.commonSets.csdCriteriaNotificationDisplayOrder
@@ -389,7 +389,7 @@ Twinkle.config.sections = [
 		// with a "firstarticle" notice if his talk page has not yet been created.
 		{
 			name: "welcomeUserOnSpeedyDeletionNotification",
-			label: "Welcome page creator alongside notification when tagging with these criteria",
+			label: "এই ট্যাগগুলো সংযোজনের সময় প্রনেতাকে স্বাগতম বার্তা জানানো হবে",
 			helptip: "The welcome is issued only if the user is notified about the deletion, and only if their talk page does not already exist. The template used is {{<a href=\"" + mw.util.wikiGetlink("Template:Firstarticle") + "\">firstarticle</a>}}.",
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdCriteriaNotification,
@@ -399,7 +399,7 @@ Twinkle.config.sections = [
 		// TwinkleConfig.promptForSpeedyDeletionSummary (array of strings)
 		{
 			name: "promptForSpeedyDeletionSummary",
-			label: "Allow editing of deletion summary when deleting under these criteria",
+			label: "এই বিচারধারায় অপসারণের সময় অপসারণ সারাংশ সম্পাদনা করা যাবে",
 			adminOnly: true,
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdAndDICriteria,
@@ -410,7 +410,7 @@ Twinkle.config.sections = [
 		// What types of actions that should result user talk page to be opened when speedily deleting (admin only)
 		{
 			name: "openUserTalkPageOnSpeedyDelete",
-			label: "Open user talk page when deleting under these criteria",
+			label: "এই বিচারধারায় অপসারণের সময় ব্যবহারকারী আলাপ পাতা খুলুন",
 			adminOnly: true,
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdAndDICriteria,
@@ -421,14 +421,14 @@ Twinkle.config.sections = [
 		// If talk page if exists should also be deleted (CSD G8) when spedying a page (admin only)
 		{
 			name: "deleteTalkPageOnDelete",
-			label: "Check the \"also delete talk page\" box by default",
+			label: "\"আলাপ পাতা অপসারণ করুন\" চিহ্নিত রাখুন",
 			adminOnly: true,
 			type: "boolean"
 		},
 
 		{
 			name: "deleteRedirectsOnDelete",
-			label: "Check the \"also delete redirects\" box by default",
+			label: "\"পুনঃনির্দেশ অপসারণ করুন\" চিহ্নিত রাখুন",
 			adminOnly: true,
 			type: "boolean"
 		},
@@ -446,7 +446,7 @@ Twinkle.config.sections = [
 		// Defines the width of the Twinkle SD window in pixels
 		{
 			name: "speedyWindowWidth",
-			label: "Width of speedy deletion window (pixels)",
+			label: "দ্রুত অপসারণ উইন্ডোর প্রস্থ্য (পিক্সেল)",
 			type: "integer"
 		},
 
@@ -454,8 +454,8 @@ Twinkle.config.sections = [
 		// Defines the width of the Twinkle SD window in pixels
 		{
 			name: "speedyWindowHeight",
-			label: "Height of speedy deletion window (pixels)",
-			helptip: "If you have a big monitor, you might like to increase this.",
+			label: "দ্রুত অপসারণ উইন্ডোর উচ্চতা (পিক্সেল)",
+			helptip: "আপনি যদি সাধারণের থেকে বড় আকারের মনিটর ব্যবহার করে থাকেন, তবে আপনার উচিত এখানে মান বাড়িয়ে নেয়া।",
 			type: "integer"
 		},
 
@@ -487,17 +487,17 @@ Twinkle.config.sections = [
 	preferences: [
 		{
 			name: "watchTaggedPages",
-			label: "Add page to watchlist when tagging",
+			label: "ট্যাগ সংযোজনের পর পাতাটি নজর তালিকায় রাখুন",
 			type: "boolean"
 		},
 		{
 			name: "markTaggedPagesAsMinor",
-			label: "Mark addition of tags as a minor edit",
+			label: "ট্যাগ সংযোজন সম্পাদনাটি অনুল্লেখ্য হিসাবে চিহ্নিত করুন",
 			type: "boolean"
 		},
 		{
 			name: "markTaggedPagesAsPatrolled",
-			label: "Mark pages as patrolled when tagging (if possible)",
+			label: "ট্যাগ সংযোজনের পর পাতাটি পরীক্ষিত হিসাবে চিহ্নিত করুন (যদি সম্ভব হয়)",
 			helptip: "Due to technical limitations, pages are only marked as patrolled when they are reached via Special:NewPages.",
 			type: "boolean"
 		},
@@ -529,28 +529,28 @@ Twinkle.config.sections = [
 	preferences: [
 		{
 			name: "markTalkbackAsMinor",
-			label: "Mark talkbacks as minor edits",
+			label: "ফরতি বার্তার সম্পাদনাটি অনুল্লেখ্য হিসাবে চিহ্নিত করুন‌",
 			type: "boolean"
 		},
 		{
 			name: "insertTalkbackSignature",
-			label: "Insert signature within talkbacks",
+			label: "ফিরতি বার্তায় স্বাক্ষর  ব্যবহার করুন",
 			type: "boolean"
 		},
 		{
 			name: "talkbackHeading",
-			label: "Section heading to use for talkbacks",
+			label: "ফিরতি বার্তা অনুচ্ছেদে যে শিরনাম ব্যবহৃত হবে",
 			type: "string"
 		},
 		{
 			name: "adminNoticeHeading",
-			label: "Section heading to use for administrators' noticeboard notices",
+			label: "প্রশাসকদের আলোচনাসভার নোটিশের শিরনাম",
 			helptip: "Only relevant for AN and ANI.",
 			type: "string"
 		},
 		{
 			name: "mailHeading",
-			label: "Section heading to use for \"you've got mail\" notices",
+			label: "ইমেইল পাঠানোর ক্ষেত্রে অনুচ্ছেদে যে শিরনাম ব্যবহৃত হবে",
 			type: "string"
 		}
 	]
@@ -563,7 +563,7 @@ Twinkle.config.sections = [
 		// In what namespaces unlink should happen, default in 0 (article) and 100 (portal)
 		{
 			name: "unlinkNamespaces",
-			label: "Remove links from pages in these namespaces",
+			label: "এই নামস্থানের পাতাগুলোর ক্ষেত্রে লিংক অপসারণ করা হবে",
 			helptip: "Avoid selecting any talk namespaces, as Twinkle might end up unlinking on talk archives (a big no-no).",
 			type: "set",
 			setValues: Twinkle.config.commonSets.namespacesNoSpecial
@@ -578,9 +578,9 @@ Twinkle.config.sections = [
 		// if true, watch the page which has been dispatched an warning or notice, if false, default applies
 		{
 			name: "defaultWarningGroup",
-			label: "Default warning level",
+			label: "ডিফল্ট সতর্কীকরণ মাত্রা",
 			type: "enum",
-			enumValues: { "1": "Level 1", "2": "Level 2", "3": "Level 3", "4": "Level 4", "5": "Level 4im", "6": "Single-issue notices", "7": "Single-issue warnings", "8": "Block (admin only)" }
+			enumValues: { "1": "লেভেল ১", "2": "লেভেল ২", "3": "লেভেল ৩", "4": "লেভেল ৪", "5": "Level 4im", "6": "Single-issue notices", "7": "Single-issue warnings", "8": "ব্লক (প্রশাসকদের জন্য)" }
 		},
 
 		// TwinkleConfig.showSharedIPNotice may take arguments:
@@ -588,7 +588,7 @@ Twinkle.config.sections = [
 		// false: to not print the notice
 		{
 			name: "showSharedIPNotice",
-			label: "Add extra notice on shared IP talk pages",
+			label: "শেয়ার্ড আইপি আলাপ পাতায় অতিরিক্ত নোটিশ দেখানো হবে",
 			helptip: "Notice used is {{<a href='" + mw.util.wikiGetlink("Template:SharedIPAdvice") + "'>SharedIPAdvice</a>}}",
 			type: "boolean"
 		},
@@ -597,7 +597,7 @@ Twinkle.config.sections = [
 		// if true, watch the page which has been dispatched an warning or notice, if false, default applies
 		{
 			name: "watchWarnings",
-			label: "Add user talk page to watchlist when notifying",
+			label: "সতর্কীবার্তা পাঠানোর পর ব্যবহারকারী আলাপ পাতা নজরতালিকায় রাখুন",
 			type: "boolean"
 		},
 
@@ -605,7 +605,7 @@ Twinkle.config.sections = [
 		// if true, blank the talk page when issuing an indef block notice (per [[WP:UW#Indefinitely blocked users]])
 		{
 			name: "blankTalkpageOnIndefBlock",
-			label: "Blank the talk page when indefinitely blocking users",
+			label: "অনির্দিষ্ট সময়ের জন্য ব্লক করা হলে আলাপ পাতা খালি করুন",
 			helptip: "See <a href=\"" + mw.util.wikiGetlink("WP:UW#Indefinitely blocked users") + "\">WP:UW</a> for more information.",
 			adminOnly: true,
 			type: "boolean"
@@ -619,37 +619,37 @@ Twinkle.config.sections = [
 	preferences: [
 		{
 			name: "topWelcomes",
-			label: "Place welcomes above existing content on user talk pages",
+			label: "ব্যবহারকারী আলাপ পাতার অন্যান্য তথ্যের উপরে স্বাগতম টেমপ্লেট যোগ করুন",
 			type: "boolean"
 		},
 		{
 			name: "watchWelcomes",
-			label: "Add user talk pages to watchlist when welcoming",
+			label: "স্বাগতম জানানোর পর ব্যবহারকারী আলাপ পাতা নজরতালিকায় রাখুন",
 			helptip: "Doing so adds to the personal element of welcoming a user - you will be able to see how they are coping as a newbie, and possibly help them.",
 			type: "boolean"
 		},
 		{
 			name: "insertUsername",
-			label: "Add your username to the template (where applicable)",
+			label: "টেমপ্লেটের সাথে আপনার ব্যবহারকারী নাম যুক্ত করা হবে (প্রযোজ্য স্থানে)",
 			helptip: "Some welcome templates have an opening sentence like \"Hi, I'm &lt;username&gt;. Welcome\" etc. If you turn off this option, these templates will not display your username in that way.",
 			type: "boolean"
 		},
 		{
 			name: "quickWelcomeMode",
-			label: "Clicking the \"welcome\" link on a diff page will",
+			label: "পার্থক্য পাতার \"স্বাগতম\" লিংকে ক্লিক করা হলে",
 			helptip: "If you choose to welcome automatically, the template you specify below will be used.",
 			type: "enum",
 			enumValues: { auto: "welcome automatically", norm: "prompt you to select a template" }
 		},
 		{
 			name: "quickWelcomeTemplate",
-			label: "Template to use when welcoming automatically",
+			label: "সয়ংক্রিয়ভাবে স্বাগত জানানোর সময় যে টেমপ্লেটটি ব্যবহৃত হবে",
 			helptip: "Enter the name of a welcome template, without the curly brackets. A link to the given article will be added.",
 			type: "string"
 		},
 		{
 			name: "customWelcomeList",
-			label: "Custom welcome templates to display",
+			label: "বিশেষ স্বাগতম টেমপ্লেট",
 			helptip: "You can add other welcome templates, or user subpages that are welcome templates (prefixed with \"User:\"). Don't forget that these templates are substituted onto user talk pages.",
 			type: "customList",
 			customListValueTitle: "Template name (no curly brackets)",
@@ -666,7 +666,7 @@ Twinkle.config.sections = [
 		// add to watchlist), or "default" (use setting from preferences). Default is "default" (duh).
 		{
 			name: "xfdWatchPage",
-			label: "Add the nominated page to watchlist",
+			label: "মনোনয়নকৃত পাতা নজরতালিকায় রাখুন",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
 		},
@@ -677,7 +677,7 @@ Twinkle.config.sections = [
 		// Either "yes" (add to watchlist), "no" (don't add to watchlist), or "default" (use setting from preferences). Default is "default" (duh).
 		{
 			name: "xfdWatchDiscussion",
-			label: "Add the deletion discussion page to watchlist",
+			label: "অপসারণ আলোচনা পাতা নজরতালিকায় রাখুন",
 			helptip: "This refers to the discussion subpage (for AfD and MfD) or the daily log page (for TfD, CfD, RfD and FfD)",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
@@ -689,7 +689,7 @@ Twinkle.config.sections = [
 		// Sorry in advance for any false positives.).
 		{
 			name: "xfdWatchList",
-			label: "Add the daily log/list page to the watchlist (where applicable)",
+			label: "প্রতিদিনের লগ পাতা নজরতালিকায় রাখুন",
 			helptip: "This only applies for AfD and MfD, where the discussions are transcluded onto a daily log page (for AfD) or the main MfD page (for MfD).",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
@@ -700,7 +700,7 @@ Twinkle.config.sections = [
 		// add to watchlist), or "default" (use setting from preferences). Default is "default" (duh).
 		{
 			name: "xfdWatchUser",
-			label: "Add the user talk page to watchlist (when notifying)",
+			label: "ব্যবহারকারী আলাপ পাতা নজরতালিকায় রাখুন",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
 		}
@@ -1071,7 +1071,7 @@ Twinkle.config.init = function twinkleconfigInit() {
 							pref: pref,
 							inFriendlyConfig: section.inFriendlyConfig
 						});
-						button.appendChild(document.createTextNode("Edit items"));
+						button.appendChild(document.createTextNode("সম্পাদনা করুন"));
 						cell.appendChild(button);
 						break;
 
@@ -1119,7 +1119,7 @@ Twinkle.config.init = function twinkleconfigInit() {
 		var button = document.createElement("button");
 		button.setAttribute("id", "twinkle-config-submit");
 		button.setAttribute("type", "submit");
-		button.appendChild(document.createTextNode("Save changes"));
+		button.appendChild(document.createTextNode("কার্যকর করুন"));
 		footerbox.appendChild(button);
 		var footerspan = document.createElement("span");
 		footerspan.className = "plainlinks";
@@ -1248,7 +1248,7 @@ Twinkle.config.listDialog.display = function twinkleconfigListDialogDisplay(e) {
 
 	var dialog = new Morebits.simpleWindow(720, 400);
 	dialog.setTitle(curpref.label);
-	dialog.setScriptName("Twinkle preferences");
+	dialog.setScriptName("টুইংকল পছন্দসমূহ");
 
 	var dialogcontent = document.createElement("div");
 	var dlgtable = document.createElement("table");
@@ -1267,12 +1267,12 @@ Twinkle.config.listDialog.display = function twinkleconfigListDialogDisplay(e) {
 	// value column header
 	dlgth = document.createElement("th");
 	dlgth.style.width = "35%";
-	dlgth.textContent = (curpref.customListValueTitle ? curpref.customListValueTitle : "Value");
+	dlgth.textContent = (curpref.customListValueTitle ? curpref.customListValueTitle : "মান");
 	dlgtr.appendChild(dlgth);
 	// label column header
 	dlgth = document.createElement("th");
 	dlgth.style.width = "60%";
-	dlgth.textContent = (curpref.customListLabelTitle ? curpref.customListLabelTitle : "Label");
+	dlgth.textContent = (curpref.customListLabelTitle ? curpref.customListLabelTitle : "লেবেল");
 	dlgtr.appendChild(dlgth);
 	dlgtbody.appendChild(dlgtr);
 
@@ -1298,7 +1298,7 @@ Twinkle.config.listDialog.display = function twinkleconfigListDialogDisplay(e) {
 	addButton.addEventListener("click", function(e) {
 		Twinkle.config.listDialog.addRow(dlgtbody);
 	}, false);
-	addButton.textContent = "Add";
+	addButton.textContent = "সংযোজন";
 	dlgtd.appendChild(addButton);
 	dlgtr.appendChild(dlgtd);
 	dlgtfoot.appendChild(dlgtr);
@@ -1685,9 +1685,9 @@ Twinkle.config.writePrefs = function twinkleconfigWritePrefs(pageobj) {
 		"// twinkleoptions.js: personal Twinkle preferences file\n" +
 		"//\n" +
 		"// খেয়াল করুন: টুইংকলের পছন্দসমূহ পরিবর্তনের সব থেকে সহজ পদ্ধতি হল\n" +
-		"// Twinkle preferences panel: [[" + mw.config.get("wgPageName") + "]].\n" +
+		"// টুইংকল পছন্দসমূহ প্যানেল ব্যবহার করা:[[" + mw.config.get("wgPageName") + "]].\n" +
 		"//\n" +
-		"// This file is AUTOMATICALLY GENERATED.  Any changes you make (aside from\n" +
+		"// এই ফাইলটি সয়ংক্রিয়ভাবে তৈরী করা হয়েছে। Any changes you make (aside from\n" +
 		"// changing the configuration parameters in a valid-JavaScript way) will be\n" +
 		"// overwritten the next time you click \"save\" in the Twinkle preferences\n" +
 		"// panel.  If modifying this file, make sure to use correct JavaScript.\n" +
@@ -1706,7 +1706,7 @@ Twinkle.config.writePrefs = function twinkleconfigWritePrefs(pageobj) {
 };
 
 Twinkle.config.saveSuccess = function twinkleconfigSaveSuccess(pageobj) {
-	pageobj.getStatusElement().info("successful");
+	pageobj.getStatusElement().info("সম্পন্ন");
 
 	var noticebox = document.createElement("div");
 	noticebox.className = "successbox";
