@@ -46,7 +46,7 @@ Twinkle.config.commonSets = {
 	],
 	csdCriteriaNotification: {
 		db: "সাধারন বিচারধারা ({{db}})",
-		g1: "G1", g2: "G2", g3: "G3", g4: "G4", g6: 'G6 ("unnecessary disambig." and "copy-paste move" only)',
+		g1: "G1", g2: "G2", g3: "G3", g4: "G4", g6: 'G6 (কেবলমাত্র "অপ্রয়োজনীয় দ্ব্যার্থতা নিরসন" এবং "কপি-পেস্ট স্থানান্তর")',
 		g10: "G10", g11: "G11", g12: "G12",
 		a1: "A1", a2: "A2", a3: "A3", a5: "A5", a7: "A7", a9: "A9", a10: "A10",
 		u3: "U3",
@@ -108,8 +108,8 @@ Twinkle.config.commonSets = {
 		"15": "বিষয়শ্রেণী আলাপ",
 		"100": "প্রবেশদ্বার",
 		"101": "প্রবেশদ্বার আলাপ",
-		"108": "Book",
-		"109": "Book আলাপ"
+		"108": "বই",
+		"109": "বই আলাপ"
 	}
 };
 
@@ -277,7 +277,7 @@ Twinkle.config.sections = [
 		{
 			name: "openTalkPageOnAutoRevert",
 			label: "কোন ব্যবহারকারীর অবদান রোলব্যাক করার পার তার আলাপ পাতা খুলুন",
-			helptip: "Often, you may be rolling back many pages at a time from a vandal's contributions page, so it would be unsuitable to open the user talk page. Hence, this option is off by default. When this is on, the desired options must be enabled in the previous setting for this to work.",
+			helptip: "প্রায় সময়ই আপনি একই সাথে একাধিক পাতার ধ্বংসপ্রবনতা দূর করার জন্য রোলব্যাক করে থাকেন, এক্ষেত্রে প্রতিবার ব্যবহারকারীর আলাপ পাতা ওপেন করা অসুবিধাজনক হতে পারে। ডিফল্টভাবে এই অপশনটি বন্ধ থাকে। এই অপশনটি চালু করা হলে কোন কোন ধরনের পাতার জন্য এটি কার্যকর হবে সেটি নির্ধারন করে দিতে হবে।",
 			type: "boolean"
 		},
 
@@ -311,7 +311,7 @@ Twinkle.config.sections = [
 		{
 			name: "confirmOnFluff",
 			label: "রোলব্যাক করার পূর্বে নিশ্চিতকরণ বার্তা দেখাও",
-			helptip: "For users of pen or touch devices, and chronically indecisive people.",
+			helptip: "যারা কোন টাচ ডিভাইস থেকে ব্যবাহর করছেন, এবং অনিচ্ছাকৃত ত্রুটি এড়ানোর জন্য।",
 			type: "boolean"
 		},
 
@@ -320,9 +320,9 @@ Twinkle.config.sections = [
 		// Note from TTO: |contribs| seems to be equal to |others| + |mine|, i.e. redundant, so I left it out heres
 		{
 			name: "showRollbackLinks",
-			label: "Show rollback links on these pages",
+			label: "এই পাতাগুলোতে রোলব্যাক লিংক দেখাও",
 			type: "set",
-			setValues: { diff: "Diff pages", others: "Contributions pages of other users", mine: "My contributions page" }
+			setValues: { diff: "পার্থক্য পাতা", others: "অন্য ব্যবহারকারীর সম্পাদিত", mine: "আমার সম্পাদিত পাতা" }
 		}
 	]
 },
@@ -350,7 +350,7 @@ Twinkle.config.sections = [
 		},
 		{
 			name: "speedyPromptOnG7",
-			label: "Prompt for rationale when tagging with G7 (author request)",
+			label: "G7 (প্রনেতার অনুরোধ) বিচার ধারায় প্রস্তাব করা হলে কারণ উল্লেখ করার উইন্ডো ওপেন হবে",
 			type: "boolean"
 		},
 
@@ -390,7 +390,7 @@ Twinkle.config.sections = [
 		{
 			name: "welcomeUserOnSpeedyDeletionNotification",
 			label: "এই ট্যাগগুলো সংযোজনের সময় প্রনেতাকে স্বাগতম বার্তা জানানো হবে",
-			helptip: "The welcome is issued only if the user is notified about the deletion, and only if their talk page does not already exist. The template used is {{<a href=\"" + mw.util.wikiGetlink("Template:Firstarticle") + "\">firstarticle</a>}}.",
+			helptip: "ব্যবহারকারীকে অপসারণ নোটিশ পাঠানোর সময় এই স্বাগতম বার্তা জানানো হবে, এবং যদি আগে থেকেই কোনো স্বাগতম বার্তা না থাকে। এক্ষেত্রে {{<a href=\"" + mw.util.wikiGetlink("Template:Firstarticle") + "\">প্রথম নিবন্ধ</a>}} টেমপ্লেটটি ব্যবহৃত হবে।",
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdCriteriaNotification,
 			setDisplayOrder: Twinkle.config.commonSets.csdCriteriaNotificationDisplayOrder
@@ -437,7 +437,7 @@ Twinkle.config.sections = [
 		// Make the CSD screen default to "tag" instead of "delete" (admin only)
 		{
 			name: "deleteSysopDefaultToTag",
-			label: "Default to speedy tagging instead of outright deletion",
+			label: "অপসারণের পরিবর্তে ডিফল্টভাবে শুধুমাত্র ট্যাগ সংযোজন করা হবে",
 			adminOnly: true,
 			type: "boolean"
 		},
@@ -461,19 +461,19 @@ Twinkle.config.sections = [
 
 		{
 			name: "logSpeedyNominations",
-			label: "Keep a log in userspace of all CSD nominations",
-			helptip: "Since non-admins do not have access to their deleted contributions, the userspace log offers a good way to keep track of all pages you nominate for CSD using Twinkle. Files tagged using DI are also added to this log.",
+			label: "দ্রুত অপসারণ প্রস্তাবনাগুলোর তালিকা ব্যবহারকারীর নাম সংরক্ষন করুন",
+			helptip: "সাধারণ ব্যবহারকারীরা তাদের অপসারিত সম্পাদনাগুলো দেখতে পারেন না, ব্যবহারকারী নামস্থানে অপসারিত নিবন্ধের তালিকা সংরক্ষনের মাধ্যমে তারা এই নিবন্ধ/অবদান গুলো দেখতে পারবেন",
 			type: "boolean"
 		},
 		{
 			name: "speedyLogPageName",
-			label: "Keep the CSD userspace log at this user subpage",
-			helptip: "Enter a subpage name in this box. You will find your CSD log at User:<i>username</i>/<i>subpage name</i>. Only works if you turn on the CSD userspace log.",
+			label: "ব্যবহারকারীর এই উপপাতায় দ্রুত অপসারণ লগ সংরক্ষন করন",
+			helptip: "এই বক্সে ব্যবহারকারী উপপাতার নাম লিখুন। ব্যবহারকারী উপপাতায় লগ সংরক্ষণ অপশনটি চালু থাকলে এটি কার্যকর হবে।",
 			type: "string"
 		},
 		{
 			name: "noLogOnSpeedyNomination",
-			label: "Do not create a userspace log entry when tagging with these criteria",
+			label: "এই বিষয়ের ট্যাগ সংযোজনের ক্ষেত্রে উপপাতায় লগ সংরক্ষন করা হবে না",
 			type: "set",
 			setValues: Twinkle.config.commonSets.csdAndDICriteria,
 			setDisplayOrder: Twinkle.config.commonSets.csdAndDICriteriaDisplayOrder
@@ -498,27 +498,27 @@ Twinkle.config.sections = [
 		{
 			name: "markTaggedPagesAsPatrolled",
 			label: "ট্যাগ সংযোজনের পর পাতাটি পরীক্ষিত হিসাবে চিহ্নিত করুন (যদি সম্ভব হয়)",
-			helptip: "Due to technical limitations, pages are only marked as patrolled when they are reached via Special:NewPages.",
+			helptip: "কারিগরী সীমাবদ্ধতার জন্য বর্তমানে কেবলমাত্র Special:NewPages পাতা থেকে সম্পাদনার ক্ষেত্রে এটি কার্যকর হবে।",
 			type: "boolean"
 		},
 		{
 			name: "groupByDefault",
-			label: "Check the \"group into {{multiple issues}}\" box by default",
+			label: "ডিফল্টভাবে \"{{multiple issues}}\" বক্সে টিক চিহ্ন থাকবে",
 			type: "boolean"
 		},
 		{
 			name: "tagArticleSortOrder",
-			label: "Default view order for article tags",
+			label: "নিবন্ধ ট্যাগের ডিফল্ট ক্রম",
 			type: "enum",
-			enumValues: { "cat": "By categories", "alpha": "In alphabetical order" }
+			enumValues: { "cat": "বিষয়শ্রেণী অনুযায়ী", "alpha": "বর্ণক্রম অনুযায়ী" }
 		},
 		{
 			name: "customTagList",
-			label: "Custom article maintenance tags to display",
-			helptip: "These appear as additional options at the bottom of the list of tags. For example, you could add new maintenance tags which have not yet been added to Twinkle's defaults.",
+			label: "নিবন্ধ রক্ষনাবেক্ষনের বিশেষ ট্যাগ",
+			helptip: "ট্যাগের তালিকার নিচে এগুলো অতিরিক্ত অপশন হিসাবে দেখানো হবে। আপনি এমন যে কোন টেমপ্লেটই এখানে যোগ করতে পারবেন যেগুলো এখনো টুইংকলে যুক্ত করা হয়নি।",
 			type: "customList",
-			customListValueTitle: "Template name (no curly brackets)",
-			customListLabelTitle: "Text to show in Tag dialog"
+			customListValueTitle: "টেমপ্লেটের নাম (বন্ধনী বাদে লিখুন)",
+			customListLabelTitle: "ট্যাগ উইন্ডোতে যা দেখানো হবে"
 		}
 	]
 },
@@ -545,7 +545,7 @@ Twinkle.config.sections = [
 		{
 			name: "adminNoticeHeading",
 			label: "প্রশাসকদের আলোচনাসভার নোটিশের শিরনাম",
-			helptip: "Only relevant for AN and ANI.",
+			helptip: "কেবলমাত্র প্রশাসকদের আলোচনাসভার নোটিশের ক্ষেত্রে উপযোগী।",
 			type: "string"
 		},
 		{
@@ -557,14 +557,14 @@ Twinkle.config.sections = [
 },
 
 {
-	title: "Unlink",
+	title: "লিংক অপসারণ",
 	preferences: [
 		// TwinkleConfig.unlinkNamespaces (array)
 		// In what namespaces unlink should happen, default in 0 (article) and 100 (portal)
 		{
 			name: "unlinkNamespaces",
 			label: "এই নামস্থানের পাতাগুলোর ক্ষেত্রে লিংক অপসারণ করা হবে",
-			helptip: "Avoid selecting any talk namespaces, as Twinkle might end up unlinking on talk archives (a big no-no).",
+			helptip: "সকল নামস্থানের ক্ষেত্রেই আলোচনা পাতাগুলো নির্বাচন করা থেকে বিরত থাকুন।",
 			type: "set",
 			setValues: Twinkle.config.commonSets.namespacesNoSpecial
 		}
@@ -589,7 +589,7 @@ Twinkle.config.sections = [
 		{
 			name: "showSharedIPNotice",
 			label: "শেয়ার্ড আইপি আলাপ পাতায় অতিরিক্ত নোটিশ দেখানো হবে",
-			helptip: "Notice used is {{<a href='" + mw.util.wikiGetlink("Template:SharedIPAdvice") + "'>SharedIPAdvice</a>}}",
+			helptip: "নোটিশ যেভাবে ব্যবহৃত হবে {{<a href='" + mw.util.wikiGetlink("Template:SharedIPAdvice") + "'>SharedIPAdvice</a>}}",
 			type: "boolean"
 		},
 
@@ -606,7 +606,7 @@ Twinkle.config.sections = [
 		{
 			name: "blankTalkpageOnIndefBlock",
 			label: "অনির্দিষ্ট সময়ের জন্য ব্লক করা হলে আলাপ পাতা খালি করুন",
-			helptip: "See <a href=\"" + mw.util.wikiGetlink("WP:UW#Indefinitely blocked users") + "\">WP:UW</a> for more information.",
+			helptip: "বিস্তারিত দেখুন এখানে <a href=\"" + mw.util.wikiGetlink("WP:UW#Indefinitely blocked users") + "\">WP:UW</a>",
 			adminOnly: true,
 			type: "boolean"
 		}
@@ -625,35 +625,35 @@ Twinkle.config.sections = [
 		{
 			name: "watchWelcomes",
 			label: "স্বাগতম জানানোর পর ব্যবহারকারী আলাপ পাতা নজরতালিকায় রাখুন",
-			helptip: "Doing so adds to the personal element of welcoming a user - you will be able to see how they are coping as a newbie, and possibly help them.",
+			helptip: "নজরতালিকায় যুক্ত করার মধ্যমে আপনি নতুন এই ব্যবহারকারীর সাথে নিয়মিত যোগাযোগ করতে পারবেন এবং প্রয়োজনে থাকে বিভিন্ন বিষয়ে সহায়তা করতে পারবেন।",
 			type: "boolean"
 		},
 		{
 			name: "insertUsername",
 			label: "টেমপ্লেটের সাথে আপনার ব্যবহারকারী নাম যুক্ত করা হবে (প্রযোজ্য স্থানে)",
-			helptip: "Some welcome templates have an opening sentence like \"Hi, I'm &lt;username&gt;. Welcome\" etc. If you turn off this option, these templates will not display your username in that way.",
+			helptip: "বেশ কিছু স্বাগতম টেমপ্লেটের শুরুর অংশে লেখা থাকে, \"স্বাগতম, আমি &lt;ব্যবহারকারী নাম&gt;।\"। এই অপশনটি বন্ধ করা থাকলে ঐসকল টেমপ্লেট ব্যবহারের সময় আপনার ব্যবাহরকারীর নাম যুক্ত করা হবে না।",
 			type: "boolean"
 		},
 		{
 			name: "quickWelcomeMode",
 			label: "পার্থক্য পাতার \"স্বাগতম\" লিংকে ক্লিক করা হলে",
-			helptip: "If you choose to welcome automatically, the template you specify below will be used.",
+			helptip: "সয়ংক্রিয়ভাবে নির্বাচন অপশনটি সক্রিয় থাকলে নিচের টেমপ্লেটটি ব্যবহৃত হবে।",
 			type: "enum",
-			enumValues: { auto: "welcome automatically", norm: "prompt you to select a template" }
+			enumValues: { auto: "সয়ংক্রিয় স্বাগতম", norm: "টেমপ্লেট নির্বাচনের সুযোগ থাকবে" }
 		},
 		{
 			name: "quickWelcomeTemplate",
 			label: "সয়ংক্রিয়ভাবে স্বাগত জানানোর সময় যে টেমপ্লেটটি ব্যবহৃত হবে",
-			helptip: "Enter the name of a welcome template, without the curly brackets. A link to the given article will be added.",
+			helptip: "স্বাগতম টেমপ্লেটের নাম লিখুন, বন্ধনী ব্যবহারের প্রয়োজন নেই। নির্ধারিত পাতার লিংকটিও যুক্ত হবে।",
 			type: "string"
 		},
 		{
 			name: "customWelcomeList",
 			label: "বিশেষ স্বাগতম টেমপ্লেট",
-			helptip: "You can add other welcome templates, or user subpages that are welcome templates (prefixed with \"User:\"). Don't forget that these templates are substituted onto user talk pages.",
+			helptip: "আপনি অতিরিক্ত স্বাগতম টেমপ্লেট যুক্ত করতে পারেন, অথবা ব্যবহারকারী উপপাতা যেগুলো স্বাগতম টেমপ্লেট হিসাবে ব্যবহৃত হয়। এক্ষেত্রে \"ব্যবহারকারী:\") অংশটি উল্লেখ করতে হবে। মনে রাখবেন ব্যবহারকারী পাতায় এই টেমপ্লেটগুলো প্রতিস্থাপিত হবে।",
 			type: "customList",
-			customListValueTitle: "Template name (no curly brackets)",
-			customListLabelTitle: "Text to show in Welcome dialog"
+			customListValueTitle: "টেমপ্লেটের নাম (বন্ধনী বাদে লিখুন)",
+			customListLabelTitle: "ট্যাগ উইন্ডোতে যা দেখানো হবে"
 		}
 	]
 },
@@ -678,7 +678,7 @@ Twinkle.config.sections = [
 		{
 			name: "xfdWatchDiscussion",
 			label: "অপসারণ আলোচনা পাতা নজরতালিকায় রাখুন",
-			helptip: "This refers to the discussion subpage (for AfD and MfD) or the daily log page (for TfD, CfD, RfD and FfD)",
+			helptip: "এখানে অপসারণ আলোচনা বলতে AfD এবং MfD আলোচনা উপপাতা অথবা প্রতিদিনের TfD, CfD, RfD এবং FfD লগকে বুঝানো হচ্ছে",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
 		},
@@ -690,7 +690,7 @@ Twinkle.config.sections = [
 		{
 			name: "xfdWatchList",
 			label: "প্রতিদিনের লগ পাতা নজরতালিকায় রাখুন",
-			helptip: "This only applies for AfD and MfD, where the discussions are transcluded onto a daily log page (for AfD) or the main MfD page (for MfD).",
+			helptip: "এটি কেবলমাত্র AfD এবং MfD এর ক্ষেত্রে কার্যকর হবে, যেখানে লগ একটি আলাদা পাতায় সংরক্ষিত হয়।",
 			type: "enum",
 			enumValues: Twinkle.config.commonEnums.watchlist
 		},
@@ -1619,7 +1619,7 @@ Twinkle.config.writePrefs = function twinkleconfigWritePrefs(pageobj) {
 					case "integer":  // read from the input box
 						userValue = parseInt(form[pref.name].value, 10);
 						if (isNaN(userValue)) {
-							Morebits.status.warn("Saving", "The value you specified for " + pref.name + " (" + pref.value + ") was invalid.  The save will continue, but the invalid data value will be skipped.");
+							Morebits.status.warn("সংরক্ষিত হচ্ছে", "আপনার নির্ধারিত মান " + pref.name + " (" + pref.value + ") সঠিক নয়। ভুল মানটি ছাড়া অন্যান্য অংশগুলো সংরক্ষিত হবে।");
 							userValue = null;
 						}
 						break;
