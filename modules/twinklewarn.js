@@ -165,24 +165,24 @@ Twinkle.warn.messages = {
 			summary:"সাধারণ নোটিশ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov1": { 
-			label:"Not adhering to neutral point of view", 
-			summary:"সাধারণ নোটিশ: Not adhering to neutral point of view" 
+			label:"নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা", 
+			summary:"সাধারণ নোটিশ: নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা" 
 		},
 		"uw-unsourced1": { 
-			label:"Addition of unsourced or improperly cited material", 
-			summary:"সাধারণ নোটিশ: Addition of unsourced or improperly cited material" 
+			label:"ভুল অথবা তথ্যসূত্র ছাড়া বিষয়বস্তু সংযোজন", 
+			summary:"সাধারণ নোটিশ: ভুল অথবা তথ্যসূত্র ছাড়া বিষয়বস্তু সংযোজন" 
 		},
 		"uw-error1": { 
 			label:"Introducing deliberate factual errors", 
 			summary:"সাধারণ নোটিশ: Introducing factual errors" 
 		},
 		"uw-nor1": { 
-			label:"Adding original research, including unpublished syntheses of source material", 
-			summary:"সাধারণ নোটিশ: Adding original research, including unpublished syntheses of source material" 
+			label:"ব্যক্তিগত গবেষণা, কোথাও প্রকাশিত হয়নি এমন বিষয়বস্তু সূত্র হিসাবে সংযোজন করা", 
+			summary:"সাধারণ নোটিশ: ব্যক্তিগত গবেষণা, কোথাও প্রকাশিত হয়নি এমন বিষয়বস্তু সূত্র হিসাবে সংযোজন করা" 
 		},
 		"uw-biog1": { 
-			label:"Adding unreferenced controversial information about living persons", 
-			summary:"সাধারণ নোটিশ: Adding unreferenced controversial information about living persons" 
+			label:"তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন", 
+			summary:"সাধারণ নোটিশ: তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন" 
 		},
 		"uw-defam1": { 
 			label:"Addition of defamatory content", 
@@ -205,8 +205,8 @@ Twinkle.warn.messages = {
 			summary:"সাধারণ নোটিশ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv1": { 
-			label:"Refactoring others' talk page comments", 
-			summary:"সাধারণ নোটিশ: Refactoring others' talk page comments" 
+			label:"অন্যের আলাপ পাতার তথ্য পরিবর্তন", 
+			summary:"সাধারণ নোটিশ: অন্যের আলাপ পাতার তথ্য পরিবর্তন" 
 		},
 		"uw-afd1": { 
 			label:"{{afd}} টেমপ্লেট অপসারণ",
@@ -229,12 +229,12 @@ Twinkle.warn.messages = {
 			summary:"সাধারণ নোটিশ: Not assuming good faith" 
 		},
 		"uw-own1": { 
-			label:"Ownership of articles", 
-			summary:"সাধারণ নোটিশ: Ownership of articles"
+			label:"নিবন্ধের মালিকানা", 
+			summary:"সাধারণ নোটিশ: নিবন্ধের মালিকানা"
 		},
 		"uw-tempabuse1": { 
-			label:"Improper use of warning or blocking template", 
-			summary:"সাধারণ নোটিশ: Improper use of warning or blocking template"
+			label:"সতর্কীকরণ অথবা বাধা দেয়ার টেমপ্লেটের ভুল ব্যবহার", 
+			summary:"সাধারণ নোটিশ: সতর্কীকরণ অথবা বাধা দেয়ার টেমপ্লেটের ভুল ব্যবহার"
 		},
 		"uw-genre1": { 
 			label:"Frequent or mass changes to genres without consensus or references", 
@@ -295,12 +295,12 @@ Twinkle.warn.messages = {
 			summary:"প্রাথমিক সতর্কীকরণ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov2": { 
-			label:"Not adhering to neutral point of view", 
-			summary:"প্রাথমিক সতর্কীকরণ: Not adhering to neutral point of view" 
+			label:"নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা", 
+			summary:"প্রাথমিক সতর্কীকরণ: নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা" 
 		},
 		"uw-unsourced2": { 
-			label:"Addition of unsourced or improperly cited material", 
-			summary:"প্রাথমিক সতর্কীকরণ: Addition of unsourced or improperly cited material" 
+			label:"ভুল অথবা তথ্যসূত্র ছাড়া বিষয়বস্তু সংযোজন", 
+			summary:"প্রাথমিক সতর্কীকরণ: ভুল অথবা তথ্যসূত্র ছাড়া বিষয়বস্তু সংযোজন" 
 		},
 		"uw-error2": { 
 			label:"Introducing deliberate factual errors", 
@@ -311,8 +311,8 @@ Twinkle.warn.messages = {
 			summary:"প্রাথমিক সতর্কীকরণ: Adding original research, including unpublished syntheses of sourced material"
 		},
 		"uw-biog2": { 
-			label:"Adding unreferenced controversial information about living persons", 
-			summary:"প্রাথমিক সতর্কীকরণ: Adding unreferenced controversial information about living persons" 
+			label:"তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন", 
+			summary:"প্রাথমিক সতর্কীকরণ: তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন" 
 		},
 		"uw-defam2": { 
 			label:"Addition of defamatory content", 
@@ -335,8 +335,8 @@ Twinkle.warn.messages = {
 			summary:"প্রাথমিক সতর্কীকরণ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv2": { 
-			label:"Refactoring others' talk page comments", 
-			summary:"প্রাথমিক সতর্কীকরণ: Refactoring others' talk page comments" 
+			label:"অন্যের আলাপ পাতার তথ্য পরিবর্তন", 
+			summary:"প্রাথমিক সতর্কীকরণ: অন্যের আলাপ পাতার তথ্য পরিবর্তন" 
 		},
 		"uw-afd2": { 
 			label:"{{afd}} টেমপ্লেট অপসারণ",
@@ -359,12 +359,12 @@ Twinkle.warn.messages = {
 			summary:"প্রাথমিক সতর্কীকরণ: Not assuming good faith" 
 		},
 		"uw-own2": { 
-			label:"Ownership of articles", 
-			summary:"প্রাথমিক সতর্কীকরণ: Ownership of articles"
+			label:"নিবন্ধের মালিকানা", 
+			summary:"প্রাথমিক সতর্কীকরণ: নিবন্ধের মালিকানা"
 		},
 		"uw-tempabuse2": { 
-			label:"Improper use of warning or blocking template", 
-			summary:"প্রাথমিক সতর্কীকরণ: Improper use of warning or blocking template"
+			label:"সতর্কীকরণ অথবা বাধা দেয়ার টেমপ্লেটের ভুল ব্যবহার", 
+			summary:"প্রাথমিক সতর্কীকরণ: সতর্কীকরণ অথবা বাধা দেয়ার টেমপ্লেটের ভুল ব্যবহার"
 		},
 		"uw-genre2": { 
 			label:"Frequent or mass changes to genres without consensus or references", 
@@ -425,12 +425,12 @@ Twinkle.warn.messages = {
 			summary:"সতর্কীকরণ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov3": { 
-			label:"Not adhering to neutral point of view", 
-			summary:"সতর্কীকরণ: Not adhering to neutral point of view" 
+			label:"নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা", 
+			summary:"সতর্কীকরণ: নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা" 
 		},
 		"uw-unsourced3": { 
-			label:"Addition of unsourced or improperly cited material", 
-			summary:"সতর্কীকরণ: Addition of unsourced or improperly cited material" 
+			label:"ভুল অথবা তথ্যসূত্র ছাড়া বিষয়বস্তু সংযোজন", 
+			summary:"সতর্কীকরণ: ভুল অথবা তথ্যসূত্র ছাড়া বিষয়বস্তু সংযোজন" 
 		},
 		"uw-error3": { 
 			label:"Introducing deliberate factual errors", 
@@ -442,7 +442,7 @@ Twinkle.warn.messages = {
 		},
 		"uw-biog3": { 
 			label:"Adding unreferenced controversial or defamatory information about living persons", 
-			summary:"সতর্কীকরণ: Adding unreferenced controversial information about living persons" 
+			summary:"সতর্কীকরণ: তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন" 
 		},
 		"uw-defam3": { 
 			label:"Addition of defamatory content", 
@@ -465,8 +465,8 @@ Twinkle.warn.messages = {
 			summary:"সতর্কীকরণ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv3": { 
-			label:"Refactoring others' talk page comments", 
-			summary:"সতর্কীকরণ: Refactoring others' talk page comments" 
+			label:"অন্যের আলাপ পাতার তথ্য পরিবর্তন", 
+			summary:"সতর্কীকরণ: অন্যের আলাপ পাতার তথ্য পরিবর্তন" 
 		},
 		"uw-afd3": { 
 			label:"{{afd}} টেমপ্লেট অপসারণ",
@@ -489,8 +489,8 @@ Twinkle.warn.messages = {
 			summary:"সতর্কীকরণ: Not assuming good faith" 
 		},
 		"uw-own3": { 
-			label:"Ownership of articles", 
-			summary:"সতর্কীকরণ: Ownership of articles"
+			label:"নিবন্ধের মালিকানা", 
+			summary:"সতর্কীকরণ: নিবন্ধের মালিকানা"
 		},
 		"uw-genre3": { 
 			label:"Frequent or mass changes to genres without consensus or reference", 
@@ -556,8 +556,8 @@ Twinkle.warn.messages = {
 			summary:"সর্বশেষ সতর্কীকরণ: বিজ্ঞাপনের কাজে উইকিপিডিয়া ব্যবহার" 
 		},
 		"uw-npov4": { 
-			label:"Not adhering to neutral point of view", 
-			summary:"সর্বশেষ সতর্কীকরণ: Not adhering to neutral point of view" 
+			label:"নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা", 
+			summary:"সর্বশেষ সতর্কীকরণ: নিরপেক্ষ দৃষ্টিভঙ্গি অনুসরণ না করা" 
 		},
 		"uw-error4": { 
 			label:"Introducing deliberate factual errors", 
@@ -569,7 +569,7 @@ Twinkle.warn.messages = {
 		},
 		"uw-biog4": { 
 			label:"Adding unreferenced defamatory information about living persons", 
-			summary:"সর্বশেষ সতর্কীকরণ: Adding unreferenced controversial information about living persons" 
+			summary:"সর্বশেষ সতর্কীকরণ: তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন" 
 		},
 		"uw-defam4": { 
 			label:"Addition of defamatory content", 
@@ -592,8 +592,8 @@ Twinkle.warn.messages = {
 			summary:"সর্বশেষ সতর্কীকরণ: আলাপ পাতা ফোরাম হিসাবে ব্যবহার" 
 		},
 		"uw-tpv4": { 
-			label:"Refactoring others' talk page comments", 
-			summary:"সর্বশেষ সতর্কীকরণ: Refactoring others' talk page comments" 
+			label:"অন্যের আলাপ পাতার তথ্য পরিবর্তন", 
+			summary:"সর্বশেষ সতর্কীকরণ: অন্যের আলাপ পাতার তথ্য পরিবর্তন" 
 		},
 		"uw-afd4": { 
 			label:"{{afd}} টেমপ্লেট অপসারণ",
@@ -652,7 +652,7 @@ Twinkle.warn.messages = {
 		},
 		"uw-biog4im": { 
 			label:"Adding unreferenced defamatory information about living persons", 
-			summary:"Only warning: Adding unreferenced controversial information about living persons" 
+			summary:"Only warning: তথ্যসূত্র ব্যতিত জীবিত ব্যক্তি সম্পর্কে বিতর্কিত তথ্য সংযোজন" 
 		},
 		"uw-defam4im": { 
 			label:"Addition of defamatory content", 

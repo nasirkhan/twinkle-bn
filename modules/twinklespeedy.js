@@ -259,7 +259,7 @@ Twinkle.speedy.talkList = [
 	{
 		label: 'স৮:ইতিমধ্যেই অপসারিত বা অস্তিত্বহীন পাতার ওপর নির্ভরশীল পাতা বা আলাপ পাতা',
 		value: 'talk',
-		tooltip: 'This excludes any page that is useful to the project - in particular, user talk pages, talk page archives, and talk pages for files that exist on Wikimedia Commons.'
+		tooltip: 'পরবর্তীতে প্রয়োজন হতে পারে এমন পাতাগুলো এটির আওতাভুক্ত নয়, যেমন ব্যবহারকারী আলাপ পাতা, আলাপ পাতার আর্কাইভ, কমন্সে রয়েছে এমন ফাইলের আলাপ পাতা ইত্যাদি।'
 	}
 ];
 
@@ -269,12 +269,12 @@ Twinkle.speedy.getFileList = function twinklespeedyGetFileList(multiple) {
 	result.push({
 		label: 'ফ১:অনাবশ্যক ফাইল',
 		value: 'redundantimage',
-		tooltip: 'Any file that is a redundant copy, in the same file format and same or lower resolution, of something else on Wikipedia. Likewise, other media that is a redundant copy, in the same format and of the same or lower quality. This does not apply to files duplicated on Wikimedia Commons, because of licence issues; these should be tagged with {{subst:ncd|Image:newname.ext}} or {{subst:ncd}} instead'
+		tooltip: 'এমন কোনো ফাইল যার একাধিক কপি রয়েছে, হয়তে এটি একই ফরম্যটের ফাইল, অথবা অন্য ফাইলের কম রেজ্যুলেশনের কপি, অথবা অন্যান্য। কিন্তু এটি যদি কমন্সে রয়েছে এমন কোনো ফাইলের প্রতিলিপি হয় তাহলে ট্যাগ সংযোজনের পূর্বে লাইসেন্সটি যাচাই করুন, প্রয়োজনে  {{subst:ncd|Image:newname.ext}} অথবা {{subst:ncd}} ট্যাগ সংযোজন করুন।'
 	});
 	result.push({
 		label: 'ফ২:বিকৃত বা  চিত্রহীন ফাইল',
 		value: 'noimage',
-		tooltip: 'Before deleting this type of file, verify that the MediaWiki engine cannot read it by previewing a resized thumbnail of it. This also includes empty (i.e., no content) file description pages for Commons files'
+		tooltip: 'অপসারণের পূর্বে নিশ্চিত হয়ে নিন যে মিডিয়াউইকি ইঞ্জিন এই ফাইলটি ওপেন করতে পারছে না। কমন্সে রয়েছে এমন ফাইলের বর্ণনা পাতাও এখানে অন্তর্ভুক্ত করা যেতে পারে'
 	});
 	if (!multiple) {
 		result.push({
@@ -589,7 +589,7 @@ Twinkle.speedy.getGeneralList = function twinklespeedyGetGeneralList(multiple) {
 	});
 	if (!multiple) {
 		result.push({
-			label: 'G10: Wholly negative, unsourced BLP',
+			label: 'G10: আক্রমনাত্বক, তথ্যসূত্র বিহীন জীবনী',
 			value: 'negublp',
 			tooltip: 'A biography of a living person that is entirely negative in tone and unsourced, where there is no neutral version in the history to revert to.'
 		});
@@ -694,7 +694,7 @@ Twinkle.speedy.reasonHash = {
 // General
 	'nonsense': '[[WP:PN|Patent nonsense]], meaningless, or incomprehensible',
 	'test': 'পরীক্ষামূলক পাতা,অনুগ্রহপূর্বক সকল পরীক্ষা [[উইকিপিডিয়া:খেলাঘর|খেলাঘরে]] করুন',
-	'vandalism': 'নিশ্চিত[[উইকিপিডিয়া:ধ্বংসপ্রবণতা|ধ্বংসপ্রবণতা]]',
+	'vandalism': 'নিশ্চিত [[উইকিপিডিয়া:ধ্বংসপ্রবণতা|ধ্বংসপ্রবণতা]]',
 	'hoax': 'Blatant [[WP:Do not create hoaxes|hoax]]',
 	'repost': 'Recreation of a page that was [[WP:DEL|deleted]] per a [[WP:XFD|deletion discussion]]',
 	'banned': 'Creation by a [[WP:BLOCK|blocked]] or [[WP:BAN|banned]] user in violation of block or ban',
@@ -807,7 +807,7 @@ Twinkle.speedy.callbacks = {
 					}
 				});
 				$bigtext = $('<span/>', {
-					'text': 'To orphan backlinks and remove instances of file usage',
+					'text': 'ব্যকলিংক অপসারণের জন্য',
 					'css': { 'fontSize': '130%', 'fontWeight': 'bold' }
 				});
 				Morebits.status.info($bigtext[0], $link[0]);
@@ -1011,18 +1011,18 @@ Twinkle.speedy.callbacks = {
 			// Generate edit summary for edit
 			var editsummary;
 			if (params.normalizeds.length > 1) {
-				editsummary = 'Requesting speedy deletion (';
+				editsummary = 'দ্রুত অপসারণ প্রস্তাবনা (';
 				$.each(params.normalizeds, function(index, norm) {
 					editsummary += '[[WP:CSD#' + norm.toUpperCase() + '|CSD ' + norm.toUpperCase() + ']], ';
 				});
 				editsummary = editsummary.substr(0, editsummary.length - 2); // remove trailing comma
 				editsummary += ').';
 			} else if (params.normalizeds[0] === "db") {
-				editsummary = 'Requesting [[WP:CSD|speedy deletion]] with rationale \"' + parameters["1"] + '\".';
+				editsummary = '[[WP:CSD|দ্রুত অপসারণ]] প্রস্তাব করা হচ্ছে কারণ \"' + parameters["1"] + '\".';
 			} else if (params.values[0] === "histmerge") {
-				editsummary = "Requesting history merge with [[" + parameters["1"] + "]] ([[WP:CSD#G6|CSD G6]]).";
+				editsummary = "[[" + parameters["1"] + "]] এর সাথে ইতিহাস একীকরনের অনুরোধ ([[WP:CSD#G6|CSD G6]]).";
 			} else {
-				editsummary = "Requesting speedy deletion ([[WP:CSD#" + params.normalizeds[0].toUpperCase() + "|CSD " + params.normalizeds[0].toUpperCase() + "]]).";
+				editsummary = "দ্রুত অপসারণ প্রস্তাবনা ([[WP:CSD#" + params.normalizeds[0].toUpperCase() + "|CSD " + params.normalizeds[0].toUpperCase() + "]]).";
 			}
 
 			pageobj.setPageText(code + ((params.normalizeds.indexOf('g10') !== -1) ? '' : ("\n" + text) )); // cause attack pages to be blanked
@@ -1042,17 +1042,17 @@ Twinkle.speedy.callbacks = {
 
 					// don't notify users when their user talk page is nominated
 					if (initialContrib === mw.config.get('wgTitle') && mw.config.get('wgNamespaceNumber') === 3) {
-						Morebits.status.warn("Notifying initial contributor: this user created their own user talk page; skipping notification");
+						Morebits.status.warn("প্রনেতাকে জানানো হচ্ছে: এই ব্যবহারকারী তার নিজের আলাপ পাতাটি তৈরী করেছিলেন; নোটিশ দেয়া হচ্ছে না");
 						return;
 					}
 
 					// quick hack to prevent excessive unwanted notifications, per request. Should actually be configurable on recipient page ...
 					if ((initialContrib === "Cyberbot I" || initialContrib === "SoxBot") && params.normalizeds[0]==="f2") {
-						Morebits.status.warn("Notifying initial contributor: page created procedurally by bot; skipping notification");
+						Morebits.status.warn("প্রনেতাকে জানানো হচ্ছে: বট ব্যবহার করে এটি পাতাটি তৈরী করা হয়েছিল; নোটিশ দেয়া হচ্ছে না");
 						return;
 					}
 
-					var usertalkpage = new Morebits.wiki.page('User talk:' + initialContrib, "Notifying initial contributor (" + initialContrib + ")"),
+					var usertalkpage = new Morebits.wiki.page('ব্যবহারকারী আলাপ:' + initialContrib, "প্রনেতাকে (" + initialContrib + ") জানানো হচ্ছে"),
 					    notifytext, i;
 
 					// specialcase "db" and "db-multiple"
@@ -1077,7 +1077,7 @@ Twinkle.speedy.callbacks = {
 
 					var editsummary = "নোটিশ: দ্রুত অপসারণের তালিকাভুক্ত";
 					if (params.normalizeds.indexOf("g10") === -1) {  // no article name in summary for G10 deletions
-						editsummary += " of [[" + mw.config.get('wgPageName') + "]].";
+						editsummary += " [[" + mw.config.get('wgPageName') + "]].";
 					} else {
 						editsummary += " একটি আক্রমনাত্বক পাতা.";
 					}
@@ -1172,7 +1172,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 	var parameters = [];
 	switch( normalized ) {
 		case 'db':
-			var dbrationale = prompt('Please enter a mandatory rationale.   \n\"This page qualifies for speedy deletion because:\"', "");
+			var dbrationale = prompt('অনুগ্রহ করে যুক্তি উপস্থাপন করুন। \n\"এই পাতাটি দ্রুত অপসারণ যোগ্য কারণ:\"', "");
 			if (!dbrationale || !dbrationale.replace(/^\s*/, "").replace(/\s*$/, ""))
 			{
 				statelem.error( 'আপনাকে অবশ্যই একটি বিচারধারা নির্বাচন করতে হবে। ব্যবহারকারি বাতিল করেছেন।' );
@@ -1183,7 +1183,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 		case 'u1':
 			if (mw.config.get('wgNamespaceNumber') === 3 && !((/\//).test(mw.config.get('wgTitle'))))
 			{
-				var u1rationale = prompt('[CSD U1] Please provide a mandatory rationale to explain why this user talk page should be deleted:', "");
+				var u1rationale = prompt('[CSD U1] এই ব্যবহারকারী পাতাটি অপসারণের পক্ষে যুক্তি উল্লেখ করুন:', "");
 				if (!u1rationale || !u1rationale.replace(/^\s*/, "").replace(/\s*$/, ""))
 				{
 					statelem.error( 'আপনাকে অবশ্যই একটি বিচারধারা নির্বাচন করতে হবে। ব্যবহারকারি বাতিল করেছেন।' );
@@ -1194,7 +1194,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			break;
 		case 'f8':
 			var pagenamespaces = mw.config.get('wgPageName').replace( '_', ' ' );
-			var filename = prompt( '[CSD F8] Please enter the name of the file on Commons:', pagenamespaces );
+			var filename = prompt( '[CSD F8] কমন্সে থাকা ফাইলটির নাম লিখুন:', pagenamespaces );
 			if (filename === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1215,7 +1215,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters.date = "~~~~~";
 			break;
 		case 'g4':
-			var deldisc = prompt( '[CSD G4] Please enter the name of the page where the deletion discussion took place.  \nNOTE: For regular AfD and MfD discussions, just click OK - a link will be automatically provided.', "" );
+			var deldisc = prompt( '[CSD G4] অপসারণের আলোচনা হয়েছিল সেই পাতার নাম লিখুন।  \nটীকা: নিয়মিত AfD এবং MfD আলোচনার ক্ষেত্রে শুধুমাত্র  OK ক্লিক করুন - লিংকটি সয়ংক্রিয়ভাবে যুক্ত হয়ে যাবে।', "" );
 			if (deldisc === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1229,7 +1229,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters["1"] = deldisc;
 			break;
 		case 'g5':
-			var banneduser = prompt( '[CSD G5] Please enter the username of the banned user if available:', "" );
+			var banneduser = prompt( '[CSD G5] ব্যন করা হয়েছিলো সেই ব্যবহারকারীর নাম লিখুন:', "" );
 			if (banneduser === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1240,7 +1240,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 		case 'g6':
 			switch( value ) {
 				case 'histmerge':
-					var mergetitle = prompt( '[CSD G6: history merge] Please enter the title to be merged into this one:', "" );
+					var mergetitle = prompt( '[CSD G6: history merge] যে পাতাটি স্থানান্তর করা হবে সেই পাতার নাম লিখুন:', "" );
 					if (mergetitle === null)
 					{
 						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1249,13 +1249,13 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					parameters["1"] = mergetitle;
 					break;
 				case 'move':
-					var title = prompt( '[CSD G6: move] Please enter the title of the page to be moved here:', "" );
+					var title = prompt( '[CSD G6: move] যে পাতাটি এখানে স্থানান্তর করা হবে সেই পাতার নাম লিখুন:', "" );
 					if (title === null)
 					{
 						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
 						return null;
 					}
-					var reason = prompt( '[CSD G6: move] Please enter the reason for the page move:', "" );
+					var reason = prompt( '[CSD G6: move] পাতা স্থানান্তরের কারণটি লিখুন:', "" );
 					if (reason === null)
 					{
 						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1265,7 +1265,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					parameters["2"] = reason;
 					break;
 				case 'xfd':
-					var votepage = prompt( '[CSD G6: xfd] Please provide a full link, without [[ ]], to the page where the deletion was discussed:', "" );
+					var votepage = prompt( '[CSD G6: xfd] অপসারণ আলোচনার পূর্ণ লিংক উল্লেখ করুন, [[ ]] ব্যবহারের প্রয়োজন নেই:', "" );
 					if (votepage === null)
 					{
 						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1274,7 +1274,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					parameters.fullvotepage = votepage;
 					break;
 				case 'copypaste':
-					var copytitle = prompt( '[CSD G6: copypaste] Please enter the title of the original page that was copy-pasted here:', "" );
+					var copytitle = prompt( '[CSD G6: copypaste] যে পাতা থেকে কপি পেস্ট করা হয়েছে সেই পাতার নাম লিখুন:', "" );
 					if (copytitle === null)
 					{
 						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1283,7 +1283,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 					parameters["1"] = copytitle;
 					break;
 				case 'g6':
-					var g6rationale = prompt( '[CSD G6] Please provide an optional rationale (leave empty to skip):', "" );
+					var g6rationale = prompt( '[CSD G6] অতিরিক্ত কারণটি উল্লেখ করুন (এড়িয়ে যেতে খালি রাখুন):', "" );
 					if (g6rationale === null)
 					{
 						statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1301,7 +1301,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 		case 'g7':
 			if (Twinkle.getPref('speedyPromptOnG7'))
 			{
-				var g7rationale = prompt('[CSD G7] Please provide an optional rationale (perhaps linking to where the author requested this deletion - leave empty to skip):', "");
+				var g7rationale = prompt('[CSD G7] অতিরিক্ত কারণটি উল্লেখ করুন (এড়িয়ে যেতে খালি রাখুন):', "");
 				if (g7rationale === null)
 				{
 					statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1314,7 +1314,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			}
 			break;
 		case 'g12':
-			var url = prompt( '[CSD G12] Please enter the URL if available, including the "http://":', "" );
+			var url = prompt( '[CSD G12]  কপিকৃত তথ্যের উৎস সংযোজন, লিংকের সাথে "http://" অংশটি সংযোজন করুন:', "" );
 			if (url === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1323,7 +1323,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters.url = url;
 			break;
 		case 'f9':
-			var f9url = prompt( '[CSD F9] Please enter the URL of the copyvio, including the "http://".  \nIf you cannot provide a URL, please do not use CSD F9.  (Exception: for copyvios of non-Internet sources, leave the box blank.)', "" );
+			var f9url = prompt( '[CSD F9] কপিকৃত তথ্যের উৎস সংযোজন, লিংকের সাথে "http://" অংশটি সংযোজন করুন।  \n লিংক জানা না থাকলে CSD F9 ব্যবহার করবেন না।  (বিশেষ: ইন্টারনেটে সহজলভ্য নয় এমন সূত্রের ক্ষেত্রে এটি খালি রাখুন।)', "" );
 			if (f9url === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1332,7 +1332,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters.url = f9url;
 			break;
 		case 'a2':
-			var source = prompt('[CSD A2] Enter an interwiki link to the article on the foreign-language wiki (for example, "fr:Bonjour"):', "");
+			var source = prompt('[CSD A2] অন্য ভাষার উইকিপিডিয়ায় নিবন্ধের নাম লিখুন (যেমন:"fr:Bonjour"):', "");
 			if (source === null)
 			{
 				statelem.error('ব্যবহারকারি বাতিল করেছেন।');
@@ -1341,7 +1341,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters.source = source;
 			break;
 		case 'a10':
-			var duptitle = prompt( '[CSD A10] Enter the article name that is duplicated:', "" );
+			var duptitle = prompt( '[CSD A10] প্রতিলিপি নিবন্ধের নাম লিখুন:', "" );
 			if (duptitle === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1350,7 +1350,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters.article = duptitle;
 			break;
 		case 'f1':
-			var img = prompt( '[CSD F1] Enter the file this is redundant to, excluding the "Image:" or "File:" prefix:', "" );
+			var img = prompt( '[CSD F1] প্রতিলিপি ফাইলের নাম লিখুন, "Image:" অথবা "File:" প্রিফিক্স সংযোজনের প্রয়োজন নেই:', "" );
 			if (img === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1359,7 +1359,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			parameters.filename = img;
 			break;
 		case 't3':
-			var template = prompt( '[CSD T3] Enter the template this is redundant to, excluding the "Template:" prefix:', "" );
+			var template = prompt( '[CSD T3] প্রতিলিপি টেমপ্লেটের নাম লিখুন, "টেমপ্লেট:" প্রিফিক্স সংযোজনের প্রয়োজন নেই', "" );
 			if (template === null)
 			{
 				statelem.error( 'ব্যবহারকারি বাতিল করেছেন।' );
@@ -1373,7 +1373,7 @@ Twinkle.speedy.getParameters = function twinklespeedyGetParameters(value, normal
 			// it is actually blanked elsewhere in code, but setting the flag here
 			break;
 		case 'p1':
-			var criterion = prompt( '[CSD P1] Enter the code of the article CSD criterion which this portal falls under:   \n\n(A1 = no context, A3 = no content, A7 = non-notable, A10 = duplicate)', "" );
+			var criterion = prompt( '[CSD P1] এই প্রবেশদ্বারটি নিবন্ধ দ্রুত অপসারণের যে বিচার ধারার আওতভুক্ত সেঔ  কোডটি এখানে লিখুন:   \n\n(A1 = অসংলগ্ন,অর্থহীন, A3 = খালি, A7 = উল্লেখযোগ্য নয়, A10 = প্রতিলিপি)', "" );
 			if (!criterion || !criterion.replace(/^\s*/, "").replace(/\s*$/, ""))
 			{
 				statelem.error( 'আপনাকে অবশ্যই বিচারধারা নির্বাচন করতে হবে। ব্যবহারকারি বাতিল করেছেন।' );
