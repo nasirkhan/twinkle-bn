@@ -50,7 +50,7 @@
 							value: "notice"
 						},
 						{
-							label: "\"You've got mail\"",
+							label: "\"আপনার ইমেইল এসেছে\"",
 							value: "mail"
 						}
 					],
@@ -140,6 +140,7 @@
 						label: "WP:AN (প্রশাসকদের আলোচনাসভা)",
 						value: "an"
 					});
+					/*
 				noticeboard.append({
 						type: "option",
 						label: "WP:AN3 (প্রশাসকদের আলোচনাসভা/Edit warring)",
@@ -166,12 +167,12 @@
 						type: "option",
 						label: "WP:WQA (Wikiquette assistance)",
 						value: "wqa"
-					});
+					});*/
 				work_area.append({
 						type:"input",
 						name:"section",
-						label:"Linked thread",
-						tooltip:"The heading of the relevant thread on the noticeboard page.",
+						label:"অনুচ্ছেদের নাম",
+						tooltip:"আলোচনা পাতার নির্দিষ্ট অনুচ্ছেদের নাম লিখুন এই খালি বক্সে",
 						value: prev_section
 					});
 				break;
@@ -196,8 +197,8 @@
 				work_area.append({
 						type:"input",
 						name:"section",
-						label:"Subject of e-mail (optional)",
-						tooltip:"The subject line of the e-mail you sent."
+						label:"ইমেইলের বিষয় (ঐচ্ছিক)",
+						tooltip:"আপনার পাঠানো ইমেইলের বিষয়।"
 					});
 				break;
 		}
@@ -257,17 +258,17 @@
 			switch (page) {
 				case "an":
 					text = "\n\n== " + Twinkle.getFriendlyPref("adminNoticeHeading") + " ==\n";
-					text += "{{subst:ANI-notice|thread=" + section + "|noticeboard=Wikipedia:Administrators' noticeboard}} ~~~~";
-					talkpage.setEditSummary( "Notice of discussion at [[Wikipedia:Administrators' noticeboard]]" + Twinkle.getPref("summaryAd") );
+					text += "{{subst:ANI-notice|thread=" + section + "|noticeboard=উইকিপিডিয়া:প্রশাসকদের আলোচনাসভা}} ~~~~";
+					talkpage.setEditSummary( "Notice of discussion at [[উইকিপিডিয়া:প্রশাসকদের আলোচনাসভা]]" + Twinkle.getPref("summaryAd") );
 					break;
 				case "an3":
 					text = "\n\n{{subst:An3-notice|" + section + "}} ~~~~";
-					talkpage.setEditSummary( "Notice of discussion at [[Wikipedia:Administrators' noticeboard/Edit warring]]" + Twinkle.getPref("summaryAd") );
+					talkpage.setEditSummary( "Notice of discussion at [[উইকিপিডিয়া:প্রশাসকদের আলোচনাসভা/Edit warring]]" + Twinkle.getPref("summaryAd") );
 					break;
 				case "ani":
 					text = "\n\n== " + Twinkle.getFriendlyPref("adminNoticeHeading") + " ==\n";
-					text += "{{subst:ANI-notice|thread=" + section + "|noticeboard=Wikipedia:Administrators' noticeboard/Incidents}} ~~~~";
-					talkpage.setEditSummary( "Notice of discussion at [[Wikipedia:Administrators' noticeboard/Incidents]]" + Twinkle.getPref("summaryAd") );
+					text += "{{subst:ANI-notice|thread=" + section + "|noticeboard=উইকিপিডিয়া:প্রশাসকদের আলোচনাসভা/Incidents}} ~~~~";
+					talkpage.setEditSummary( "Notice of discussion at [[উইকিপিডিয়া:প্রশাসকদের আলোচনাসভা/Incidents]]" + Twinkle.getPref("summaryAd") );
 					break;
 				case "coin":
 					text = "\n\n{{subst:Coin-notice|thread=" + section + "}} ~~~~";
@@ -295,7 +296,7 @@
 				text += "\n~~~~";
 			}
 
-			talkpage.setEditSummary("Notification: You've got mail" + Twinkle.getPref("summaryAd"));
+			talkpage.setEditSummary("নোটিশ: আপনার ইমেইল এসেছে" + Twinkle.getPref("summaryAd"));
 
 		} else {
 			//clean talkback heading: strip section header markers, were erroneously suggested in the documentation
@@ -314,7 +315,7 @@
 				text += "\n~~~~";
 			}
 	
-			talkpage.setEditSummary("Talkback ([[" + (tbtarget === "other" ? "" : "User talk:") + tbPageName +
+			talkpage.setEditSummary("ফিরতি বার্তা ([[" + (tbtarget === "other" ? "" : "ব্যবহারকারী আলাপ:") + tbPageName +
 				(section ? ("#" + section) : "") + "]])" + Twinkle.getPref("summaryAd"));
 		}
 	
