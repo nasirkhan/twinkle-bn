@@ -18,7 +18,7 @@
 	};
 	
 	var callback = function( ) {
-		if( Morebits.getPageAssociatedUser() === mw.config.get("wgUserName") && !confirm("Is it really so bad that you're talking back to yourself?") ){
+		if( Morebits.getPageAssociatedUser() === mw.config.get("wgUserName") && !confirm("এটি খুবই দুঃখজনক যে আপনি নিজেকেই ফিরতি বার্তা পাঠাচ্ছেন!") ){
 			return;
 		}
 	
@@ -96,7 +96,7 @@
 
 		var work_area = new Morebits.quickForm.element({
 				type: "field",
-				label: "Talkback information",
+				label: "ফিরতি বার্তার তথ্য",
 				name: "work_area"
 			});
 	
@@ -204,7 +204,7 @@
 		}
 	
 		if (value !== "notice") {
-			work_area.append({ type:"textarea", label:"Additional message (optional):", name:"message", tooltip:"An additional message that you would like to leave below the talkback template. Your signature will be added to the end of the message if you leave one." });
+			work_area.append({ type:"textarea", label:"অতিরিক্ত বার্তা (ঐচ্ছিক):", name:"message", tooltip:"সয়ংক্রিয় বার্তার সাথে যদি আরও তথ্য যোগ করতে চান তবে এই অংশে লিখুন। বার্তার শেষে আপনার স্বাক্ষর যোগ করা হবে।" });
 		}
 	
 		work_area = work_area.render();
