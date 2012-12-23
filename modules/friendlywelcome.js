@@ -90,7 +90,7 @@ Twinkle.welcome.welcomeUser = function welcomeUser() {
 	Morebits.wiki.actionCompleted.redirect = mw.config.get('wgPageName');
 	Morebits.wiki.actionCompleted.notice = "স্বাগত সম্পূর্ণ, কয়েক সেকেন্ডের মধ্যে আলাপ পাতা রিলোড করা হচ্ছে";
 
-	var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "User talk page modification");
+	var wikipedia_page = new Morebits.wiki.page(mw.config.get('wgPageName'), "ব্যবহারকারী আলাপ পাতা পরিবর্তন");
 	wikipedia_page.setFollowRedirect(true);
 	wikipedia_page.setCallbackParameters(params);
 	wikipedia_page.load(Twinkle.welcome.callbacks.main);
@@ -115,10 +115,10 @@ Twinkle.welcome.callback = function friendlywelcomeCallback( uid ) {
 			label: 'Type of welcome: ',
 			event: Twinkle.welcome.populateWelcomeList,
 			list: [
-				{ type: 'option', value: 'standard', label: 'Standard welcomes', selected: !Morebits.isIPAddress(mw.config.get('wgTitle')) },
-				{ type: 'option', value: 'anonymous', label: 'IP user welcomes', selected: Morebits.isIPAddress(mw.config.get('wgTitle')) },
-				{ type: 'option', value: 'wikiProject', label: 'WikiProject welcomes' },
-				{ type: 'option', value: 'nonEnglish', label: 'Non-English welcomes' }
+				{ type: 'option', value: 'standard', label: 'সাধারণ স্বাগতম', selected: !Morebits.isIPAddress(mw.config.get('wgTitle')) },
+				{ type: 'option', value: 'anonymous', label: 'আইপি স্বাগতম', selected: Morebits.isIPAddress(mw.config.get('wgTitle')) },
+				{ type: 'option', value: 'wikiProject', label: 'উইকি প্রকপ্ল স্বাগতম' },
+				{ type: 'option', value: 'nonEnglish', label: 'বাংলাভাষী নয় এমন ব্যবহারকারীকে স্বাগতম' }
 			]
 		});
 
@@ -127,9 +127,9 @@ Twinkle.welcome.callback = function friendlywelcomeCallback( uid ) {
 	form.append( {
 			type: 'input',
 			name: 'article',
-			label: '* Linked article (if supported by template):',
+			label: '* সংযুক্ত নিবন্ধ (যদি টেমপ্লেট সমর্থন করে):',
 			value:( Morebits.queryString.exists( 'vanarticle' ) ? Morebits.queryString.get( 'vanarticle' ) : '' ),
-			tooltip: 'An article might be linked from within the welcome if the template supports it. Leave empty for no article to be linked.  Templates that support a linked article are marked with an asterisk.'
+			tooltip: 'স্বাগতম টেমপ্লেটের সাথে নিবন্ধের সংযোজন। কোনো নিবন্ধ যুক্ত করতে না চাইলে খালি রাখুন। যে টেমপ্লেটগুলো এই বৈশিষ্টটি সমর্থন করে সেগুলোর নামের পাশে তারকা চিহ্ন থাকবে।'
 		} );
 
 	var previewlink = document.createElement( 'a' );
@@ -137,7 +137,7 @@ Twinkle.welcome.callback = function friendlywelcomeCallback( uid ) {
 		Twinkle.welcome.callbacks.preview(result);  // |result| is defined below
 	});
 	previewlink.style.cursor = "pointer";
-	previewlink.textContent = 'Preview';
+	previewlink.textContent = 'প্রিভিউ';
 	form.append( { type: 'div', name: 'welcomepreview', label: [ previewlink ] } );
 
 	form.append( { type: 'submit' } );
@@ -193,7 +193,7 @@ Twinkle.welcome.populateWelcomeList = function(e) {
 
 	switch (type) {
 		case "standard":
-			div.append({ type: 'header', label: 'General welcome templates' });
+			div.append({ type: 'header', label: 'সাধারণ স্বাগতম টেমপ্লেট' });
 			appendTemplates([
 				"welcome",
 				"welcome-short",
@@ -637,8 +637,8 @@ Twinkle.welcome.getTemplateWikitext = function(template, article) {
 Twinkle.welcome.callbacks = {
 	preview: function(form) {
 		var previewDialog = new Morebits.simpleWindow(750, 400);
-		previewDialog.setTitle("Welcome template preview");
-		previewDialog.setScriptName("Welcome user");
+		previewDialog.setTitle("স্বাগতম টেমপ্লেট প্রিভিউ");
+		previewDialog.setScriptName("ব্যবহারকারী স্বাগতম");
 		previewDialog.setModality(true);
 
 		var previewdiv = document.createElement("div");
@@ -666,7 +666,7 @@ Twinkle.welcome.callbacks = {
 
 		// abort if mode is auto and form is not empty
 		if( pageobj.exists() && params.mode === 'auto' ) {
-			Morebits.status.info( 'Warning', 'User talk page not empty; aborting automatic welcome' );
+			Morebits.status.info( 'Warning', 'ব্যবহারকারী আলাপ পাতা খালি নয়, সয়ংক্রিয়ভাবে স্বাগতম জানানো হচ্ছে না' );
 			Morebits.wiki.actionCompleted.event();
 			return;
 		}
@@ -679,7 +679,7 @@ Twinkle.welcome.callbacks = {
 			text += "\n" + welcomeText;
 		}
 
-		var summaryText = "Welcome to Wikipedia!";
+		var summaryText = "উইকিপিডিয়ায় স্বাগতম!";
 		pageobj.setPageText(text);
 		pageobj.setEditSummary(summaryText + Twinkle.getPref('summaryAd'));
 		pageobj.setWatchlist(Twinkle.getFriendlyPref('watchWelcomes'));
