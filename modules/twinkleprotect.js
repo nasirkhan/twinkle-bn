@@ -33,7 +33,7 @@ Twinkle.protect.callback = function twinkleprotectCallback() {
 	var form = new Morebits.quickForm( Twinkle.protect.callback.evaluate );
 	var actionfield = form.append( {
 			type: 'field',
-			label: 'Type of action'
+			label: 'কাজের ধরণ'
 		} );
 	if( Morebits.userIsInGroup( 'sysop' ) ) {
 		actionfield.append( {
@@ -42,9 +42,9 @@ Twinkle.protect.callback = function twinkleprotectCallback() {
 				event: Twinkle.protect.callback.changeAction,
 				list: [
 					{
-						label: 'Protect page',
+						label: 'পাতা সুরক্ষা',
 						value: 'protect',
-						tooltip: 'Apply actual protection to the page.',
+						tooltip: 'পাতার সুরক্ষা নির্ধারণ করুন।',
 						checked: true
 					}
 				]
@@ -56,13 +56,13 @@ Twinkle.protect.callback = function twinkleprotectCallback() {
 			event: Twinkle.protect.callback.changeAction,
 			list: [
 				{
-					label: 'Request page protection',
+					label: 'পাতা সুরক্ষার আবেদন',
 					value: 'request',
 					tooltip: 'If you want to request protection via WP:RPP' + (Morebits.userIsInGroup('sysop') ? ' instead of doing the protection by yourself.' : '.'),
 					checked: !Morebits.userIsInGroup('sysop')
 				},
 				{
-					label: 'Tag page with protection template',
+					label: 'পাতা সুরক্ষা টেমপ্লেট যোগ করুন',
 					value: 'tag',
 					tooltip: 'If the protecting admin forgot to apply a protection template, or you have just protected the page without tagging, you can use this to apply the appropriate protection tag.',
 					disabled: mw.config.get('wgArticleId') === 0
@@ -70,9 +70,9 @@ Twinkle.protect.callback = function twinkleprotectCallback() {
 			]
 		} );
 
-	form.append({ type: 'field', label: 'Preset', name: 'field_preset' });
-	form.append({ type: 'field', label: '1', name: 'field1' });
-	form.append({ type: 'field', label: '2', name: 'field2' });
+	form.append({ type: 'field', label: 'প্রিসেট', name: 'field_preset' });
+	form.append({ type: 'field', label: '১', name: 'field1' });
+	form.append({ type: 'field', label: '২', name: 'field2' });
 
 	form.append( { type:'submit' } );
 
@@ -141,7 +141,7 @@ Twinkle.protect.callback.changeAction = function twinkleprotectCallbackChangeAct
 			field_preset.append({
 					type: 'select',
 					name: 'category',
-					label: 'Choose a preset:',
+					label: 'একটি প্রিসেট নির্ধারণ করুন:',
 					event: Twinkle.protect.callback.changePreset,
 					list: (mw.config.get('wgArticleId') ? Twinkle.protect.protectionTypes : Twinkle.protect.protectionTypesCreate)
 				});
